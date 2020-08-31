@@ -1,1 +1,1 @@
-Sitemap: http://brandon-j-nelson.com/sitemap.xml
+Sitemap: https://brandon-j-nelson.com/sitemap.xml
