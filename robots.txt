@@ -1,1 +1,1 @@
-Sitemap: https://bnel1201.github.io/sitemap.xml
+Sitemap: http://brandon-j-nelson.com/sitemap.xml
