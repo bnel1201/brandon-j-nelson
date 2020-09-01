@@ -9,6 +9,6 @@ title: Teaching Engineering English
 # English for Engineering Physics at Tsinghua University
 
 ## September 1-14, 2018
-![](images/tsinghua2019/lecture.jpg)
+![]({{ site.baseurl }}/images/tsinghua2019/lecture.jpg "one of my first lectures")
 ## July 1-14, 2019
 
