@@ -36,7 +36,7 @@
     
         ,"post3": {
             "title": "JuliaCon 2020",
-            "content": "JuliaCon 2020 . Some of my favorite talks: . Building Microservices and Applications in Julia . This is a great workshop on how to organize Julia code into modules for effective code reuse. At first I found the compiled nature of Julia to make building Julia modules and packages more complicated than doing so in Python, Jacob Quin does a nice job breaking the process down. . Using VScode for Julia Developement .",
+            "content": "JuliaCon 2020 . Some of my favorite talks: . Building Microservices and Applications in Julia . This is a great workshop on how to organize Julia code into modules for effective code reuse. At first I found the compiled nature of Julia to make building Julia modules and packages more complicated than doing so in Python, Jacob Quin does a nice job breaking the process down. . Using VScode for Julia Developement . Pluto.jl .",
             "url": "https://brandon-j-nelson.com/julia/2020/08/29/juliacon2020.html",
             "relUrl": "/julia/2020/08/29/juliacon2020.html",
             "date": " • Aug 29, 2020"
