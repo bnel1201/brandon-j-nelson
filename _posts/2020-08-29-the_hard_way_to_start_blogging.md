@@ -15,3 +15,6 @@ I wanted to start blogging for several (mostly selfish) reasons:
 ## Doing it the hard way
 
 My personality often pushes me to want to understand something from first principles, building something from scratch. Thus my first instincts were While I found resources such as [Corey Schafer's Django series](https://www.youtube.com/watch?v=UmljXZIypDc&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p)
+
+## Eventually accepting Twitter as an import scientific networking tool
+[twitter for science](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7010239/)
