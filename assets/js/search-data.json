@@ -107,6 +107,17 @@
 
   
       ,"page3": {
+          "title": "Presentations",
+          "content": "2019 . Visibility Guided Phase Contrast Denoising . SPIE Medical Imaging 2019 . . . .",
+          "url": "https://brandon-j-nelson.com/presentations/",
+          "relUrl": "/presentations/",
+          "date": ""
+      }
+      
+  
+
+  
+      ,"page4": {
           "title": "Publications",
           "content": "BHC paper | MOBY Sim paper | Phase Sim paper | | .",
           "url": "https://brandon-j-nelson.com/publications/",
@@ -136,7 +147,7 @@
   
 
   
-      ,"page11": {
+      ,"page12": {
           "title": "",
           "content": "Sitemap: {{ “sitemap.xml” | absolute_url }} | .",
           "url": "https://brandon-j-nelson.com/robots.txt",
