@@ -13,4 +13,4 @@ permalink: /presentations/
 
 ![]({{ site.baseurl }}/images/SPIE 2019/best_in_physics_student_poster.png "Best in Physics Poster Award")
 
-![]({{ site.baseurl }}/assets/Nelson_SPIE_2019_Proceedings.pdf "one of my first lectures")
+![Conference Proceedings Paper pre-print]({{ site.baseurl }}/assets/Nelson_SPIE_2019_Proceedings.pdf)
