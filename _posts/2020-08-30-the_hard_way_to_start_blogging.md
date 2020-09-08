@@ -3,7 +3,7 @@ toc: true
 layout: post
 description: Why I started a blog and and why you might want to!
 categories: [communication]
-title: First steps
+title: How this blog is made
 ---
 # Blogging the hard way
 
