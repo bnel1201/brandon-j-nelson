@@ -10,19 +10,16 @@ title: First steps
 Hello and welcome to my first blog post! Allow me to give a little background on myself and my motivations.
 
 ## About Me and why blog now
-This [past year](https://en.wikipedia.org/wiki/Coronavirus_disease_2019) has been a transformative one for me as it has for many, turning many plans upside down. I'm fortunate however to be a [graduate student](https://college.mayo.edu/academics/biomedical-research-training/phd-program/tracks/biomedical-engineering-and-physiology/) minimally impacted by these events.
-
-
-My research in [Computed Tomography (CT or CAT scan for short)](https://www.mayo.edu/research/centers-programs/ct-clinical-innovation-center/overview) and background in [physics](https://en.wikipedia.org/wiki/Spherical_cow) leading up till about a year ago now had me doing a lot of work on hardware, building [new devices](https://en.wikipedia.org/wiki/Phase-contrast_X-ray_imaging) to then do research on.
-
-
-So what happened a year ago? It was supposed to be 3 month downtime of my experiments to renovate our lab space. I rushed to get all the data that I thought I would need in the next 6 months to be safe before tearing down my experiment that I had labored many long days and nights on.
-
+2019 has been a transformative year for me as it has for many. As a senior Ph.D. student I needed to conduct a few more experiments to satisfy my research plans, however when I had to tear down my scanner for lab renovations and upgrades I had to put those experiments on hold. However when March, 2019 rolled around I realized my plans had turned upside down. What I originally thought would be a few months of down time turned into over a year.
 
 My daily schedule changed dramatically, from laboring in the lab space tweaking my setup and running scans every day to staring at my mess of data and MATLAB code tying it all together like a big spider web.
 
 
-Long story short, I realized I needed to get organized if I was ever going to turn this mess into a paper, much less a graduate thesis. Not knowing exactly where or how to start, I turned to the internet. To my surprise I managed to stumble upon a [podcast](https://talkpython.fm/episodes/show/227/maintainable-data-science-tips-for-non-developers) episode that managed to describe all of my problems and a solution (well a path to that solution).
+Long story short, I realized I needed to get organized if I was ever going to turn this mess into a paper, much less a graduate thesis. Not knowing exactly where or how to start, I turned to the internet. To my surprise I managed to stumble upon this podcast episode from [Talk Python to Me](https://talkpython.fm/episodes/show/227/maintainable-data-science-tips-for-non-developers) that managed to describe all of my problems and a solution (a path to that solution).
+
+
+In this blog I hope to document how this downtime has changed my perspectives on research and share some of the exciting things that I've learned along the way.
+
 
 ### On clean(er) code and automation for a grad student that knew nothing about computers
 
