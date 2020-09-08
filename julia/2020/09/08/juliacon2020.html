@@ -166,7 +166,7 @@ window.onload = wrap_img;
 <a class="anchor" href="#plutojl" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://www.youtube.com/watch?v=IAF8DjrQSSk">Pluto.jl</a>
 </h2>
 
-<p>I find <a href="https://github.com/fonsp/Pluto.jl">Pluto</a> to a be a real joy to experiment in. I find it great for following along with <a href="https://www.youtube.com/watch?v=DGojI9xcCfg">tutorials</a> where I can write notes and link to resources, much like a <a href="https://jupyter.org/">Jupyter notebook</a> [^1].</p>
+<p>I find <a href="https://github.com/fonsp/Pluto.jl">Pluto</a> to a be a real joy to experiment in. I find it great for following along with <a href="https://www.youtube.com/watch?v=DGojI9xcCfg">tutorials</a> where I can write notes and link to resources, much like a <a href="https://jupyter.org/">Jupyter notebook</a> <sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote">1</a></sup>.</p>
 
 <p>A key difference where Pluto notebooks stand apart from Jupyter notebooks is that it is a <em>reactive</em> notebook which didn’t really set in for me until I started playing around with Pluto for a while. Basically whenever I change a variable or function in one cell, all other cells referencing that variable get updated automatically. This avoids a recurring issue in Jupyter notebooks that each cell must be run sequentially, jumping around and changing variable names or values can affect the reproducibility of the results. This is avoided in Pluto where all values are updated simultaneously. Additionally Pluto makes use of multiple threads so this all feels pretty lightweight and responsive <em>when doing small computations</em>.</p>
 
@@ -184,7 +184,13 @@ window.onload = wrap_img;
 
 <p>While there is much more functinality in this package these are the first two functions I started using immediately and continue to use it in my projects today. I even have <code class="highlighter-rouge">using DrWatson</code> in my <code class="highlighter-rouge">~/.julia/config/startup.jl</code> to more easily run <code class="highlighter-rouge">@quickactivate</code> anytime I <code class="highlighter-rouge">cd</code> into my project directory and run Julia.</p>
 
-<p>[^1] Fun fact: <a href="https://en.wikipedia.org/wiki/Project_Jupyter">Jupyter</a> stands for <strong>Ju</strong>lia, <strong>Py</strong>thon, and <strong>R</strong>, even though many language kernels are supported.</p>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>Fun fact: <a href="https://en.wikipedia.org/wiki/Project_Jupyter">Jupyter</a> stands for <strong>Ju</strong>lia, <strong>Py</strong>thon, and <strong>R</strong>, even though many language kernels are supported. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">↩</a></p>
+    </li>
+  </ol>
+</div>
 
   </div><a class="u-url" href="/julia/2020/09/08/juliacon2020.html" hidden></a>
 </article>
