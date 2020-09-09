@@ -1,7 +1,7 @@
 ---
 toc: true
 layout: post
-description: Why I started a blog and and why you might want to!
+description: Choosing a blogging platform for the stubborn beginner
 categories: [communication]
 title: How this blog is made
 ---
