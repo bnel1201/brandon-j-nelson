@@ -1,9 +1,9 @@
 ---
 toc: false
 layout: post
-description: Like 3 REUs back-to-back-to-bacl
+description: Like 3 REUs back-to-back-to-back
 categories: [grad school]
-title: Grad School Research Rotations
+title: Grad School Research Rotations, My Experience
 ---
 
 \cventry{Fall-Winter 2016}{Graduate Research Rotation}{Department of Radiology}{Mayo Clinic}{Rochester, MN}{-- Investigated stiffness measurement repeatability and reproducibility using novel magnetic resonance elastography technique. \\ \textit{Advisor}: Richard Ehman, M.D.}
