@@ -11,61 +11,6 @@
         
     
   
-    
-        ,"post1": {
-            "title": "Grad School Research Rotations, My Experience",
-            "content": "cventry{Fall-Winter 2016}{Graduate Research Rotation}{Department of Radiology}{Mayo Clinic}{Rochester, MN}{– Investigated stiffness measurement repeatability and reproducibility using novel magnetic resonance elastography technique. textit{Advisor}: Richard Ehman, M.D.} . cventry{Summer-Fall 2016}{Graduate Research Rotation}{Department of Radiation Oncology}{Mayo Clinic}{Rochester, MN}{–Characterized a novel semiconductor microdosimeter response to varying clinical proton beam dose environments. textit{Advisors}: Michael Herman, Ph.D. and Chris Beltran, Ph.D.} .",
-            "url": "https://brandon-j-nelson.com/grad%20school/2020/09/05/research_rotations.html",
-            "relUrl": "/grad%20school/2020/09/05/research_rotations.html",
-            "date": " • Sep 5, 2020"
-        }
-        
-    
-  
-    
-        ,"post2": {
-            "title": "Teaching Engineering English",
-            "content": "English for Engineering Physics at Tsinghua University . September 1-14, 2018 . . July 1-14, 2019 .",
-            "url": "https://brandon-j-nelson.com/communication/teaching/chinese/2020/09/02/teaching_at_tsinghua.html",
-            "relUrl": "/communication/teaching/chinese/2020/09/02/teaching_at_tsinghua.html",
-            "date": " • Sep 2, 2020"
-        }
-        
-    
-  
-    
-        ,"post3": {
-            "title": "Determining the best choice for storing your images",
-            "content": "Storing Images . This is an overview of several image formats that appear in science and where and when they may be useful. . Bit depth and image size . DICOM . tiff . NRRD . HDF5 . Language specific options . Python .pkl . Matlab .mat . Actually hdf5 .",
-            "url": "https://brandon-j-nelson.com/imaging/2020/09/01/deciding_on_image_storage.html",
-            "relUrl": "/imaging/2020/09/01/deciding_on_image_storage.html",
-            "date": " • Sep 1, 2020"
-        }
-        
-    
-  
-    
-        ,"post4": {
-            "title": "How this blog is made",
-            "content": "Blogging the hard way . I wanted to start blogging for several (mostly selfish) reasons: . To improve my own understanding of certain topics by trying to explain them to others (exposing my own gaps in knowledge | To be more engaged in the online community and discourse | These sources promote it as a good way to promote yourself (This was another area that I was hesitant about until reading this post | . Doing it the hard way . My personality often pushes me to want to understand something from first principles, building something from scratch. Thus my first instincts were While I found resources such as Corey Schafer’s Django series . Eventually accepting Twitter as an import scientific networking tool . twitter for science .",
-            "url": "https://brandon-j-nelson.com/communication/2020/08/30/the_hard_way_to_start_blogging.html",
-            "relUrl": "/communication/2020/08/30/the_hard_way_to_start_blogging.html",
-            "date": " • Aug 30, 2020"
-        }
-        
-    
-  
-    
-        ,"post5": {
-            "title": "First steps",
-            "content": "Starting my blog why and how . Hello and welcome to my first blog post! Allow me to give a little background on myself and my motivations. . About Me and why blog now . 2019 has been a transformative year for me as it has for many. As a senior Ph.D. student I needed to conduct a few more experiments to satisfy my research plans, however when I had to tear down my scanner for lab renovations and upgrades I had to put those experiments on hold. However when March, 2019 rolled around I realized my plans had turned upside down. What I originally thought would be a few months of down time turned into over a year. . My daily schedule changed dramatically, from laboring in the lab space tweaking my setup and running scans every day to staring at my mess of data and MATLAB code tying it all together like a big spider web. . Long story short, I realized I needed to get organized if I was ever going to turn this mess into a paper, much less a graduate thesis. Not knowing exactly where or how to start, I turned to the internet. To my surprise I managed to stumble upon this podcast episode from Talk Python to Me that managed to describe all of my problems and a solution (a path to that solution). . In this blog I hope to document how this downtime has changed my perspectives on research and share some of the exciting things that I’ve learned along the way. . On clean(er) code and automation for a grad student that knew nothing about computers . That podcast cited 3 key papersi (best read in the following order) . Good Enough Practices in Scientific Computing | A Quick Guide to Organizing Computation Biology Projects | Best Practices for Scientific Computing | . I still have these papers bookmarked and come back to review them every fiew weeks to make to keep me on track. I hope to have another post coming out soon that dives into these works and my experiences with them in more detail for those who are interested! . As recommended in each of these papers, I started with baby steps, trying to implement one better practice at a time to get more organized and be more reproducible (Yes for other researchers to reproduce but more importantly for me to be able to reproduce my work weeks or months later!). . This was the start of my journey into programming and as I followed their guidance and started learning more I become exposed to the vibrant and supportive online community of others trying to make sense of their own work using computers and then giving back by making informative youtube videos trying to help others do the same. . Along the way I found many technical blogs such as this one on CT! that have helped me along the way. . It was finally this post that convinced me to just get started myself and see where this blog takes me. . How I’m doing it . I’m starting with the Fast.ai template . I have much more to say on Fast.ai but will save that for later posts! .",
-            "url": "https://brandon-j-nelson.com/communication/2020/08/29/my_first_blog_site_why_and_how.html",
-            "relUrl": "/communication/2020/08/29/my_first_blog_site_why_and_how.html",
-            "date": " • Aug 29, 2020"
-        }
-        
-    
-  
 
   
   
