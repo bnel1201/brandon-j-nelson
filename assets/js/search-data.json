@@ -27,9 +27,31 @@
   
 
   
+      ,"page2": {
+          "title": "Determining the best choice for storing your images",
+          "content": "Storing Images . This is an overview of several image formats that appear in science and where and when they may be useful. . Bit depth and image size . DICOM . tiff . NRRD . HDF5 . Language specific options . Python .pkl . Matlab .mat . Actually hdf5 .",
+          "url": "https://brandon-j-nelson.com/unfinished_drafts/deciding_on_image_storage.html",
+          "relUrl": "/unfinished_drafts/deciding_on_image_storage.html",
+          "date": ""
+      }
+      
+  
 
   
-      ,"page3": {
+
+  
+      ,"page4": {
+          "title": "First steps",
+          "content": "Starting my blog why and how . Hello and welcome to my first blog post! Allow me to give a little background on myself and my motivations. . About Me and why blog now . 2019 has been a transformative year for me as it has for many. As a senior Ph.D. student I needed to conduct a few more experiments to satisfy my research plans, however when I had to tear down my scanner for lab renovations and upgrades I had to put those experiments on hold. However when March, 2019 rolled around I realized my plans had turned upside down. What I originally thought would be a few months of down time turned into over a year. . My daily schedule changed dramatically, from laboring in the lab space tweaking my setup and running scans every day to staring at my mess of data and MATLAB code tying it all together like a big spider web. . Long story short, I realized I needed to get organized if I was ever going to turn this mess into a paper, much less a graduate thesis. Not knowing exactly where or how to start, I turned to the internet. To my surprise I managed to stumble upon this podcast episode from Talk Python to Me that managed to describe all of my problems and a solution (a path to that solution). . In this blog I hope to document how this downtime has changed my perspectives on research and share some of the exciting things that I’ve learned along the way. . On clean(er) code and automation for a grad student that knew nothing about computers . That podcast cited 3 key papersi (best read in the following order) . Good Enough Practices in Scientific Computing | A Quick Guide to Organizing Computation Biology Projects | Best Practices for Scientific Computing | . I still have these papers bookmarked and come back to review them every fiew weeks to make to keep me on track. I hope to have another post coming out soon that dives into these works and my experiences with them in more detail for those who are interested! . As recommended in each of these papers, I started with baby steps, trying to implement one better practice at a time to get more organized and be more reproducible (Yes for other researchers to reproduce but more importantly for me to be able to reproduce my work weeks or months later!). . This was the start of my journey into programming and as I followed their guidance and started learning more I become exposed to the vibrant and supportive online community of others trying to make sense of their own work using computers and then giving back by making informative youtube videos trying to help others do the same. . Along the way I found many technical blogs such as this one on CT! that have helped me along the way. . It was finally this post that convinced me to just get started myself and see where this blog takes me. . How I’m doing it . I’m starting with the Fast.ai template . I have much more to say on Fast.ai but will save that for later posts! .",
+          "url": "https://brandon-j-nelson.com/unfinished_drafts/my_first_blog_site_why_and_how.html",
+          "relUrl": "/unfinished_drafts/my_first_blog_site_why_and_how.html",
+          "date": ""
+      }
+      
+  
+
+  
+      ,"page5": {
           "title": "Presentations",
           "content": "2019 . Visibility Guided Phase Contrast Denoising . SPIE Medical Imaging 2019 . . . Conference Proceedings Paper pre-print .",
           "url": "https://brandon-j-nelson.com/presentations/",
@@ -40,11 +62,22 @@
   
 
   
-      ,"page4": {
+      ,"page6": {
           "title": "Publications",
           "content": "2020 . Peer Reviewed Publications . Nelson, B.J., Leng, S., Shanblatt, E.R., McCollough, C.H. and Koenig, T. (2021), Empirical beam hardening and ring artifact correction for x‐ray grating interferometry (EBHC‐GI). Med Phys. https://doi.org/10.1002/mp.14672 pre-peer reviewed version | . | Sung, Y., Nelson, B., Shanblatt, E.R., Gupta, R., McCollough, C.H. and Graves, W.S. (2020), Wave optics simulation of grating‐based X‐ray phase‐contrast imaging using 4D Mouse Whole Body (MOBY) phantom. Med. Phys, 47: 5761-5771. https://doi.org/10.1002/mp.14479 | . 2019 . Conference Proceedings . Demonstration of Phase-Assisted Material Decomposition with a Talbot-Lau Interferometer using a Single X-Ray Tube Potential . Elisabeth R. Shanblatt, Brandon J. Nelson, Shengzhen Tao, Shuai Leng, Cynthia H. McCollough | SPIE Medical Imaging 2019, San Diego, CA | . Visibility Guided Phase Contrast Denoising . Brandon J. Nelson, Thomas Koenig, Elisabeth R. Shanblatt, Shuai Leng, Cynthia H. McCollough | SPIE Medical Imaging 2019, San Diego, CA | . Peer Reviewed Publications . Elisabeth R. Shanblatt, Yongjin Sung, Rajiv Gupta, Brandon J. Nelson, Shuai Leng, William S. Graves, and Cynthia H. McCollough, “Forward model for propagation-based x-ray phase contrast imaging in parallel- and cone-beam geometry,” Opt. Express 27, 4504-4521 (2019) | Sung Y, Gupta R, Nelson B, Leng S, McCollough CH, Graves WS. Phase-contrast imaging with a compact x-ray light source: system design. J Med Imaging (Bellingham). 2017;4(4):043503. doi:10.1117/1.JMI.4.4.043503 | .",
           "url": "https://brandon-j-nelson.com/publications/",
           "relUrl": "/publications/",
+          "date": ""
+      }
+      
+  
+
+  
+      ,"page7": {
+          "title": "Grad School Research Rotations, My Experience",
+          "content": "cventry{Fall-Winter 2016}{Graduate Research Rotation}{Department of Radiology}{Mayo Clinic}{Rochester, MN}{– Investigated stiffness measurement repeatability and reproducibility using novel magnetic resonance elastography technique. textit{Advisor}: Richard Ehman, M.D.} . cventry{Summer-Fall 2016}{Graduate Research Rotation}{Department of Radiation Oncology}{Mayo Clinic}{Rochester, MN}{–Characterized a novel semiconductor microdosimeter response to varying clinical proton beam dose environments. textit{Advisors}: Michael Herman, Ph.D. and Chris Beltran, Ph.D.} .",
+          "url": "https://brandon-j-nelson.com/unfinished_drafts/research_rotations.html",
+          "relUrl": "/unfinished_drafts/research_rotations.html",
           "date": ""
       }
       
@@ -61,16 +94,38 @@
   
 
   
-  
-
-  
-  
-
-  
-  
-
-  
       ,"page12": {
+          "title": "Teaching Engineering English",
+          "content": "English for Engineering Physics at Tsinghua University . September 1-14, 2018 . . July 1-14, 2019 .",
+          "url": "https://brandon-j-nelson.com/unfinished_drafts/teaching_at_tsinghua.html",
+          "relUrl": "/unfinished_drafts/teaching_at_tsinghua.html",
+          "date": ""
+      }
+      
+  
+
+  
+      ,"page13": {
+          "title": "How this blog is made",
+          "content": "Blogging the hard way . I wanted to start blogging for several (mostly selfish) reasons: . To improve my own understanding of certain topics by trying to explain them to others (exposing my own gaps in knowledge | To be more engaged in the online community and discourse | These sources promote it as a good way to promote yourself (This was another area that I was hesitant about until reading this post | . Doing it the hard way . My personality often pushes me to want to understand something from first principles, building something from scratch. Thus my first instincts were While I found resources such as Corey Schafer’s Django series . Eventually accepting Twitter as an import scientific networking tool . twitter for science .",
+          "url": "https://brandon-j-nelson.com/unfinished_drafts/the_hard_way_to_start_blogging.html",
+          "relUrl": "/unfinished_drafts/the_hard_way_to_start_blogging.html",
+          "date": ""
+      }
+      
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+      ,"page17": {
           "title": "",
           "content": "Sitemap: {{ “sitemap.xml” | absolute_url }} | .",
           "url": "https://brandon-j-nelson.com/robots.txt",
