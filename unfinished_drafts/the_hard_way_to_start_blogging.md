@@ -3,6 +3,7 @@ toc: true
 layout: post
 description: Choosing a blogging platform for the stubborn beginner
 categories: [communication]
+hide: true
 title: How this blog is made
 ---
 # Blogging the hard way
