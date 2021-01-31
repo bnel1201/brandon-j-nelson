@@ -3,6 +3,7 @@ toc: true
 layout: post
 description: A simple task complicated by history and many choices
 categories: [imaging]
+hide: true
 title: Determining the best choice for storing your images
 ---
 
