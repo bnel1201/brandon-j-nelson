@@ -1,6 +1,7 @@
 ---
 toc: false
 layout: post
+hide: true
 description: Like 3 REUs back-to-back-to-back
 categories: [grad school]
 title: Grad School Research Rotations, My Experience
