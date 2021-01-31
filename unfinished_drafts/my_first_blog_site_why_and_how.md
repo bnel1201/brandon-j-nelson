@@ -3,6 +3,7 @@ toc: true
 layout: post
 description: Why I started a blog and and why you might want to!
 categories: [communication]
+hide: true
 title: First steps
 ---
 # Starting my blog why and how
