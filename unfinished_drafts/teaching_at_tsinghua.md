@@ -3,6 +3,7 @@ toc: true
 layout: post
 description: My experiences teaching 
 categories: [communication, teaching, chinese]
+hide: true
 title: Teaching Engineering English
 ---
 
