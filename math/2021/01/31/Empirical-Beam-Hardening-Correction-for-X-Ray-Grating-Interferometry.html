@@ -8,30 +8,30 @@
 <meta name="generator" content="Jekyll v4.0.0" />
 <meta property="og:title" content="Empirical Beam Hardening Correction for X-Ray Grating Interferometry (EBHC-GI)" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Empirical Beam Hardening Correction for X-Ray Grating Interferometry (EBHC-GI)" />
-<meta property="og:description" content="Empirical Beam Hardening Correction for X-Ray Grating Interferometry (EBHC-GI)" />
-<link rel="canonical" href="https://brandon-j-nelson.com/ebhci-gi/2021/01/31/Empirical-Beam-Hardening-Correction-for-X-Ray-Grating-Interferometry.html" />
-<meta property="og:url" content="https://brandon-j-nelson.com/ebhci-gi/2021/01/31/Empirical-Beam-Hardening-Correction-for-X-Ray-Grating-Interferometry.html" />
+<meta name="description" content="Recently, my first first-author manuscript related to my thesis work on x-ray phase contrast was published. The paper summarizes artifacts experienced while using a tabletop x-ray phase contrast micro-CT system. While the focus of the paper is limited to grating-based x-ray phase contrast systems, the empirical methods used to solve the beam hardening problem are quite generalizable. I first learned about these interpolation-based empirical corrections from researching previous x-ray corrections that are referenced in the paper, but along the way I enjoyed digging more into the math of solving least squares problems and how they are implemented. The following tutorials document some of my explorations and provide background to the paper." />
+<meta property="og:description" content="Recently, my first first-author manuscript related to my thesis work on x-ray phase contrast was published. The paper summarizes artifacts experienced while using a tabletop x-ray phase contrast micro-CT system. While the focus of the paper is limited to grating-based x-ray phase contrast systems, the empirical methods used to solve the beam hardening problem are quite generalizable. I first learned about these interpolation-based empirical corrections from researching previous x-ray corrections that are referenced in the paper, but along the way I enjoyed digging more into the math of solving least squares problems and how they are implemented. The following tutorials document some of my explorations and provide background to the paper." />
+<link rel="canonical" href="https://brandon-j-nelson.com/math/2021/01/31/Empirical-Beam-Hardening-Correction-for-X-Ray-Grating-Interferometry.html" />
+<meta property="og:url" content="https://brandon-j-nelson.com/math/2021/01/31/Empirical-Beam-Hardening-Correction-for-X-Ray-Grating-Interferometry.html" />
 <meta property="og:site_name" content="Brandon J Nelson" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-01-31T00:00:00-06:00" />
 <script type="application/ld+json">
-{"description":"Empirical Beam Hardening Correction for X-Ray Grating Interferometry (EBHC-GI)","dateModified":"2021-01-31T00:00:00-06:00","datePublished":"2021-01-31T00:00:00-06:00","headline":"Empirical Beam Hardening Correction for X-Ray Grating Interferometry (EBHC-GI)","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://brandon-j-nelson.com/ebhci-gi/2021/01/31/Empirical-Beam-Hardening-Correction-for-X-Ray-Grating-Interferometry.html"},"url":"https://brandon-j-nelson.com/ebhci-gi/2021/01/31/Empirical-Beam-Hardening-Correction-for-X-Ray-Grating-Interferometry.html","@context":"https://schema.org"}</script>
+{"description":"Recently, my first first-author manuscript related to my thesis work on x-ray phase contrast was published. The paper summarizes artifacts experienced while using a tabletop x-ray phase contrast micro-CT system. While the focus of the paper is limited to grating-based x-ray phase contrast systems, the empirical methods used to solve the beam hardening problem are quite generalizable. I first learned about these interpolation-based empirical corrections from researching previous x-ray corrections that are referenced in the paper, but along the way I enjoyed digging more into the math of solving least squares problems and how they are implemented. The following tutorials document some of my explorations and provide background to the paper.","dateModified":"2021-01-31T00:00:00-06:00","datePublished":"2021-01-31T00:00:00-06:00","headline":"Empirical Beam Hardening Correction for X-Ray Grating Interferometry (EBHC-GI)","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://brandon-j-nelson.com/math/2021/01/31/Empirical-Beam-Hardening-Correction-for-X-Ray-Grating-Interferometry.html"},"url":"https://brandon-j-nelson.com/math/2021/01/31/Empirical-Beam-Hardening-Correction-for-X-Ray-Grating-Interferometry.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://brandon-j-nelson.com/feed.xml" title="Brandon J Nelson" /><link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Empirical Beam Hardening Correction for X-Ray Grating Interferometry (EBHC-GI) | Brandon J Nelson</title>
 <meta name="generator" content="Jekyll v4.0.0" />
 <meta property="og:title" content="Empirical Beam Hardening Correction for X-Ray Grating Interferometry (EBHC-GI)" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Empirical Beam Hardening Correction for X-Ray Grating Interferometry (EBHC-GI)" />
-<meta property="og:description" content="Empirical Beam Hardening Correction for X-Ray Grating Interferometry (EBHC-GI)" />
-<link rel="canonical" href="https://brandon-j-nelson.com/ebhci-gi/2021/01/31/Empirical-Beam-Hardening-Correction-for-X-Ray-Grating-Interferometry.html" />
-<meta property="og:url" content="https://brandon-j-nelson.com/ebhci-gi/2021/01/31/Empirical-Beam-Hardening-Correction-for-X-Ray-Grating-Interferometry.html" />
+<meta name="description" content="Recently, my first first-author manuscript related to my thesis work on x-ray phase contrast was published. The paper summarizes artifacts experienced while using a tabletop x-ray phase contrast micro-CT system. While the focus of the paper is limited to grating-based x-ray phase contrast systems, the empirical methods used to solve the beam hardening problem are quite generalizable. I first learned about these interpolation-based empirical corrections from researching previous x-ray corrections that are referenced in the paper, but along the way I enjoyed digging more into the math of solving least squares problems and how they are implemented. The following tutorials document some of my explorations and provide background to the paper." />
+<meta property="og:description" content="Recently, my first first-author manuscript related to my thesis work on x-ray phase contrast was published. The paper summarizes artifacts experienced while using a tabletop x-ray phase contrast micro-CT system. While the focus of the paper is limited to grating-based x-ray phase contrast systems, the empirical methods used to solve the beam hardening problem are quite generalizable. I first learned about these interpolation-based empirical corrections from researching previous x-ray corrections that are referenced in the paper, but along the way I enjoyed digging more into the math of solving least squares problems and how they are implemented. The following tutorials document some of my explorations and provide background to the paper." />
+<link rel="canonical" href="https://brandon-j-nelson.com/math/2021/01/31/Empirical-Beam-Hardening-Correction-for-X-Ray-Grating-Interferometry.html" />
+<meta property="og:url" content="https://brandon-j-nelson.com/math/2021/01/31/Empirical-Beam-Hardening-Correction-for-X-Ray-Grating-Interferometry.html" />
 <meta property="og:site_name" content="Brandon J Nelson" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-01-31T00:00:00-06:00" />
 <script type="application/ld+json">
-{"description":"Empirical Beam Hardening Correction for X-Ray Grating Interferometry (EBHC-GI)","dateModified":"2021-01-31T00:00:00-06:00","datePublished":"2021-01-31T00:00:00-06:00","headline":"Empirical Beam Hardening Correction for X-Ray Grating Interferometry (EBHC-GI)","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://brandon-j-nelson.com/ebhci-gi/2021/01/31/Empirical-Beam-Hardening-Correction-for-X-Ray-Grating-Interferometry.html"},"url":"https://brandon-j-nelson.com/ebhci-gi/2021/01/31/Empirical-Beam-Hardening-Correction-for-X-Ray-Grating-Interferometry.html","@context":"https://schema.org"}</script>
+{"description":"Recently, my first first-author manuscript related to my thesis work on x-ray phase contrast was published. The paper summarizes artifacts experienced while using a tabletop x-ray phase contrast micro-CT system. While the focus of the paper is limited to grating-based x-ray phase contrast systems, the empirical methods used to solve the beam hardening problem are quite generalizable. I first learned about these interpolation-based empirical corrections from researching previous x-ray corrections that are referenced in the paper, but along the way I enjoyed digging more into the math of solving least squares problems and how they are implemented. The following tutorials document some of my explorations and provide background to the paper.","dateModified":"2021-01-31T00:00:00-06:00","datePublished":"2021-01-31T00:00:00-06:00","headline":"Empirical Beam Hardening Correction for X-Ray Grating Interferometry (EBHC-GI)","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://brandon-j-nelson.com/math/2021/01/31/Empirical-Beam-Hardening-Correction-for-X-Ray-Grating-Interferometry.html"},"url":"https://brandon-j-nelson.com/math/2021/01/31/Empirical-Beam-Hardening-Correction-for-X-Ray-Grating-Interferometry.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -116,7 +116,7 @@ window.onload = wrap_img;
     
       <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
       
-        <a class="category-tags-link" href="/categories/#EBHCI-GI">EBHCI-GI</a>
+        <a class="category-tags-link" href="/categories/#math">math</a>
         
       
       </p>
@@ -126,16 +126,9 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
-<li class="toc-entry toc-h1"><a href="#empirical-beam-hardening-correction-for-x-ray-grating-interferometry-ebhc-gi">Empirical Beam Hardening Correction for X-Ray Grating Interferometry (EBHC-GI)</a>
-<ul>
 <li class="toc-entry toc-h2"><a href="#manuscript-citation-and-links">Manuscript Citation and Links</a></li>
 <li class="toc-entry toc-h2"><a href="#related-tutorials">Related Tutorials</a></li>
-</ul>
-</li>
-</ul><h1 id="empirical-beam-hardening-correction-for-x-ray-grating-interferometry-ebhc-gi">
-<a class="anchor" href="#empirical-beam-hardening-correction-for-x-ray-grating-interferometry-ebhc-gi" aria-hidden="true"><span class="octicon octicon-link"></span></a>Empirical Beam Hardening Correction for X-Ray Grating Interferometry (EBHC-GI)</h1>
-
-<p>Recently, my first first-author manuscript related to my thesis work on x-ray phase contrast was published. The paper summarizes artifacts experienced while using a tabletop x-ray phase contrast micro-CT system. While the focus of the paper is limited to grating-based x-ray phase contrast systems, the empirical methods used to solve the beam hardening problem are quite generalizable. I first learned about these interpolation-based empirical corrections from researching previous x-ray corrections that are referenced in the paper, but along the way I enjoyed digging more into the math of solving least squares problems and how they are implemented. The following tutorials document some of my explorations and provide background to the paper.</p>
+</ul><p>Recently, my first first-author manuscript related to my thesis work on x-ray phase contrast was published. The paper summarizes artifacts experienced while using a tabletop x-ray phase contrast micro-CT system. While the focus of the paper is limited to grating-based x-ray phase contrast systems, the empirical methods used to solve the beam hardening problem are quite generalizable. I first learned about these interpolation-based empirical corrections from researching previous x-ray corrections that are referenced in the paper, but along the way I enjoyed digging more into the math of solving least squares problems and how they are implemented. The following tutorials document some of my explorations and provide background to the paper.</p>
 
 <h2 id="manuscript-citation-and-links">
 <a class="anchor" href="#manuscript-citation-and-links" aria-hidden="true"><span class="octicon octicon-link"></span></a>Manuscript Citation and Links</h2>
@@ -163,7 +156,7 @@ window.onload = wrap_img;
   </li>
 </ul>
 
-  </div><a class="u-url" href="/ebhci-gi/2021/01/31/Empirical-Beam-Hardening-Correction-for-X-Ray-Grating-Interferometry.html" hidden></a>
+  </div><a class="u-url" href="/math/2021/01/31/Empirical-Beam-Hardening-Correction-for-X-Ray-Grating-Interferometry.html" hidden></a>
 </article>
       </div>
     </main><footer class="site-footer h-card">
