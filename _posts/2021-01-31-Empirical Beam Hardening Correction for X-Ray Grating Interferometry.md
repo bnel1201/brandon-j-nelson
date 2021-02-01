@@ -1,10 +1,9 @@
 ---
 title: Empirical Beam Hardening Correction for X-Ray Grating Interferometry (EBHC-GI)
-toc: true 
+toc: true
+layout: post 
 hide: false 
-badges: true
-comments: true
-categories: [EBHCI-GI，machine learning]
+categories: [EBHCI-GI]
 ---
 
 # Empirical Beam Hardening Correction for X-Ray Grating Interferometry (EBHC-GI)
