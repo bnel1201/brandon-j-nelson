@@ -1,0 +1,25 @@
+<h1 id="empirical-beam-hardening-correction-for-x-ray-grating-interferometry-ebhc-gi">Empirical Beam Hardening Correction for X-Ray Grating Interferometry (EBHC-GI)</h1>
+
+<p>Recently, my first first-author manuscript related to my thesis work on x-ray phase contrast was published. The paper summarizes artifacts experienced while using a tabletop x-ray phase contrast micro-CT system. While the focus of the paper is limited to grating-based x-ray phase contrast systems, the empirical methods used to solve the beam hardening problem are quite generalizable. I first learned about these interpolation-based empirical corrections from researching previous x-ray corrections that are referenced in the paper, but along the way I enjoyed digging more into the math of solving least squares problems and how they are implemented. The following tutorials document some of my explorations and provide background to the paper.</p>
+
+<h2 id="manuscript-citation-and-links">Manuscript Citation and Links</h2>
+
+<ul>
+  <li><strong>Nelson, B.J.</strong>, Leng, S., Shanblatt, E.R., McCollough, C.H. and Koenig, T. (2021), Empirical beam hardening and ring artifact correction for x‐ray grating interferometry (EBHC‐GI). Med Phys. <a href="https://doi.org/10.1002/mp.14672">https://doi.org/10.1002/mp.14672</a>
+    <ul>
+      <li><a href="../assets/EBHC-GI.pdf">pre-peer reviewed version</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="related-tutorials">Related Tutorials</h2>
+
+<ul>
+  <li><a href="../_notebooks/2021-01-27-Vandermonde%20Interpolation.ipynb">solving interpolation problems with Vandermonde Matrices</a></li>
+  <li><a href="../_notebooks/2021-01-28-LU%20Solving.ipynb">performing matrix inversion via LU decomposition</a></li>
+  <li><a href="../_notebooks/2021-01-29-Vandermonde%20Matrices%20in%20Beam%20Hardening%20Corrections.ipynb">using interpolation to fix image artifacts in CT</a>
+    <ul>
+      <li>this tutorial is built upon the previous two but is most related to the paper</li>
+    </ul>
+  </li>
+</ul>
