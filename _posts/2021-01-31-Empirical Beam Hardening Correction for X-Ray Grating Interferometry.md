@@ -3,10 +3,8 @@ title: Empirical Beam Hardening Correction for X-Ray Grating Interferometry (EBH
 toc: true
 layout: post 
 hide: false 
-categories: [EBHCI-GI]
+categories: [math]
 ---
-
-# Empirical Beam Hardening Correction for X-Ray Grating Interferometry (EBHC-GI)
 
 Recently, my first first-author manuscript related to my thesis work on x-ray phase contrast was published. The paper summarizes artifacts experienced while using a tabletop x-ray phase contrast micro-CT system. While the focus of the paper is limited to grating-based x-ray phase contrast systems, the empirical methods used to solve the beam hardening problem are quite generalizable. I first learned about these interpolation-based empirical corrections from researching previous x-ray corrections that are referenced in the paper, but along the way I enjoyed digging more into the math of solving least squares problems and how they are implemented. The following tutorials document some of my explorations and provide background to the paper.
 
