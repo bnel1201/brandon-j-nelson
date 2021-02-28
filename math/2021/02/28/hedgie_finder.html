@@ -126,49 +126,54 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
-<li class="toc-entry toc-h2"><a href="#making-dataset">Making dataset</a></li>
-<li class="toc-entry toc-h2"><a href="#segmentation">Segmentation</a>
+<li class="toc-entry toc-h2"><a href="#making-the-dataset">Making the dataset</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#raw-data">Raw Data</a></li>
+<li class="toc-entry toc-h3"><a href="#generating-ground-truth-annotations">Generating Ground Truth Annotations</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#automated-segmentation">Automated Segmentation</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#model-training">model training</a></li>
 <li class="toc-entry toc-h3"><a href="#model-inference">model inference</a></li>
 <li class="toc-entry toc-h3"><a href="#analysis">Analysis</a></li>
 </ul>
 </li>
-</ul><ul>
-  <li>I’d like to share a weekend project that demonstrates how the basic steps of a machine learning project including:
-    <ol>
-      <li>setting up a dataset</li>
-      <li>model training</li>
-      <li>inference as a command line program</li>
-      <li>some sample anaylsis with the results</li>
-    </ol>
-  </li>
-  <li>Please enjoy the code and included videos should you want to reproduce the results or experiment on your own!
-    <ul>
-      <li>Everything can be found here: <a href="https://github.com/bnel1201/hog_finder">github.com/bnel1201/hog_finder</a>
-</li>
-    </ul>
-  </li>
-</ul>
+</ul><p>I’d like to share a weekend project that demonstrates how the basic steps of a machine learning project including:</p>
+<ol>
+  <li>setting up a dataset</li>
+  <li>model training</li>
+  <li>inference as a command line program</li>
+  <li>some sample anaylsis with the results</li>
+</ol>
 
-<h2 id="making-dataset">
-<a class="anchor" href="#making-dataset" aria-hidden="true"><span class="octicon octicon-link"></span></a>Making dataset</h2>
-
+<p>Please enjoy the code and included videos should you want to reproduce the results or experiment on your own!</p>
 <ul>
-  <li>mp4 to png done with <a href="convert_videos.bat">convert_video.bat</a>
-</li>
-  <li>segmentations done with <a href="https://www.slicer.org/">slicer</a>
+  <li>Everything can be found here: <strong><a href="https://github.com/bnel1201/hog_finder">github.com/bnel1201/hog_finder</a></strong>
 </li>
 </ul>
+
+<h2 id="making-the-dataset">
+<a class="anchor" href="#making-the-dataset" aria-hidden="true"><span class="octicon octicon-link"></span></a>Making the dataset</h2>
+
+<h3 id="raw-data">
+<a class="anchor" href="#raw-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Raw Data</h3>
+<p>All videos were recorded from our nightvision baby monitor camera, that we’ve adapted to monitor our hedgehog at night. The camera allows <code class="highlighter-rouge">.mp4</code> video downloads.</p>
+<ul>
+  <li>using <a href="convert_videos.bat">convert_video.bat</a> these <code class="highlighter-rouge">.mp4</code> videos were converted into a series of <code class="highlighter-rouge">.png</code> images</li>
+</ul>
+
+<h3 id="generating-ground-truth-annotations">
+<a class="anchor" href="#generating-ground-truth-annotations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Generating Ground Truth Annotations</h3>
+
+<p>Using the <code class="highlighter-rouge">.png</code> image files hand annotations highlighting the location of our hedgehog Xiaomi were done with <a href="https://www.slicer.org/">slicer</a>. A single region covering her whole body was generated and exported as a <code class="highlighter-rouge">.nrrd</code> file.</p>
 
 <p><img src="/images/hedgiefinder/slicer_annotation.jpg" alt="slicer annotation"></p>
-<ul>
-  <li>The annotations were saved as <code class="highlighter-rouge">.nrrd</code> and then converted to <code class="highlighter-rouge">.png</code> files for training using <a href="https://github.com/bnel1201/hog_finder/blob/main/segmentation/prepare_dataset.py">prepare_dataset.py</a>
-</li>
-</ul>
 
-<h2 id="segmentation">
-<a class="anchor" href="#segmentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Segmentation</h2>
+<p>The <code class="highlighter-rouge">.nrrd</code> annotations were then converted to <code class="highlighter-rouge">.png</code> files for training using <a href="https://github.com/bnel1201/hog_finder/blob/main/segmentation/prepare_dataset.py">prepare_dataset.py</a>. Note I added a morphological <a href="https://scikit-image.org/docs/dev/api/skimage.morphology.html">dilation step</a> to make a 2nd region which includes an outline for easier visualization of her location. This dataset was then used for subsequent training.</p>
+
+<h2 id="automated-segmentation">
+<a class="anchor" href="#automated-segmentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Automated Segmentation</h2>
 
 <h3 id="model-training">
 <a class="anchor" href="#model-training" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="%5Bsegmentation/segmentation_train.ipynb%5D(https://github.com/bnel1201/hog_finder/blob/main/segmentation/segmentation_train.ipynb)">model training</a>
@@ -210,6 +215,7 @@ window.onload = wrap_img;
 </ul>
 
 <p><img src="/images/hedgiefinder/xiaomi_map_1.png" alt="hedhedgehog activity map"></p>
+
 
   </div><a class="u-url" href="/math/2021/02/28/hedgie_finder.html" hidden></a>
 </article>
