@@ -32,5 +32,5 @@ permalink: /publications/
 
 ### Peer Reviewed Publications
 
-- Elisabeth R. Shanblatt, Yongjin Sung, Rajiv Gupta, **Brandon J. Nelson**, Shuai Leng, William S. Graves, and Cynthia H. McCollough, "Forward model for propagation-based x-ray phase contrast imaging in parallel- and cone-beam geometry," Opt. Express 27, 4504-4521 (2019)
-- Sung Y, Gupta R, **Nelson B**, Leng S, McCollough CH, Graves WS. Phase-contrast imaging with a compact x-ray light source: system design. J Med Imaging (Bellingham). 2017;4(4):043503. [doi:10.1117/1.JMI.4.4.043503](https://doi.org/10.1117/1.JMI.4.4.043503)
+- Elisabeth R. Shanblatt, Yongjin Sung, Rajiv Gupta, **Brandon J. Nelson**, Shuai Leng, William S. Graves, and Cynthia H. McCollough, "Forward model for propagation-based x-ray phase contrast imaging in parallel- and cone-beam geometry," Opt. Express 27, 4504-4521 (2019). [doi:10.1364/OE.27.004504](https://doi.org/10.1364/OE.27.004504)
+- S(ung Y, Gupta R, **Nelson B**, Leng S, McCollough CH, Graves WS. Phase-contrast imaging with a compact x-ray light source: system design. J Med Imaging (Bellingham). 2017;4(4):043503. [doi:10.1117/1.JMI.4.4.043503](https://doi.org/10.1117/1.JMI.4.4.043503)
