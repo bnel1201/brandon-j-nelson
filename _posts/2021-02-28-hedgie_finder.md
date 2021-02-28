@@ -3,7 +3,7 @@ title: HedgieFinder, a tiny ML project for a tiny hedgehog
 toc: true
 layout: post 
 hide: false 
-categories: [math]
+categories: [machine learning]
 ---
 
 I'd like to share a weekend project that demonstrates how the basic steps of a machine learning project including:
