@@ -13,16 +13,15 @@ categories: [math]
     4. some sample anaylsis with the results
 
 - Please enjoy the code and included videos should you want to reproduce the results or experiment on your own!
+  - Everything can be found here: [github.com/bnel1201/hog_finder](https://github.com/bnel1201/hog_finder)
 
 ## Making dataset
 
 - mp4 to png done with [convert_video.bat](convert_videos.bat)
 - segmentations done with [slicer](https://www.slicer.org/)
 
-![slicer annotation](segmentation/slicer_annotation.jpg)
-
-- The annotations were saved as `.nrrd` in the [mask directory](segmentation/masks)
-- Then converted to `.png` files for training using [prepare_dataset.py](segmentation/prepare_dataset.py)
+![slicer annotation]({{ site.baseurl }}/images/hedgiefinder/slicer_annotation.jpg)
+- The annotations were saved as `.nrrd` and then converted to `.png` files for training using [prepare_dataset.py](https://github.com/bnel1201/hog_finder/blob/main/segmentation/prepare_dataset.py)
 
 ## Segmentation
 
@@ -38,15 +37,14 @@ categories: [math]
 python segmentation/hogfinder.py path/to/hedgehog_video.mp4
 ```
 
-![finder gif](hog_finder.gif)
+![finder gif]({{ site.baseurl }}/images/hedgiefinder/hog_finder.gif)
 
 - gif made with [make_preview_gif.bat](segmentation/make_preview_gif.bat)
 
 ### Analysis
 
-- using the segmentation maps generated with [hedgiefinder](segmentation/hedgiefinder.py), Xiaomi's location over time can be tracked as the coordinates (x, y) at the center of each segmentation, (found using [sci-kit image regionprops](https://scikit-image.org/docs/dev/api/skimage.measure.html))
-  - [label_centers](center_of_mass/label_centers.py) is the relevant script for finding these coordinates
-  - Finally, the sum of all these points over time is overlaid across a single from using [where_is_xiaomi.py](center_of_mass/where_is_xiaomi.py) to get a heat map of the night's activity
+- using the segmentation maps generated with [hedgiefinder](https://github.com/bnel1201/hog_finder/blob/main/segmentation/hedgiefinder.py), Xiaomi's location over time can be tracked as the coordinates (x, y) at the center of each segmentation, (found using [sci-kit image regionprops](https://scikit-image.org/docs/dev/api/skimage.measure.html))
+  - [label_centers](https://github.com/bnel1201/hog_finder/blob/main/center_of_mass/label_centers.py) is the relevant script for finding these coordinates
+  - Finally, the sum of all these points over time is overlaid across a single from using [[where_is_xiaomi.py](https://github.com/bnel1201/hog_finder/blob/main/center_of_mass/where_is_xiaomi.py) to get a heat map of the night's activity
 
-![hedhedgehog activity map](center_of_mass/xiaomi_maps/xiaomi_map_1.png
-)
+![hedhedgehog activity map]({{ site.baseurl }}/images/hedgiefinder/xiaomi_map_1.png)
