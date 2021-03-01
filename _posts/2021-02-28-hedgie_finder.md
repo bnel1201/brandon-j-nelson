@@ -7,18 +7,22 @@ categories: [machine learning]
 ---
 
 I'd like to share a weekend project that demonstrates how the basic steps of a machine learning project including:
+
   1. setting up a dataset
   2. model training
   3. inference as a command line program
   4. some sample anaylsis with the results
 
 Please enjoy the code and included videos should you want to reproduce the results or experiment on your own!
- - Everything can be found here: **[github.com/bnel1201/hog_finder](https://github.com/bnel1201/hog_finder)**
+
+- Everything can be found here: **[github.com/bnel1201/hog_finder](https://github.com/bnel1201/hog_finder)**
 
 ## Making the dataset
 
 ### Raw Data
+
 All videos were recorded from our nightvision baby monitor camera, that we've adapted to monitor our hedgehog at night. The camera allows `.mp4` video downloads.
+
 - using [convert_video.bat](convert_videos.bat) these `.mp4` videos were converted into a series of `.png` images
 
 ### Generating Ground Truth Annotations
