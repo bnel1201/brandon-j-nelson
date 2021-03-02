@@ -2,21 +2,21 @@
   
     
         "post0": {
-            "title": "HedgieFinder, a tiny ML project for a tiny hedgehog",
-            "content": "I’d like to share a weekend project that demonstrates how the basic steps of a machine learning project including: . setting up a dataset | model training | inference as a command line program | some sample anaylsis with the results | Please enjoy the code and included videos should you want to reproduce the results or experiment on your own! . Everything can be found here: github.com/bnel1201/hog_finder | . Making the dataset . Raw Data . All videos were recorded from our nightvision baby monitor camera, that we’ve adapted to monitor our hedgehog at night. The camera allows .mp4 video downloads. . using convert_video.bat these .mp4 videos were converted into a series of .png images | . Generating Ground Truth Annotations . Using the .png image files hand annotations highlighting the location of our hedgehog Xiaomi were done with slicer. A single region covering her whole body was generated and exported as a .nrrd file. . . The .nrrd annotations were then converted to .png files for training using prepare_dataset.py. Note I added a morphological dilation step to make a 2nd region which includes an outline for easier visualization of her location. This dataset was then used for subsequent training. . Automated Segmentation . model training . The current version utilizes transfer learning and data augmentation with the fastai library to train a segmentation model with a small hand-annotated dataset | . model inference . turned into a command line program using hedgiefinder: | . python segmentation/hogfinder.py path/to/hedgehog_video.mp4 . . gif made with make_preview_gif.bat | . Analysis . using the segmentation maps generated with hedgiefinder, Xiaomi’s location over time can be tracked as the coordinates (x, y) at the center of each segmentation, (found using sci-kit image regionprops) label_centers is the relevant script for finding these coordinates | Finally, the sum of all these points over time is overlaid across a single from using [where_is_xiaomi.py to get a heat map of the night’s activity | . | . .",
-            "url": "https://brandon-j-nelson.com/machine%20learning/2021/02/28/hedgie_finder.html",
-            "relUrl": "/machine%20learning/2021/02/28/hedgie_finder.html",
-            "date": " • Feb 28, 2021"
+            "title": "Iterative Methods for Solving Least Squares Problems",
+            "content": "https://www.youtube.com/watch?v=ZUU57Q3CFOU .",
+            "url": "https://brandon-j-nelson.com/machine%20learning/2021/03/01/four_ways_to_solve_least_squares.html",
+            "relUrl": "/machine%20learning/2021/03/01/four_ways_to_solve_least_squares.html",
+            "date": " • Mar 1, 2021"
         }
         
     
   
     
         ,"post1": {
-            "title": "Iterative Methods for Solving Least Squares Problems",
-            "content": "https://www.youtube.com/watch?v=ZUU57Q3CFOU .",
-            "url": "https://brandon-j-nelson.com/machine%20learning/2021/02/28/four_ways_to_solve_least_squares.html",
-            "relUrl": "/machine%20learning/2021/02/28/four_ways_to_solve_least_squares.html",
+            "title": "HedgieFinder, a tiny ML project for a tiny hedgehog",
+            "content": ". I’d like to share a weekend project that demonstrates how the basic steps of a machine learning project including: . setting up a dataset | model training | inference as a command line program | some sample anaylsis with the results | Please enjoy the code and included videos should you want to reproduce the results or experiment on your own! . Everything can be found here: github.com/bnel1201/hog_finder | . Making the dataset . Raw Data . All videos were recorded from our night vision baby monitor camera, that we’ve adapted to monitor our hedgehog at night. The camera allows .mp4 video downloads. . using convert_video.bat these .mp4 videos were converted into a series of .png images | . Generating Ground Truth Annotations . Using the .png image files hand annotations highlighting the location of our hedgehog Xiaomi were done with slicer. A single region covering her whole body was generated and exported as a .nrrd file. . . The .nrrd annotations were then converted to .png files for training using prepare_dataset.py. Note I added a morphological dilation step to make a 2nd region which includes an outline for easier visualization of her location. This dataset was then used for subsequent training. . Automated Segmentation . model training . The current version utilizes transfer learning and data augmentation with the fastai library to train a segmentation model with a small hand-annotated dataset | . model inference . turned into a command line program using hedgiefinder: | . python segmentation/hogfinder.py path/to/hedgehog_video.mp4 . . gif made with make_preview_gif.bat | . Analysis . using the segmentation maps generated with hedgiefinder, Xiaomi’s location over time can be tracked as the coordinates (x, y) at the center of each segmentation, (found using sci-kit image regionprops) label_centers is the relevant script for finding these coordinates | Finally, the sum of all these points over time is overlaid across a single from using [where_is_xiaomi.py to get a heat map of the night’s activity | . | . .",
+            "url": "https://brandon-j-nelson.com/machine%20learning/2021/02/28/hedgie_finder.html",
+            "relUrl": "/machine%20learning/2021/02/28/hedgie_finder.html",
             "date": " • Feb 28, 2021"
         }
         

@@ -126,28 +126,28 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
-<li class="toc-entry toc-h1"><a href="#juliacon-2020">JuliaCon 2020</a></li>
-<li class="toc-entry toc-h1"><a href="#building-microservices-and-applications-in-julia">Building Microservices and Applications in Julia</a></li>
-<li class="toc-entry toc-h1"><a href="#using-vs-code-for-julia-developement">Using VS Code for Julia Developement</a></li>
-<li class="toc-entry toc-h1"><a href="#plutojl">Pluto.jl</a></li>
-<li class="toc-entry toc-h1"><a href="#drwatson">DrWatson</a></li>
-</ul><h1 id="juliacon-2020">
+<li class="toc-entry toc-h2"><a href="#juliacon-2020">JuliaCon 2020</a></li>
+<li class="toc-entry toc-h2"><a href="#building-microservices-and-applications-in-julia">Building Microservices and Applications in Julia</a></li>
+<li class="toc-entry toc-h2"><a href="#using-vs-code-for-julia-developement">Using VS Code for Julia Developement</a></li>
+<li class="toc-entry toc-h2"><a href="#plutojl">Pluto.jl</a></li>
+<li class="toc-entry toc-h2"><a href="#drwatson">DrWatson</a></li>
+</ul><h2 id="juliacon-2020">
 <a class="anchor" href="#juliacon-2020" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://juliacon.org/2020/">JuliaCon 2020</a>
-</h1>
+</h2>
 
-<p><img src="/images/JuliaCon2020/mugshots.jpg" alt="" title="mug shot"></p>
+<p><img src="/images/JuliaCon2020/mugshots.jpg" alt="mug shot"></p>
 
 <p><a href="https://julialang.org/">Julia</a> is an exciting new language (<a href="https://julialang.org/blog/2018/08/one-point-zero/">1.0 released in 2018</a>) well suited for <a href="https://julialang.org/assets/research/julia-fresh-approach-BEKS.pdf">scientific computing</a>. More impressive is the vibrant Julia community of users and developers. JuliaCon is an annual meetup that showcases the exciting work going on around the Julia ecosystem. This was my first year attending (albeit virtually!) and I am still working to get caught up on all of the <a href="https://www.youtube.com/playlist?list=PLP8iPy9hna6Tl2UHTrm4jnIYrLkIcAROR">great talks</a>! In this post I’ll curate some of my favorite talks from this year and their relevance to my work.</p>
 
-<h1 id="building-microservices-and-applications-in-julia">
+<h2 id="building-microservices-and-applications-in-julia">
 <a class="anchor" href="#building-microservices-and-applications-in-julia" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://www.youtube.com/watch?v=uLhXgt_gKJc&amp;t=2424s">Building Microservices and Applications in Julia</a>
-</h1>
+</h2>
 
 <p>This is a great workshop on how to organize Julia code into modules for effective code reuse. At first I found the compiled nature of Julia to make building Julia modules and packages more complicated than doing so in Python, Jacob Quin does a nice job breaking the process down.</p>
 
-<h1 id="using-vs-code-for-julia-developement">
+<h2 id="using-vs-code-for-julia-developement">
 <a class="anchor" href="#using-vs-code-for-julia-developement" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://www.youtube.com/watch?v=IdhnP00Y1Ks&amp;t=900s">Using VS Code for Julia Developement</a>
-</h1>
+</h2>
 
 <p>I use <a href="https://code.visualstudio.com/">VS Code</a> as my IDE of choice for most work and find that the <a href="https://github.com/julia-vscode/julia-vscode">Julia extension</a> is a must when writing Julia. I learned several new tips from this talk including how to run julia scripts e.g. <code class="highlighter-rouge">script.jl</code> like Jupyter Notebooks! E.g. <code class="highlighter-rouge">&lt;ctrl&gt; + &lt;enter&gt;</code> to run a single line to the REPL (or printing the result right next to the line itself aftering changing the settings) and <code class="highlighter-rouge">&lt;shift&gt; + &lt;enter&gt;</code> to run a cell Jupyter style.</p>
 
@@ -161,9 +161,9 @@ window.onload = wrap_img;
 <span class="c">##</span>
 </code></pre></div></div>
 
-<h1 id="plutojl">
+<h2 id="plutojl">
 <a class="anchor" href="#plutojl" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://www.youtube.com/watch?v=IAF8DjrQSSk">Pluto.jl</a>
-</h1>
+</h2>
 
 <p>I find <a href="https://github.com/fonsp/Pluto.jl">Pluto</a> to a be a real joy to experiment in. I find it great for following along with <a href="https://www.youtube.com/watch?v=DGojI9xcCfg">tutorials</a> where I can write notes and link to resources, much like a <a href="https://jupyter.org/">Jupyter notebook</a> <sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote">1</a></sup>.</p>
 
@@ -173,9 +173,9 @@ window.onload = wrap_img;
 
 <p>All in all I think many of these wrinkles will be ironed out in time. While I still use Jupyter notebooks regularly, what ultimately What keeps me coming back to Pluto is the reactive notebook and the ease of using version control such as git which makes the notebooks easier to share.</p>
 
-<h1 id="drwatson">
+<h2 id="drwatson">
 <a class="anchor" href="#drwatson" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://www.youtube.com/watch?v=jKATlEAu8eE&amp;list=PLP8iPy9hna6Tl2UHTrm4jnIYrLkIcAROR&amp;index=38&amp;t=0s">DrWatson</a>
-</h1>
+</h2>
 
 <p><a href="https://juliadynamics.github.io/DrWatson.jl/dev/">DrWatson.jl</a> is another Julia package that I learned about from this year’s JuliaCon that I have incorportated into many of my research projects. What initially sold me were several of the defined convenience functions such as <code class="highlighter-rouge">initialize_project</code> and <code class="highlighter-rouge">@quickactivate</code> that help me better organize and share my projects (consistent with the recommendations of one of my favorite <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005510">best practices papers</a>).</p>
 

@@ -8,30 +8,30 @@
 <meta name="generator" content="Jekyll v4.0.0" />
 <meta property="og:title" content="HedgieFinder, a tiny ML project for a tiny hedgehog" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="I’d like to share a weekend project that demonstrates how the basic steps of a machine learning project including:" />
-<meta property="og:description" content="I’d like to share a weekend project that demonstrates how the basic steps of a machine learning project including:" />
+<meta name="description" content="A personal site to share my work and outward thoughts." />
+<meta property="og:description" content="A personal site to share my work and outward thoughts." />
 <link rel="canonical" href="https://brandon-j-nelson.com/machine%20learning/2021/02/28/hedgie_finder.html" />
 <meta property="og:url" content="https://brandon-j-nelson.com/machine%20learning/2021/02/28/hedgie_finder.html" />
 <meta property="og:site_name" content="Brandon J Nelson" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-02-28T00:00:00-06:00" />
 <script type="application/ld+json">
-{"description":"I’d like to share a weekend project that demonstrates how the basic steps of a machine learning project including:","@type":"BlogPosting","headline":"HedgieFinder, a tiny ML project for a tiny hedgehog","dateModified":"2021-02-28T00:00:00-06:00","datePublished":"2021-02-28T00:00:00-06:00","url":"https://brandon-j-nelson.com/machine%20learning/2021/02/28/hedgie_finder.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://brandon-j-nelson.com/machine%20learning/2021/02/28/hedgie_finder.html"},"@context":"https://schema.org"}</script>
+{"description":"A personal site to share my work and outward thoughts.","@type":"BlogPosting","headline":"HedgieFinder, a tiny ML project for a tiny hedgehog","dateModified":"2021-02-28T00:00:00-06:00","datePublished":"2021-02-28T00:00:00-06:00","url":"https://brandon-j-nelson.com/machine%20learning/2021/02/28/hedgie_finder.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://brandon-j-nelson.com/machine%20learning/2021/02/28/hedgie_finder.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://brandon-j-nelson.com/feed.xml" title="Brandon J Nelson" /><link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>HedgieFinder, a tiny ML project for a tiny hedgehog | Brandon J Nelson</title>
 <meta name="generator" content="Jekyll v4.0.0" />
 <meta property="og:title" content="HedgieFinder, a tiny ML project for a tiny hedgehog" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="I’d like to share a weekend project that demonstrates how the basic steps of a machine learning project including:" />
-<meta property="og:description" content="I’d like to share a weekend project that demonstrates how the basic steps of a machine learning project including:" />
+<meta name="description" content="A personal site to share my work and outward thoughts." />
+<meta property="og:description" content="A personal site to share my work and outward thoughts." />
 <link rel="canonical" href="https://brandon-j-nelson.com/machine%20learning/2021/02/28/hedgie_finder.html" />
 <meta property="og:url" content="https://brandon-j-nelson.com/machine%20learning/2021/02/28/hedgie_finder.html" />
 <meta property="og:site_name" content="Brandon J Nelson" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-02-28T00:00:00-06:00" />
 <script type="application/ld+json">
-{"description":"I’d like to share a weekend project that demonstrates how the basic steps of a machine learning project including:","@type":"BlogPosting","headline":"HedgieFinder, a tiny ML project for a tiny hedgehog","dateModified":"2021-02-28T00:00:00-06:00","datePublished":"2021-02-28T00:00:00-06:00","url":"https://brandon-j-nelson.com/machine%20learning/2021/02/28/hedgie_finder.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://brandon-j-nelson.com/machine%20learning/2021/02/28/hedgie_finder.html"},"@context":"https://schema.org"}</script>
+{"description":"A personal site to share my work and outward thoughts.","@type":"BlogPosting","headline":"HedgieFinder, a tiny ML project for a tiny hedgehog","dateModified":"2021-02-28T00:00:00-06:00","datePublished":"2021-02-28T00:00:00-06:00","url":"https://brandon-j-nelson.com/machine%20learning/2021/02/28/hedgie_finder.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://brandon-j-nelson.com/machine%20learning/2021/02/28/hedgie_finder.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -139,7 +139,9 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#analysis">Analysis</a></li>
 </ul>
 </li>
-</ul><p>I’d like to share a weekend project that demonstrates how the basic steps of a machine learning project including:</p>
+</ul><p><img src="/images/hedgiefinder/xiaomi.JPG" alt="xiaomi"></p>
+
+<p>I’d like to share a weekend project that demonstrates how the basic steps of a machine learning project including:</p>
 
 <ol>
   <li>setting up a dataset</li>
@@ -161,7 +163,7 @@ window.onload = wrap_img;
 <h3 id="raw-data">
 <a class="anchor" href="#raw-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Raw Data</h3>
 
-<p>All videos were recorded from our nightvision baby monitor camera, that we’ve adapted to monitor our hedgehog at night. The camera allows <code class="highlighter-rouge">.mp4</code> video downloads.</p>
+<p>All videos were recorded from our night vision baby monitor camera, that we’ve adapted to monitor our hedgehog at night. The camera allows <code class="highlighter-rouge">.mp4</code> video downloads.</p>
 
 <ul>
   <li>using <a href="convert_videos.bat">convert_video.bat</a> these <code class="highlighter-rouge">.mp4</code> videos were converted into a series of <code class="highlighter-rouge">.png</code> images</li>
@@ -219,7 +221,6 @@ window.onload = wrap_img;
 </ul>
 
 <p><img src="/images/hedgiefinder/xiaomi_map_1.png" alt="hedhedgehog activity map"></p>
-
 
   </div><a class="u-url" href="/machine%20learning/2021/02/28/hedgie_finder.html" hidden></a>
 </article>
