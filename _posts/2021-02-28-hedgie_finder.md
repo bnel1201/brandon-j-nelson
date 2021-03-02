@@ -6,6 +6,9 @@ hide: false
 categories: [machine learning]
 ---
 
+
+![xiaomi]({{ site.baseurl }}/images/hedgiefinder/xiaomi.JPG)
+
 I'd like to share a weekend project that demonstrates how the basic steps of a machine learning project including:
 
   1. setting up a dataset
@@ -21,7 +24,7 @@ Please enjoy the code and included videos should you want to reproduce the resul
 
 ### Raw Data
 
-All videos were recorded from our nightvision baby monitor camera, that we've adapted to monitor our hedgehog at night. The camera allows `.mp4` video downloads.
+All videos were recorded from our night vision baby monitor camera, that we've adapted to monitor our hedgehog at night. The camera allows `.mp4` video downloads.
 
 - using [convert_video.bat](convert_videos.bat) these `.mp4` videos were converted into a series of `.png` images
 
@@ -58,5 +61,3 @@ python segmentation/hogfinder.py path/to/hedgehog_video.mp4
   - Finally, the sum of all these points over time is overlaid across a single from using [[where_is_xiaomi.py](https://github.com/bnel1201/hog_finder/blob/main/center_of_mass/where_is_xiaomi.py) to get a heat map of the night's activity
 
 ![hedhedgehog activity map]({{ site.baseurl }}/images/hedgiefinder/xiaomi_map_1.png)
-
-[^1]: [Hedgehogs](https://www.awf.org/wildlife-conservation/hedgehog) are nocturnal so the babymonitor cam is the only way we
