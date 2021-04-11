@@ -20,6 +20,10 @@ Please enjoy the code and included videos should you want to reproduce the resul
 
 - Everything can be found here: **[github.com/bnel1201/hog_finder](https://github.com/bnel1201/hog_finder)**
 
+## Background: Image Segmentation
+
+Image segmentation has strong application in the medical imaging field [@leiMedicalImageSegmentation]
+
 ## Making the dataset
 
 ### Raw Data
