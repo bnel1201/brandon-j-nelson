@@ -4,7 +4,7 @@ toc: true
 layout: post 
 hide: false
 comments: true 
-categories: [machine learning]
+categories: [side projects]
 permalink: /markdown_publish/
 ---
 
