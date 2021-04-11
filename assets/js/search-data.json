@@ -182,6 +182,14 @@
   
 
   
+      ,"page9": {
+          "title": "Thesis",
+          "content": "WIP: stay tuned! .",
+          "url": "https://brandon-j-nelson.com/thesis/",
+          "relUrl": "/thesis/",
+          "date": ""
+      }
+      
   
 
   
@@ -191,7 +199,10 @@
   
 
   
-      ,"page12": {
+  
+
+  
+      ,"page13": {
           "title": "",
           "content": "Sitemap: {{ “sitemap.xml” | absolute_url }} | .",
           "url": "https://brandon-j-nelson.com/robots.txt",
