@@ -4,6 +4,7 @@ toc: true
 layout: post 
 hide: false 
 categories: [machine learning]
+permalink: /hedgiefinder/
 ---
 
 
