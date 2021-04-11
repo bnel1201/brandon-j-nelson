@@ -1,5 +1,5 @@
 ---
-title: Regression Series
+title: Markdown publish, is there a better way to update links with Pandoc?
 toc: true
 layout: post 
 hide: false
