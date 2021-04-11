@@ -6,7 +6,6 @@ hide: false
 categories: [machine learning]
 ---
 
-
 ## Background
 
 Inspired by [chapter 4](https://github.com/chrismattmann/MLwithTensorFlow2ed/blob/master/ch04/Listing%204.01-4.06.ipynb) of [Chris Mattman's](https://scienceandtechnology.jpl.nasa.gov/dr-chris-mattmann) book [Machine Learning with Tensorflow 2nd Edition](https://www.manning.com/books/machine-learning-with-tensorflow). I followed along with his tutorial on using regression to model the call volume of [New York City's 311 service](https://www.kaggle.com/new-york-city/ny-311-service-requests). I attempted using a newer 2019 dataset than the 2014 one used in the book and was not able to reproduce the results well, which perplexed me and made we want to dig in deeper into regression, which I'd already explored some in [my interpolation tutorials]({{ site.baseurl }}/tutorial1/), however this time I want to dig in more to *iterative methods*, the kind made famous by deep learning and related techniques.
