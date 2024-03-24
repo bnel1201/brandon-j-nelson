@@ -1,5 +1,7 @@
 # Personal Site
 
+https://brandon-j-nelson.com
+
 For sharing information related to work, publications, research, and recruiting.
 
 Now using [Quarto]()
