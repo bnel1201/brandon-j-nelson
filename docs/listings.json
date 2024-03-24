@@ -2,8 +2,8 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/test-markdown-post.html",
-      "/posts/four_ways_to_solve_least_squares.html",
+      "/posts/quarto.html",
+      "/posts/fda_reasearch.html",
       "/posts/2021-01-31-Empirical Beam Hardening Correction for X-Ray Grating Interferometry.html",
       "/posts/2021-01-29-vandermonde matrices in beam hardening corrections.html",
       "/posts/2021-01-28-lu solving.html",

@@ -1,0 +1,20 @@
+---
+title: Research at the FDA
+categories: career
+layout: post
+hide: true
+---
+
+## Why Research at the FDA?
+
+When I talk to colleagues at different science, healthcare, or research institutions I realize there remain many misconceptions about what the FDA does, that we do research, and that researching at FDA you can still publish, go to conferences, apply for grants and have many of the benefits of academia while being involved in important regulatory work and influencing the development of new safe and effective medical devices. It also offers unique insights into the medical device world by sitting at the intersection of industry, academia, and the clinic.
+
+The goal of this post is to share my experiences so far and why I chose to join and have stayed.
+
+At the time of this posting, my research division is nestled in the following hierarchy.
+
+- [Division of Imaging, Diagnostics, and Software Reliability (DIDSR)](https://www.fda.gov/about-fda/cdrh-offices/division-imaging-diagnostics-and-software-reliability)
+- [Office of Science and Engineering Labs (OSEL)](https://www.fda.gov/about-fda/cdrh-offices/office-science-and-engineering-laboratories)
+- [Center for Devices and Radiological Health (CDRH)](https://www.fda.gov/about-fda/fda-organization/center-devices-and-radiological-health)
+- [US Food and Drug Administration (FDA)](https://www.fda.gov/)
+

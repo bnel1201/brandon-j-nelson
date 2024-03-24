@@ -217,13 +217,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>While the direct inversion methods used previously worked well for the Vandermonde case, some matrices, especially in CT reconstruction or larger problems are not easily inverted due to their size or large condition number.</p>
 <p>For these problems iterative algorithms are used. In this tutorial we walk through the Vandermonde beam hardening correction problem using iterative techniques</p>
 <p>https://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/Importing%20Notebooks.html</p>
-<div id="cell-3" class="cell" data-executioninfo="{&quot;elapsed&quot;:625,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321815854,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="a149b466-1ce9-4ca3-f429-42715206f699" data-execution_count="1">
+<div id="cell-3" class="cell" data-executioninfo="{&quot;elapsed&quot;:625,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321815854,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="a149b466-1ce9-4ca3-f429-42715206f699" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">'drive/My Drive/Colab Notebooks/Solving Least Squares Problems'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>/content/drive/My Drive/Colab Notebooks/Solving Least Squares Problems</code></pre>
 </div>
 </div>
-<div id="cell-4" class="cell" data-executioninfo="{&quot;elapsed&quot;:5261,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321820511,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="afc176b4-0264-41fa-8217-dada53edcda7" data-execution_count="2">
+<div id="cell-4" class="cell" data-executioninfo="{&quot;elapsed&quot;:5261,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321820511,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="afc176b4-0264-41fa-8217-dada53edcda7" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> skimage.data <span class="im">import</span> shepp_logan_phantom</span>
@@ -258,7 +258,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-5" class="cell" data-executioninfo="{&quot;elapsed&quot;:28987,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321844274,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="99bd68d6-49a3-424d-9d1e-aa1c136cf181" data-execution_count="3">
+<div id="cell-5" class="cell" data-executioninfo="{&quot;elapsed&quot;:28987,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321844274,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="99bd68d6-49a3-424d-9d1e-aa1c136cf181" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> find2Dpolynomialcoefficients(corrupted_r, m, ideal, theta, <span class="dv">5</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>corrected <span class="op">=</span> correctAndDisplay(corrupted_r, m, c, theta)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mse(corrected, p))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -273,7 +273,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-6" class="cell" data-execution_count="0">
+<div id="cell-6" class="cell" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>coeff_dict <span class="op">=</span> <span class="bu">dict</span>()<span class="op">;</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>coeff_dict[<span class="st">"Direct Inversion"</span>] <span class="op">=</span> square(c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -281,13 +281,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="iterative-methods-gradient-descent" class="level2">
 <h2 class="anchored" data-anchor-id="iterative-methods-gradient-descent">Iterative methods: Gradient descent</h2>
 <p>Using Pytorch, let’s start by setting up a naive gradient descent</p>
-<div id="cell-9" class="cell" data-execution_count="0">
+<div id="cell-9" class="cell" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn <span class="im">as</span> nn</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.cuda <span class="im">as</span> tc</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.autograd <span class="im">import</span> Variable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-10" class="cell" data-executioninfo="{&quot;elapsed&quot;:51164,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321866519,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="913c89ab-4617-4569-bf19-297cbdbb6da7" data-execution_count="6">
+<div id="cell-10" class="cell" data-executioninfo="{&quot;elapsed&quot;:51164,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321866519,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="913c89ab-4617-4569-bf19-297cbdbb6da7" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>deg <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> vanderComborecon(corrupted_r,m,theta, deg)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(f.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -295,7 +295,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>(160000, 25)</code></pre>
 </div>
 </div>
-<div id="cell-11" class="cell" data-execution_count="0">
+<div id="cell-11" class="cell" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update():</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    y_hat <span class="op">=</span> A<span class="op">@</span>x</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> mse(y, y_hat)</span>
@@ -305,7 +305,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        x.sub_(lr <span class="op">*</span> x.grad)</span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        x.grad.zero_()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-12" class="cell" data-executioninfo="{&quot;elapsed&quot;:53928,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321869318,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="e30b30ee-0486-47e4-c0bd-c9c75991facd" data-execution_count="8">
+<div id="cell-12" class="cell" data-executioninfo="{&quot;elapsed&quot;:53928,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321869318,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="e30b30ee-0486-47e4-c0bd-c9c75991facd" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.randn(f.shape[<span class="dv">1</span>]).double().cuda()</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>A<span class="op">=</span>torch.tensor(f).double().cuda()</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>y_hat <span class="op">=</span> A<span class="op">@</span>x</span>
@@ -316,7 +316,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>tensor(925376.6465, device='cuda:0', dtype=torch.float64)</code></pre>
 </div>
 </div>
-<div id="cell-13" class="cell" data-executioninfo="{&quot;elapsed&quot;:140878,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321956286,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="3e3479ae-ad47-41ed-c05f-8b2181090b5d" data-execution_count="9">
+<div id="cell-13" class="cell" data-executioninfo="{&quot;elapsed&quot;:140878,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321956286,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="3e3479ae-ad47-41ed-c05f-8b2181090b5d" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> <span class="fl">1e-6</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">200000</span>): update()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -334,7 +334,7 @@ tensor(0.1276, device='cuda:0', dtype=torch.float64, grad_fn=&lt;MeanBackward0&g
 </div>
 </div>
 <p>Similar to our direct SVD solution before, due to the poor conditioning of the problem our coefficients are unique and seem vary noisey.</p>
-<div id="cell-15" class="cell" data-executioninfo="{&quot;elapsed&quot;:142934,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321958359,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="19c6db09-b7e1-4b98-eaa7-f4fdaa5c7f4e" data-execution_count="10">
+<div id="cell-15" class="cell" data-executioninfo="{&quot;elapsed&quot;:142934,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321958359,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="19c6db09-b7e1-4b98-eaa7-f4fdaa5c7f4e" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compare_results():</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  coef<span class="op">=</span>x.cpu().detach().numpy()</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  plt.plot(coef)</span>
@@ -388,7 +388,7 @@ tensor(0.1276, device='cuda:0', dtype=torch.float64, grad_fn=&lt;MeanBackward0&g
 <h2 class="anchored" data-anchor-id="adam-optimizer">ADAM optimizer</h2>
 <p>This will enable faster convergence</p>
 <p>Let’s start with no regularization</p>
-<div id="cell-18" class="cell" data-executioninfo="{&quot;elapsed&quot;:142913,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321958359,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="c34807d7-9d5d-4855-ca99-cf9ff3e9c17d" data-execution_count="11">
+<div id="cell-18" class="cell" data-executioninfo="{&quot;elapsed&quot;:142913,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321958359,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="c34807d7-9d5d-4855-ca99-cf9ff3e9c17d" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn.functional <span class="im">as</span> F</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Net(nn.Module):</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
@@ -411,7 +411,7 @@ tensor(0.1276, device='cuda:0', dtype=torch.float64, grad_fn=&lt;MeanBackward0&g
 )</code></pre>
 </div>
 </div>
-<div id="cell-19" class="cell" data-executioninfo="{&quot;elapsed&quot;:142894,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321958359,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="81cb51b8-e5b3-450d-b870-3b677cca3507" data-execution_count="12">
+<div id="cell-19" class="cell" data-executioninfo="{&quot;elapsed&quot;:142894,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321958359,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="81cb51b8-e5b3-450d-b870-3b677cca3507" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.randn(f.shape[<span class="dv">1</span>]).double().cuda()</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>A<span class="op">=</span>torch.tensor(f).double().cuda()</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>y_hat <span class="op">=</span> A<span class="op">@</span>x</span>
@@ -438,7 +438,7 @@ tensor(0.1276, device='cuda:0', dtype=torch.float64, grad_fn=&lt;MeanBackward0&g
 tensor(5.6957, device='cuda:0', dtype=torch.float64, grad_fn=&lt;NormBackward0&gt;)</code></pre>
 </div>
 </div>
-<div id="cell-20" class="cell" data-executioninfo="{&quot;elapsed&quot;:169339,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321984826,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="77a40db4-3ce5-4f9f-c8aa-7c7ed57632b5" data-execution_count="13">
+<div id="cell-20" class="cell" data-executioninfo="{&quot;elapsed&quot;:169339,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321984826,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="77a40db4-3ce5-4f9f-c8aa-7c7ed57632b5" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">40000</span>): update2()</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>coeff_dict[<span class="st">"ADAM Gradient Descent"</span>]<span class="op">=</span> compare_results()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -470,7 +470,7 @@ tensor(0.0082, device='cuda:0', dtype=torch.float64, grad_fn=&lt;AddBackward0&gt
 </div>
 </div>
 </div>
-<div id="cell-21" class="cell" data-executioninfo="{&quot;elapsed&quot;:169307,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321984827,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="b4c5471b-5b69-4ee8-d407-a4acf9ca3d08" data-execution_count="14">
+<div id="cell-21" class="cell" data-executioninfo="{&quot;elapsed&quot;:169307,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321984827,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="b4c5471b-5b69-4ee8-d407-a4acf9ca3d08" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>x.norm()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>tensor(10.4279, device='cuda:0', dtype=torch.float64, grad_fn=&lt;NormBackward0&gt;)</code></pre>
@@ -479,7 +479,7 @@ tensor(0.0082, device='cuda:0', dtype=torch.float64, grad_fn=&lt;AddBackward0&gt
 </section>
 <section id="l2-regularization" class="level2">
 <h2 class="anchored" data-anchor-id="l2-regularization">L2 Regularization</h2>
-<div id="cell-23" class="cell" data-executioninfo="{&quot;elapsed&quot;:413,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587322695985,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="115034b2-0de7-4a4c-f444-951d9dc6512c" data-execution_count="30">
+<div id="cell-23" class="cell" data-executioninfo="{&quot;elapsed&quot;:413,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587322695985,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="115034b2-0de7-4a4c-f444-951d9dc6512c" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.randn(f.shape[<span class="dv">1</span>]).double().cuda()</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>A<span class="op">=</span>torch.tensor(f).double().cuda()</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>y_hat <span class="op">=</span> A<span class="op">@</span>x</span>
@@ -506,7 +506,7 @@ tensor(0.0082, device='cuda:0', dtype=torch.float64, grad_fn=&lt;AddBackward0&gt
 tensor(4.2264, device='cuda:0', dtype=torch.float64, grad_fn=&lt;NormBackward0&gt;)</code></pre>
 </div>
 </div>
-<div id="cell-24" class="cell" data-executioninfo="{&quot;elapsed&quot;:29611,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587322725189,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="37f6c90e-030a-461b-8d60-16cff3faa7b9" data-execution_count="31">
+<div id="cell-24" class="cell" data-executioninfo="{&quot;elapsed&quot;:29611,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587322725189,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="37f6c90e-030a-461b-8d60-16cff3faa7b9" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">40000</span>): updateL2()</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>coeff_dict[<span class="st">"ADAM L2 Gradient Descent"</span>]<span class="op">=</span> compare_results()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -541,7 +541,7 @@ tensor(0.1588, device='cuda:0', dtype=torch.float64, grad_fn=&lt;AddBackward0&gt
 </section>
 <section id="l1-regularization" class="level2">
 <h2 class="anchored" data-anchor-id="l1-regularization">L1 Regularization</h2>
-<div id="cell-26" class="cell" data-executioninfo="{&quot;elapsed&quot;:235,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587323006581,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="59c044c9-2d87-47ab-a079-497c4b30614f" data-execution_count="32">
+<div id="cell-26" class="cell" data-executioninfo="{&quot;elapsed&quot;:235,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587323006581,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="59c044c9-2d87-47ab-a079-497c4b30614f" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.randn(f.shape[<span class="dv">1</span>]).double().cuda()</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>A<span class="op">=</span>torch.tensor(f).double().cuda()</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>y_hat <span class="op">=</span> A<span class="op">@</span>x</span>
@@ -568,7 +568,7 @@ tensor(0.1588, device='cuda:0', dtype=torch.float64, grad_fn=&lt;AddBackward0&gt
 tensor(4.9389, device='cuda:0', dtype=torch.float64, grad_fn=&lt;NormBackward0&gt;)</code></pre>
 </div>
 </div>
-<div id="cell-27" class="cell" data-executioninfo="{&quot;elapsed&quot;:78532,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587323085369,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="18e52cfa-d541-4b7f-df64-d9086d0295b0" data-execution_count="33">
+<div id="cell-27" class="cell" data-executioninfo="{&quot;elapsed&quot;:78532,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587323085369,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="18e52cfa-d541-4b7f-df64-d9086d0295b0" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">40000</span>): updateL1()</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>coeff_dict[<span class="st">"ADAM L1 Gradient Descent"</span>]<span class="op">=</span> compare_results()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -601,7 +601,7 @@ tensor(0.3478, device='cuda:0', dtype=torch.float64, grad_fn=&lt;AddBackward0&gt
 </div>
 </div>
 <p>Compare the visualized coefficients between different types of regularizations L1, L2, nuclear, L_inf, what do you notice?</p>
-<div id="cell-29" class="cell" data-executioninfo="{&quot;elapsed&quot;:269985,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587322085595,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="b7e8f242-9023-4b83-daf4-45de9547c7b3" data-execution_count="19">
+<div id="cell-29" class="cell" data-executioninfo="{&quot;elapsed&quot;:269985,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587322085595,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="b7e8f242-9023-4b83-daf4-45de9547c7b3" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>[<span class="dv">15</span>,<span class="dv">8</span>])</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, d <span class="kw">in</span> <span class="bu">enumerate</span>(coeff_dict):</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  plt.subplot(<span class="dv">1</span>,<span class="bu">len</span>(coeff_dict), i<span class="op">+</span><span class="dv">1</span>)</span>

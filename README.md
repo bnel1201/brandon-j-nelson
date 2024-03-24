@@ -4,7 +4,7 @@ https://brandon-j-nelson.com
 
 For sharing information related to work, publications, research, and recruiting.
 
-Now using [Quarto]()
+Now using [Quarto](https://quarto.org)
 
 ## New Pages
 
@@ -19,4 +19,4 @@ Now using [Quarto]()
 - [ ] update presentations (both^ reflecting the public work on my internal sight
 - [ ] update CV and make sure it can be easily downloaded
 - [ ] add 'new pages'
-- [ ] change hiring to opportunities
+- [X] change hiring to opportunities

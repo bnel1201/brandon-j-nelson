@@ -13,7 +13,6 @@ about:
     - icon: github
       text: Github
       href: https://github.com/bnel1201
-
 ---
 
 Staff Fellow - [FDA](https://www.fda.gov)/[CDRH](https://www.fda.gov/about-fda/fda-organization/center-devices-and-radiological-health)/[OSEL](https://www.fda.gov/about-fda/cdrh-offices/office-science-and-engineering-laboratories)/[DIDSR](https://www.fda.gov/about-fda/cdrh-offices/division-imaging-diagnostics-and-software-reliability)
@@ -21,6 +20,8 @@ Staff Fellow - [FDA](https://www.fda.gov)/[CDRH](https://www.fda.gov/about-fda/f
 Regulatory Scientist in FDA's [Division of Imaging, Diagnostics, and Software Reliability (DIDSR)](https://www.fda.gov/about-fda/cdrh-offices/division-imaging-diagnostics-and-software-reliability)
 
 I conduct [regulatory science research](https://www.youtube.com/watch?v=gRkPQzMMIWs&pp=ygUwRkRBIHJlZ3VsYXRvcnkgc2NpZW5jZSBtaWNyb3dhdmVzIGFuZCBtYW1tb2dyYW1z), the science of evaluating medical devices, specifically in improving the evaluation of the fast moving field of radiology devices.
+
+Previously completed a PhD at [Mayo Clinic's CT Clinical Innovation Center](https://www.mayo.edu/research/centers-programs/ct-clinical-innovation-center/overview): [Thesis on preclinical applications of X-ray phase contrast CT](posts/assets/bjn_thesis_full.pdf)
 
 **Disclaimer:** The views expressed on this site are my own and do not reflect the views of my employer
 

@@ -20,7 +20,7 @@ Recently, my first first-author manuscript related to my thesis work on x-ray ph
 
 ## Related Tutorials
 
-- [solving interpolation problems with Vandermonde Matrices](https://brandon-j-nelson.com/machine%20learning/2021/01/29/Vandermonde-Matrices-in-Beam-Hardening-Corrections.html)
-- [performing matrix inversion via LU decomposition](https://brandon-j-nelson.com/machine%20learning/2021/01/28/LU-Solving.html)
-- [using interpolation to fix image artifacts in CT](https://brandon-j-nelson.com/machine%20learning/2021/01/29/Vandermonde-Matrices-in-Beam-Hardening-Corrections.html)
+- [solving interpolation problems with Vandermonde Matrices](2021-01-27-Vandermonde Interpolation.ipynb)
+- [performing matrix inversion via LU decomposition](2021-01-28-LU Solving.ipynb)
+- [using interpolation to fix image artifacts in CT](2021-01-29-Vandermonde Matrices in Beam Hardening Corrections.ipynb)
   - this tutorial is built upon the previous two but is most related to the paper

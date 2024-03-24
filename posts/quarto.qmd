@@ -1,6 +1,6 @@
 ---
 title: "Migrating to Quarto"
-----
+---
 
 This site has moved to [Quarto](https://quarto.org/) from NBDev
 

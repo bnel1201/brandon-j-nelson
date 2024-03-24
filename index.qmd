@@ -13,22 +13,16 @@ title-block-banner: true
 
 <img src=profile.jpg width="200"/>
 
-## Brandon J. Nelson
+## Staff Fellow | Regulatory Scientist @ [FDA](https://www.fda.gov)/[CDRH](https://www.fda.gov/about-fda/fda-organization/center-devices-and-radiological-health)/[OSEL](https://www.fda.gov/about-fda/cdrh-offices/office-science-and-engineering-laboratories)/[DIDSR](https://www.fda.gov/about-fda/cdrh-offices/division-imaging-diagnostics-and-software-reliability)
 
-Staff Fellow - FDA/CDRH/OSEL/DIDSR
 
-- [Division of Imaging, Diagnostics and Software Reliability (DIDSR)](https://www.fda.gov/about-fda/cdrh-offices/division-imaging-diagnostics-and-software-reliability)
-- [Office of Science and Engineering Labs (OSEL)](https://www.fda.gov/about-fda/cdrh-offices/office-science-and-engineering-laboratories)
-- [Center for Devices and Radiological Health (CDRH)](https://www.fda.gov/about-fda/fda-organization/center-devices-and-radiological-health)
-- [US Food and Drug Administration (FDA)](https://www.fda.gov/)
 
 ## About Me
 
 I joined FDA's [Division of Imaging, Diagnostics and Software Reliability (DIDSR)](https://www.fda.gov/about-fda/cdrh-offices/division-imaging-diagnostics-and-software-reliability) in July, 2022 as an [ORISE Fellow](https://orise.orau.gov/fda/) investigating generalizability of deep learning image reconstruction for Computed Tomography (CT), and have been a Staff Fellow since Jan, 2023. My research interests lay at the intersection of artificial intelligence and machine learning (AI/ML) and pediatric radiology. It goes without saying that pediatric patients are not just small adults, their anatomy and disease presentation varies dramatically from birth to adulthood. Pediatric patients have the most to gain from advancements in radiology given their longer life time horizons, yet they are a vulnerable population and are often inadequately represented in medical device development and evaluation. The goal of my research projects are to improve device evaluation of pediatric patients by better incorporating the unique aspects of pediatric anatomy, disease, and imaging protocols. These projects rely upon a range of technologies ranging from digital human phantoms, imaging device simulations, and deep learning.
 
-Previously completed a PhD at [Mayo Clinic's CT Clinical Innovation Center](https://www.mayo.edu/research/centers-programs/ct-clinical-innovation-center/overview).
 
-## Hiring
+## Opportunities
 
 I am currently looking for a talented and motivated postdoctoral fellow (or similar trainee with relevant experience) to partner with me on an upcoming project investigating and developing tools to improve the evaluation of [intracranial hemorrhage](https://www.mayoclinic.org/diseases-conditions/brain-avm/multimedia/intracerebral-hemorrhage-image/img-20129861) [computer aided triage devices (CADt)](https://en.wikipedia.org/wiki/Computer-aided_simple_triage) in pediatric and other underrepresented patient groups.
 
