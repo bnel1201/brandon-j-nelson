@@ -15,7 +15,8 @@ Now using [Quarto]()
 
 ## TODO
 
-- [ ] update publications
+- [ ] update publications (add links and summmary pic)
 - [ ] update presentations (both^ reflecting the public work on my internal sight
 - [ ] update CV and make sure it can be easily downloaded
 - [ ] add 'new pages'
+- [ ] change hiring to opportunities
