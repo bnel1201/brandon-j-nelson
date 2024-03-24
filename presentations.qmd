@@ -1,0 +1,37 @@
+---
+title: "Presentations"
+image: profile.jpg
+about:
+  template: jolla
+  links:
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com/brandon_jnelson
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/brandonj-nelson
+    - icon: github
+      text: Github
+      href: https://github.com/bnel1201
+
+---
+
+# 2019
+## Visibility Guided Phase Contrast Denoising
+
+[SPIE Medical Imaging 2019](https://spie.org/conferences-and-exhibitions/past-conferences-and-exhibitions/medical-imaging-2019)
+
+![](images/SPIE 2019/poster_small.png "SPIE 2019 Physics Poster")
+
+![](images/SPIE 2019/best_in_physics_student_poster.png "Best in Physics Poster Award")
+
+[Conference Proceedings Paper pre-print](assets/Nelson_SPIE_2019_Proceedings.pdf)# 2019
+## Visibility Guided Phase Contrast Denoising
+
+[SPIE Medical Imaging 2019](https://spie.org/conferences-and-exhibitions/past-conferences-and-exhibitions/medical-imaging-2019)
+
+![](images/SPIE 2019/poster_small.png "SPIE 2019 Physics Poster")
+
+![](images/SPIE 2019/best_in_physics_student_poster.png "Best in Physics Poster Award")
+
+[Conference Proceedings Paper pre-print](assets/Nelson_SPIE_2019_Proceedings.pdf)
