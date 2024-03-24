@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.551">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2021-01-29">
+
+<title>Brandon J. Nelson - Application of Vandermonde Interpolation in CT beam hardening correction</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Brandon J. Nelson</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../publications.html"> 
+<span class="menu-text">Publications</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../presentations.html"> 
+<span class="menu-text">Presentations</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/bnel1201"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/brandon_jnelson"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/brandonj-nelson"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Application of Vandermonde Interpolation in CT beam hardening correction</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">machine learning</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 29, 2021</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#now-lets-add-an-imaging-simulation-example" id="toc-now-lets-add-an-imaging-simulation-example" class="nav-link active" data-scroll-target="#now-lets-add-an-imaging-simulation-example">Now let’s add an imaging simulation example</a>
+  <ul class="collapse">
+  <li><a href="#comparison-to-kak-and-slaney-ch.-4-method" id="toc-comparison-to-kak-and-slaney-ch.-4-method" class="nav-link" data-scroll-target="#comparison-to-kak-and-slaney-ch.-4-method">Comparison to Kak and Slaney ch.&nbsp;4 method</a></li>
+  <li><a href="#numpy-has-a-built-in-2d-vandermonde-matrix-that-we-can-use-here" id="toc-numpy-has-a-built-in-2d-vandermonde-matrix-that-we-can-use-here" class="nav-link" data-scroll-target="#numpy-has-a-built-in-2d-vandermonde-matrix-that-we-can-use-here">Numpy has a built in 2D vandermonde matrix that we can use here</a></li>
+  <li><a href="#lets-visualize-the-coefficients-to-see-what-basis-images-contribute-the-most" id="toc-lets-visualize-the-coefficients-to-see-what-basis-images-contribute-the-most" class="nav-link" data-scroll-target="#lets-visualize-the-coefficients-to-see-what-basis-images-contribute-the-most">Let’s visualize the coefficients to see what basis images contribute the most</a></li>
+  <li><a href="#finally-is-there-a-pattern-that-emerges-in-the-monomials-that-are-activated" id="toc-finally-is-there-a-pattern-that-emerges-in-the-monomials-that-are-activated" class="nav-link" data-scroll-target="#finally-is-there-a-pattern-that-emerges-in-the-monomials-that-are-activated">Finally, is there a pattern that emerges in the monomials that are activated?</a></li>
+  <li><a href="#how-do-spatial-dependence-strength-vs-beam-hardening-strength-control-monomial-activation-map" id="toc-how-do-spatial-dependence-strength-vs-beam-hardening-strength-control-monomial-activation-map" class="nav-link" data-scroll-target="#how-do-spatial-dependence-strength-vs-beam-hardening-strength-control-monomial-activation-map">How do spatial dependence strength vs beam hardening strength control monomial activation map?</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="now-lets-add-an-imaging-simulation-example" class="level1">
+<h1>Now let’s add an imaging simulation example</h1>
+<ul>
+<li>this notebook is available as a <a href="https://colab.research.google.com/drive/1AMKoOjs7y6l18d70RcbHMLU9ZFxkzRpO?usp=sharing">colab notebook</a></li>
+</ul>
+<p>Now that we’ve seen how a nonlinear 1D signal can be made linear by using Vandermonde interpolation, we can quickly expand our discussion to images by treating each pixel as a 1D function of intensity to be corrected.</p>
+<p>Let’s first see how a nonlinearity introduced in our project data is reflected in the reconstructed image…</p>
+<p>We start with a simplified model of beam hardening described in: https://aapm.onlinelibrary.wiley.com/doi/full/10.1118/1.2742501</p>
+<p>where the polychromatic attenuation coefficient <span class="math inline">\(\langle \mu \rangle\)</span> can be modeled in terms of the true attenuation coefficient <span class="math inline">\(\mu\)</span> and penetration distance <span class="math inline">\(x\)</span></p>
+<p><span class="math display">\[\begin{equation}
+\langle \mu \rangle = \frac{\mu_0}{1+\lambda x}
+\end{equation}\]</span></p>
+<p>Note: <span class="math inline">\(\lambda\)</span> is a fitting parameter (<em>not</em> wavelength) that controls the strength of beam hardening. If <span class="math inline">\(\lambda = 0\)</span> then there is no beam hardening. If $= $ then <span class="math inline">\(\langle \mu \rangle = 0\)</span></p>
+<p>Limitation: Because we cannot easily separate <span class="math inline">\(x\)</span> and <span class="math inline">\(\mu\)</span> we know that in the ideal case <span class="math inline">\(-ln(I/I_0) = \int \mu dx\)</span> thus here we need to make the assumption that materials have about equal <span class="math inline">\(\mu\)</span> (i.e.) that <span class="math inline">\(\mu\)</span> doesn’t contribute to beam hardening (which we know not to be true because bone will harden more than water). But we’ll make this assumption just for this demonstration.</p>
+<div id="cell-2" class="cell" data-executioninfo="{&quot;elapsed&quot;:596,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587759249847,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="9c25644a-5d5d-4891-e630-bb6850bb64a3" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>lam <span class="op">=</span> <span class="fl">0.1</span> <span class="co">#set small amount of beam hardening</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> x</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> beamHardening(x, lam<span class="op">=</span><span class="dv">1</span>): <span class="co">#here we cannot separate mu and penetration distance so we have to assume them to be equal</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> x<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>lam<span class="op">*</span>x)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>plt.plot(x, mu, label<span class="op">=</span><span class="st">'ideal'</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>plt.plot(x, beamHardening(x, lam), label <span class="op">=</span> <span class="st">'real'</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Penetration depth [cm]'</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Measured value'</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-3" class="cell" data-executioninfo="{&quot;elapsed&quot;:778,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587759250054,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="edfe5c78-0394-4445-b5a9-d3a6eb6c7975" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>plt.plot(mu, mu, label<span class="op">=</span><span class="st">'monochromatic'</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>plt.plot(mu, beamHardening(mu), label <span class="op">=</span><span class="st">'polychromatic'</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'ideal attenuation coefficient [cm^-1]'</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'meaudred attenuation coefficient [cm^-1]'</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-4" class="cell" data-executioninfo="{&quot;elapsed&quot;:7358,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587759256649,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="29681fd4-a238-4ab7-c2ad-4c658cb71ccf" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> skimage.data <span class="im">import</span> shepp_logan_phantom</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> skimage.transform <span class="im">import</span> radon, rescale, iradon</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> shepp_logan_phantom()</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> rescale(p, scale<span class="op">=</span><span class="dv">1</span>, mode<span class="op">=</span><span class="st">'reflect'</span>, multichannel<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> np.linspace(<span class="fl">0.</span>, <span class="fl">360.</span>, <span class="dv">360</span>, endpoint<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> radon(p, theta<span class="op">=</span>theta)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>ideal <span class="op">=</span> iradon(r, theta<span class="op">=</span>theta)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>corrupted_r <span class="op">=</span> beamHardening(r, lam<span class="op">=</span><span class="fl">0.1</span>) <span class="co">#here we cannot separate mu and penetration distance so we have to assume them to be equal</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>uncorrected <span class="op">=</span> iradon(corrupted_r, theta<span class="op">=</span>theta)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>)) </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">"Original"</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>ax1.imshow(ideal, cmap<span class="op">=</span>plt.cm.Greys_r)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">"Simulated Beam Hardening"</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>ax2.imshow(uncorrected, cmap<span class="op">=</span>plt.cm.Greys_r)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>          </span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-5" class="cell" data-executioninfo="{&quot;elapsed&quot;:7347,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587759256650,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="b6239aa1-330e-4e3c-eb8f-c4acd910fa2f" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>idealLine<span class="op">=</span>ideal[:,<span class="bu">int</span>(ideal.shape[<span class="dv">0</span>]<span class="op">/</span><span class="dv">2</span>)]</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>uncorrectedLine<span class="op">=</span>uncorrected[:,<span class="bu">int</span>(ideal.shape[<span class="dv">0</span>]<span class="op">/</span><span class="dv">2</span>)]</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>uncorrectedLine<span class="op">/=</span><span class="bu">max</span>(uncorrectedLine) <span class="co">#normalized for easier comparison</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>plt.plot(idealLine)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>plt.plot(uncorrectedLine)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>plt.legend([<span class="st">"ideal"</span>,<span class="st">"uncorrected"</span>])</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="comparison-to-kak-and-slaney-ch.-4-method" class="level2">
+<h2 class="anchored" data-anchor-id="comparison-to-kak-and-slaney-ch.-4-method">Comparison to Kak and Slaney ch.&nbsp;4 method</h2>
+<p>Used by Chabior 2011</p>
+<div id="cell-7" class="cell" data-executioninfo="{&quot;elapsed&quot;:4478,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587759256651,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="6489317e-8e32-4d84-a245-cd0483cbc46b" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>correctionLineFunc <span class="op">=</span> idealLine<span class="op">/</span>uncorrectedLine</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plt.plot(correctionLineFunc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This is clearly</p>
+<p>Let’s assume a 0th order correction, a polynomial with degree 1, <span class="math inline">\(N=1\)</span> <span class="math inline">\(p = \sum_{n} cq^{n} = c_0 + c_1 q\)</span>, but we assume <span class="math inline">\(c_0 = 0\)</span> so <span class="math inline">\(p=cq\)</span></p>
+<div id="cell-10" class="cell" data-executioninfo="{&quot;elapsed&quot;:3532,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587759256652,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="550ce7b0-0a01-4087-da05-5e98be196ac5" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plt.plot(idealLine)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>plt.plot(uncorrectedLine)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.plot(uncorrectedLine<span class="op">*</span>correctionLineFunc)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>plt.legend([<span class="st">"ideal"</span>,<span class="st">"uncorrected"</span>,<span class="st">""</span>])</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-11" class="cell" data-executioninfo="{&quot;elapsed&quot;:3308,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587759256653,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="c9f39319-5b81-48e8-f912-897e0701ca91" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(correctionLineFunc.shape)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(corrupted_r.shape)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>pc <span class="op">=</span> np.zeros([corrupted_r.shape[<span class="dv">0</span>], corrupted_r.shape[<span class="dv">1</span>]])</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> np.arange(<span class="dv">1</span>,corrupted_r.shape[<span class="dv">1</span>]):</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  pc[:,i] <span class="op">=</span> corrupted_r[:,i]<span class="op">*</span>correctionLineFunc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(400,)
+(400, 360)</code></pre>
+</div>
+</div>
+<div id="cell-12" class="cell" data-executioninfo="{&quot;elapsed&quot;:3960,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587759257544,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="a4b0ca0b-ec0c-437c-acaf-0401fcad9d68" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>chabior_corrected <span class="op">=</span> iradon(pc, theta<span class="op">=</span>theta)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>plt.imshow(chabior_corrected, cmap <span class="op">=</span> <span class="st">'gray'</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Chabior method applied to CT"</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In our first imaging example we will start by fitting one polynomial fit function to applied to uniformly to every pixel in our 400x400 pixel image.</p>
+<p>We can generate our new Vandermonde matrix, let’s start with <span class="math inline">\(n=3\)</span> monomial terms, since each image has <span class="math inline">\(400^2=160000\)</span> pixels our matrix will look like</p>
+<span class="math display">\[\begin{bmatrix}
+1       &amp; x_0   &amp; x_0^2      \\
+1       &amp; x_1   &amp; x_1^2      \\
+\vdots  &amp;\vdots &amp;\vdots      \\
+1       &amp; x_m   &amp;x_{15999}^2 \\
+\end{bmatrix}\]</span>
+<div id="cell-14" class="cell" data-execution_count="0">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> poly_recon(A, theta):</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">"""Argument is projection vandermonde matrix [proj.ravel() X view angles] and theta array, returns recon.ravel() X deg matrix of vandermonde recons"""</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  deg<span class="op">=</span>A.shape[<span class="dv">1</span>]</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  sz <span class="op">=</span> <span class="bu">int</span>(A.shape[<span class="dv">0</span>]<span class="op">/</span>theta.size)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  A<span class="op">=</span>A.reshape([sz,theta.size,deg])</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  f <span class="op">=</span> np.zeros([sz<span class="op">*</span>sz,deg])</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(deg):</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>      fi<span class="op">=</span>iradon(A[:,:,i],theta<span class="op">=</span>theta, circle<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>      f[:,i]<span class="op">=</span>fi.ravel()</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> f</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> vanderRecon(proj, theta, deg):</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  <span class="co">"""Argument is [xpix*ypix X theta] projection, returns [recon.ravel() X deg] matrix of vandermonde reconstructed projections"""</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  A<span class="op">=</span>np.vander(corrupted_r.ravel(),deg, increasing<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> poly_recon(A,theta)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s confirm that the size of the Vandermonde matrix of our recons is what we expect…</p>
+<div id="cell-16" class="cell" data-executioninfo="{&quot;elapsed&quot;:5819,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587759260110,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="50a59cea-4b2a-4e3e-b9fd-4b90094ae1f4" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>deg<span class="op">=</span><span class="dv">3</span> <span class="co">#set number of monomial terms</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> vanderRecon(corrupted_r, theta, deg)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(160000, 3)</code></pre>
+</div>
+</div>
+<div id="cell-17" class="cell" data-executioninfo="{&quot;elapsed&quot;:5605,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587759260128,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="ac5e5847-bc1a-4baa-9fec-4fd59e690117" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>A_rank <span class="op">=</span> np.linalg.matrix_rank(A)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A_rank)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>3</code></pre>
+</div>
+</div>
+<p>Now let’s define our correction function once we determine our coefficients and a loss function to define our mean squared error MSE</p>
+<div id="cell-19" class="cell" data-execution_count="0">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mse(y_hat,y):</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> ((y_hat<span class="op">-</span>y)<span class="op">**</span><span class="dv">2</span>).mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-20" class="cell" data-executioninfo="{&quot;elapsed&quot;:15783,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587759271193,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="ea1eb8fc-6fa4-40f2-f575-5a0657c2b89c" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>deg<span class="op">=</span><span class="dv">8</span> <span class="co">#set number of monomial terms</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> vanderRecon(corrupted_r, theta, deg)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> np.linalg.lstsq(A,ideal.ravel(),rcond<span class="op">=</span><span class="va">None</span>)[<span class="dv">0</span>]</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>corrected_proj<span class="op">=</span>np.polynomial.polynomial.polyval(corrupted_r, c).reshape(corrupted_r.shape)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>uncorrected <span class="op">=</span> iradon(corrupted_r, theta<span class="op">=</span>theta, circle<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>corrected   <span class="op">=</span> iradon(corrected_proj, theta<span class="op">=</span>theta, circle<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2, ax3) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">"Original"</span>)</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>ax1.imshow(ideal, cmap<span class="op">=</span>plt.cm.Greys_r)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">"Simulated Beam Hardening </span><span class="ch">\n</span><span class="st"> MSE = "</span> <span class="op">+</span> <span class="bu">str</span>(mse(uncorrected,ideal)))</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>ax2.imshow(uncorrected, cmap<span class="op">=</span>plt.cm.Greys_r)</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>ax3.set_title(<span class="st">"Linearized </span><span class="ch">\n</span><span class="st"> MSE = "</span> <span class="op">+</span> <span class="bu">str</span>(mse(corrected,ideal)))</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>ax3.imshow(corrected, cmap<span class="op">=</span>plt.cm.Greys_r)</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>          </span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-21" class="cell" data-executioninfo="{&quot;elapsed&quot;:15057,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587759271219,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="21fea1e8-5677-44f0-f5c7-9fdaa30b78b1" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>correctedLine<span class="op">=</span>corrected[:,<span class="bu">int</span>(ideal.shape[<span class="dv">0</span>]<span class="op">/</span><span class="dv">2</span>)]</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>plt.plot(idealLine)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>plt.plot(uncorrectedLine)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>plt.plot(correctedLine)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>plt.legend([<span class="st">"ideal"</span>,<span class="st">"uncorrected"</span>,<span class="st">"corrected"</span>])</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-15-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>#Now let’s add a spatially varying component#</p>
+<div id="cell-23" class="cell" data-execution_count="0">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_lines(r):</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    n_lines <span class="op">=</span> <span class="bu">int</span>(random.random()<span class="op">*</span><span class="dv">40</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_lines):</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>      line_intensity <span class="op">=</span> random.uniform(<span class="fl">0.5</span>,<span class="dv">1</span>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>      line_width <span class="op">=</span> <span class="bu">int</span>(<span class="dv">10</span><span class="op">*</span>random.random())</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>      line_location <span class="op">=</span> <span class="bu">int</span>(random.random()<span class="op">*</span>r.shape[<span class="dv">0</span>])</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>      r[line_location:line_location<span class="op">+</span>line_width,:]<span class="op">*=</span>line_intensity</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-24" class="cell" data-execution_count="0">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> corruptProjection(proj, bh_strength <span class="op">=</span> <span class="fl">0.01</span>, spatialDependence_strength <span class="op">=</span> <span class="dv">1</span>):</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  m <span class="op">=</span> np.ones(proj.shape)<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>spatialDependence_strength) <span class="op">+</span> add_lines(np.ones(proj.shape))<span class="op">*</span>spatialDependence_strength</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  corrupted_r <span class="op">=</span> beamHardening(proj<span class="op">*</span>m, lam <span class="op">=</span> bh_strength)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> m, corrupted_r </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-25" class="cell" data-executioninfo="{&quot;elapsed&quot;:12147,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587759271239,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="ff76c59a-595c-4171-e656-7b7d14a85c3c" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>m, corrupted_r<span class="op">=</span>corruptProjection(r, bh_strength<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(corrupted_r,cmap<span class="op">=</span>plt.cm.Greys_r)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>plt.plot(corrupted_r[:,<span class="dv">100</span>])</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-18-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-18-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-26" class="cell" data-executioninfo="{&quot;elapsed&quot;:10924,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587759272402,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="7a6bbcc0-aca5-489c-cb2d-d4b3b5f3f48d" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>uncorrected <span class="op">=</span> iradon(corrupted_r, theta<span class="op">=</span>theta, circle<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(uncorrected,cmap<span class="op">=</span>plt.cm.Greys_r)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-19-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="numpy-has-a-built-in-2d-vandermonde-matrix-that-we-can-use-here" class="level2">
+<h2 class="anchored" data-anchor-id="numpy-has-a-built-in-2d-vandermonde-matrix-that-we-can-use-here">Numpy has a built in 2D vandermonde matrix that we can use here</h2>
+<p>https://docs.scipy.org/doc/numpy-1.15.0/reference/generated/numpy.polynomial.polynomial.polyvander2d.html</p>
+<div id="cell-28" class="cell" data-execution_count="0">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> vanderComborecon(q,m,theta,deg):</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  qm <span class="op">=</span> np.polynomial.polynomial.polyvander2d(q.ravel(), m.ravel(), [deg<span class="op">-</span><span class="dv">1</span>, deg<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> poly_recon(qm,theta)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-29" class="cell" data-executioninfo="{&quot;elapsed&quot;:56042,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1586279273105,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="32958dca-6c46-45d8-d4a9-4413833374bc" data-execution_count="0">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>deg <span class="op">=</span> <span class="dv">6</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> vanderComborecon(corrupted_r,m,theta, deg)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The Vandermonde matrix has a shape of [</span><span class="sc">{0:d}</span><span class="st">, </span><span class="sc">{1:d}</span><span class="st">] and a condition number of: </span><span class="sc">{2:.0f}</span><span class="st">"</span>.<span class="bu">format</span>(f.shape[<span class="dv">0</span>], f.shape[<span class="dv">1</span>], np.linalg.cond(f)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The Vandermonde matrix has a shape of [160000, 36] and a condition number of: 3367960979906</code></pre>
+</div>
+</div>
+<p>Note that the condition number of the <span class="math inline">\(qm\)</span> matrix is very large, meaning that it is pretty poorly conditioned, thus our algorithm will be very sensitive to different input values. Is there a way to decrease the condition number and better condition our problem?</p>
+<p>Condition number is a measure of the sensitivty of a problem to error in input. A large condition number number indicates an unstable result that could vary drastically depending on minor errors in the input.</p>
+<p>A large condition number is a known problem of vandermonde matrix inversions.</p>
+<p>https://en.wikipedia.org/wiki/Condition_number</p>
+<div id="cell-32" class="cell" data-executioninfo="{&quot;elapsed&quot;:56431,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1586279273518,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="ec492c04-3ee9-409c-bd3f-ee2f40cfac78" data-execution_count="0">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>c<span class="op">=</span>np.linalg.lstsq(f,ideal.ravel(),rcond<span class="op">=</span><span class="va">None</span>)[<span class="dv">0</span>]</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>plt.plot(c)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>plt.show() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-22-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Looking at our coefficients above and how large and widely varying they are is a result of the problem being poorly conditioned, not only do these coefficients vary widely with small changes in input (try re-running the program again with noise added), but also the coefficients aren’t very intuitive at all.</p>
+<div id="cell-34" class="cell" data-execution_count="0">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> square(c):</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> c.reshape([<span class="bu">int</span>(np.sqrt(<span class="bu">len</span>(c))), <span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> performCorrection2D(corrupted_r, m, c):</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> np.polynomial.polynomial.polyval2d(corrupted_r.ravel(), m.ravel(), square(c)).reshape(corrupted_r.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="lets-visualize-the-coefficients-to-see-what-basis-images-contribute-the-most" class="level2">
+<h2 class="anchored" data-anchor-id="lets-visualize-the-coefficients-to-see-what-basis-images-contribute-the-most">Let’s visualize the coefficients to see what basis images contribute the most</h2>
+<p>Recall the correction is <span class="math inline">\(\hat{p} = c_{i,j} q^i M^j\)</span> thus the coordinates in the image below indicate the monomial and its relative contribution to the polynomial</p>
+<div id="cell-36" class="cell" data-executioninfo="{&quot;elapsed&quot;:57338,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1586279274456,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="7aad25e9-84aa-43b2-81ef-32f9ac91dd2a" data-execution_count="0">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> correctAndDisplay(corrupted_r, m, c, theta):</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  p <span class="op">=</span> performCorrection2D(corrupted_r, m, c)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  corrected <span class="op">=</span> iradon(p, theta<span class="op">=</span>theta, circle<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  plt.imshow(corrected, cmap<span class="op">=</span>plt.cm.Greys_r)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  ms_error <span class="op">=</span> mse(corrected,ideal)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  plt.title(<span class="st">"Corrected </span><span class="ch">\n</span><span class="st"> MSE = "</span> <span class="op">+</span> <span class="bu">str</span>(ms_error))</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> ms_error</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>correctAndDisplay(corrupted_r, m, c, theta)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>0.00014014461661890804</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-24-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-37" class="cell" data-executioninfo="{&quot;elapsed&quot;:57898,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1586279275036,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="5efd3fe3-422a-4b51-9643-33bc439c45e5" data-execution_count="0">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> visualizeCoefficients(c):</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  plt.imshow(square(c))</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  plt.xlabel(<span class="st">'M'</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  plt.ylabel(<span class="st">'q'</span>)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  plt.colorbar()</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  plt.title(<span class="st">'Monomial contributions'</span>)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>visualizeCoefficients(c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-25-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-38" class="cell" data-executioninfo="{&quot;elapsed&quot;:60295,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1586279277450,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="5ff8573e-2c6a-459e-bbcd-a34d20c2d09d" data-execution_count="0">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> performCorrection2D(corrupted_r, m, c)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>corrected <span class="op">=</span> iradon(p, theta<span class="op">=</span>theta, circle<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2, ax3) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">12</span>))</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">"Original"</span>)</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>ax1.imshow(ideal, cmap<span class="op">=</span>plt.cm.Greys_r)</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">"Corrupted </span><span class="ch">\n</span><span class="st"> MSE = "</span> <span class="op">+</span> <span class="bu">str</span>(mse(uncorrected,ideal)))</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>ax2.imshow(uncorrected, cmap<span class="op">=</span>plt.cm.Greys_r)</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>ax3.set_title(<span class="st">"Corrected </span><span class="ch">\n</span><span class="st"> MSE = "</span> <span class="op">+</span> <span class="bu">str</span>(mse(corrected,ideal)))</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>ax3.imshow(corrected, cmap<span class="op">=</span>plt.cm.Greys_r)</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>          </span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-26-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Not bad results for 10% beam hardening!</p>
+</section>
+<section id="finally-is-there-a-pattern-that-emerges-in-the-monomials-that-are-activated" class="level2">
+<h2 class="anchored" data-anchor-id="finally-is-there-a-pattern-that-emerges-in-the-monomials-that-are-activated">Finally, is there a pattern that emerges in the monomials that are activated?</h2>
+<div id="cell-41" class="cell" data-executioninfo="{&quot;elapsed&quot;:580200,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1586280787501,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="4aab66fd-5d14-4e29-b406-11f025dc7fbc" data-execution_count="0">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find2Dpolynomialcoefficients(corrupted_r, m, theta, deg):</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  f <span class="op">=</span> vanderComborecon(corrupted_r,m,theta, deg)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> np.linalg.lstsq(f,ideal.ravel(),rcond<span class="op">=</span><span class="va">None</span>)[<span class="dv">0</span>]</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plotAndVisualizeDegreeDependence(corrupted_r, m, theta, maxDegree<span class="op">=</span><span class="dv">10</span>):</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  ms_error <span class="op">=</span> []</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> d <span class="kw">in</span> np.arange(<span class="dv">2</span>, maxDegree):</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>    coefficients <span class="op">=</span> find2Dpolynomialcoefficients(corrupted_r, m, theta, d)</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>    plt.figure(figsize<span class="op">=</span>[<span class="dv">14</span>,<span class="dv">4</span>])</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>    plt.subplot(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">1</span>)</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>    visualizeCoefficients(coefficients)</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>    plt.subplot(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>)</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>    err <span class="op">=</span> correctAndDisplay(corrupted_r, m, coefficients, theta)</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>    ms_error.append(err)</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>    plt.subplot(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>    plt.plot(np.arange(<span class="dv">2</span>, d<span class="op">+</span><span class="dv">1</span>), ms_error)</span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">'Polynomial degree'</span>)</span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">'MSE'</span>)</span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a>plotAndVisualizeDegreeDependence(corrupted_r, m, theta)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-27-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-27-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-27-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-27-output-4.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-27-output-5.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-27-output-6.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-27-output-7.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-27-output-8.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>It’s clear that MSE decreases and asymptotes as the polynomial degrees increase (but at the cost of</p>
+</section>
+<section id="how-do-spatial-dependence-strength-vs-beam-hardening-strength-control-monomial-activation-map" class="level2">
+<h2 class="anchored" data-anchor-id="how-do-spatial-dependence-strength-vs-beam-hardening-strength-control-monomial-activation-map">How do spatial dependence strength vs beam hardening strength control monomial activation map?</h2>
+<p>Try this again when there is no spatial component to the beam hardening, how does this affect the M dependency?</p>
+<div id="cell-44" class="cell" data-executioninfo="{&quot;elapsed&quot;:312778,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1586280207197,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="4dee0b77-7435-4a4e-ce8b-b0ebce72df3d" data-execution_count="0">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>noSpatialm, noSpatial_corrupted_r <span class="op">=</span> corruptProjection(r, bh_strength<span class="op">=</span><span class="fl">0.1</span>, spatialDependence_strength <span class="op">=</span> <span class="dv">0</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>plotAndVisualizeDegreeDependence(noSpatial_corrupted_r, noSpatialm, theta)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-28-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-28-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-28-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-28-output-4.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-28-output-5.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-28-output-6.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-28-output-7.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-28-output-8.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Finally repeat once more with Beam hardening strength set to zero and spatiall varying strength on max, how does this affect the coefficient activation map?</p>
+<div id="cell-46" class="cell" data-executioninfo="{&quot;elapsed&quot;:289510,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1586280496766,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="875c03a9-9430-4033-85a6-62c790193b20" data-execution_count="0">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>noBHm, noBH_corrupted_r <span class="op">=</span> corruptProjection(r, bh_strength<span class="op">=</span><span class="dv">0</span>, spatialDependence_strength <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>plotAndVisualizeDegreeDependence(noBH_corrupted_r, noBHm, theta)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-29-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-29-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-29-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-29-output-4.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-29-output-5.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-29-output-6.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-29-output-7.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-29-Vandermonde Matrices in Beam Hardening Corrections_files/figure-html/cell-29-output-8.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Observe how the MSE decreases then increases at higher degrees. This demonstrates a weakness of Vandermonde polynomial interpolation that as the Vandermonde matrix becomes larger its condition number grows dramatically and the result becomes unstable.</p>
+<p>Move on to the last notebook on iterative methods for solving the Vandermonde interpolation least squares problem: https://colab.research.google.com/drive/1kErNKAbJlJUpq2jsb0roMJA7kTNB9vY0</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

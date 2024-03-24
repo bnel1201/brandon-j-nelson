@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.551">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2021-01-30">
+
+<title>Brandon J. Nelson - Iterative Methods for Solving Least Squares Problems</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Brandon J. Nelson</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../publications.html"> 
+<span class="menu-text">Publications</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../presentations.html"> 
+<span class="menu-text">Presentations</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/bnel1201"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/brandon_jnelson"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/brandonj-nelson"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Iterative Methods for Solving Least Squares Problems</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">machine learning</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 30, 2021</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation">Motivation</a>
+  <ul class="collapse">
+  <li><a href="#iterative-methods-gradient-descent" id="toc-iterative-methods-gradient-descent" class="nav-link" data-scroll-target="#iterative-methods-gradient-descent">Iterative methods: Gradient descent</a></li>
+  <li><a href="#adam-optimizer" id="toc-adam-optimizer" class="nav-link" data-scroll-target="#adam-optimizer">ADAM optimizer</a></li>
+  <li><a href="#l2-regularization" id="toc-l2-regularization" class="nav-link" data-scroll-target="#l2-regularization">L2 Regularization</a></li>
+  <li><a href="#l1-regularization" id="toc-l1-regularization" class="nav-link" data-scroll-target="#l1-regularization">L1 Regularization</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="motivation" class="level1">
+<h1>Motivation</h1>
+<ul>
+<li>this notebook is also available as a <a href="https://colab.research.google.com/drive/1kErNKAbJlJUpq2jsb0roMJA7kTNB9vY0?usp=sharing">colab notebook</a></li>
+</ul>
+<p>We will continue to use Vandermonde interpolation as our example for solving least squares problems because the goal of vandermonde interpolation is finding the least squares solution of our interpolated function with the observed data.</p>
+<p>While the direct inversion methods used previously worked well for the Vandermonde case, some matrices, especially in CT reconstruction or larger problems are not easily inverted due to their size or large condition number.</p>
+<p>For these problems iterative algorithms are used. In this tutorial we walk through the Vandermonde beam hardening correction problem using iterative techniques</p>
+<p>https://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/Importing%20Notebooks.html</p>
+<div id="cell-3" class="cell" data-executioninfo="{&quot;elapsed&quot;:625,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321815854,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="a149b466-1ce9-4ca3-f429-42715206f699" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>cd <span class="st">'drive/My Drive/Colab Notebooks/Solving Least Squares Problems'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>/content/drive/My Drive/Colab Notebooks/Solving Least Squares Problems</code></pre>
+</div>
+</div>
+<div id="cell-4" class="cell" data-executioninfo="{&quot;elapsed&quot;:5261,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321820511,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="afc176b4-0264-41fa-8217-dada53edcda7" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> skimage.data <span class="im">import</span> shepp_logan_phantom</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> skimage.transform <span class="im">import</span> radon, rescale, iradon</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> vandermonde_matrices_in_beam_hardening_corrections <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> shepp_logan_phantom()</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> rescale(p, scale<span class="op">=</span><span class="dv">1</span>, mode<span class="op">=</span><span class="st">'reflect'</span>, multichannel<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> np.linspace(<span class="fl">0.</span>, <span class="fl">360.</span>, <span class="dv">360</span>, endpoint<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> radon(p, theta<span class="op">=</span>theta, circle<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>noise_strength <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>r <span class="op">+=</span> noise_strength <span class="op">*</span> np.random.randn(r.shape[<span class="dv">0</span>], r.shape[<span class="dv">1</span>])</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>ideal <span class="op">=</span> iradon(r, theta<span class="op">=</span>theta, circle<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>m, corrupted_r<span class="op">=</span> corruptProjection(r, bh_strength <span class="op">=</span> <span class="fl">0.1</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>uncorrected <span class="op">=</span> iradon(corrupted_r, theta<span class="op">=</span>theta, circle<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>)) </span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">"Original"</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>ax1.imshow(ideal, cmap<span class="op">=</span>plt.cm.Greys_r)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">"Simulated Beam Hardening"</span>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>ax2.imshow(uncorrected, cmap<span class="op">=</span>plt.cm.Greys_r)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>          </span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-30-Iterative Methods for Solving Least Squares_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-5" class="cell" data-executioninfo="{&quot;elapsed&quot;:28987,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321844274,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="99bd68d6-49a3-424d-9d1e-aa1c136cf181" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> find2Dpolynomialcoefficients(corrupted_r, m, ideal, theta, <span class="dv">5</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>corrected <span class="op">=</span> correctAndDisplay(corrupted_r, m, c, theta)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mse(corrected, p))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.008008176037568725</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-30-Iterative Methods for Solving Least Squares_files/figure-html/cell-4-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-6" class="cell" data-execution_count="0">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>coeff_dict <span class="op">=</span> <span class="bu">dict</span>()<span class="op">;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>coeff_dict[<span class="st">"Direct Inversion"</span>] <span class="op">=</span> square(c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Generally speaking by adding noise the solution becomes harder to find in the direct inversion case, thats why we look towards iterative methods.</p>
+<section id="iterative-methods-gradient-descent" class="level2">
+<h2 class="anchored" data-anchor-id="iterative-methods-gradient-descent">Iterative methods: Gradient descent</h2>
+<p>Using Pytorch, let’s start by setting up a naive gradient descent</p>
+<div id="cell-9" class="cell" data-execution_count="0">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn <span class="im">as</span> nn</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.cuda <span class="im">as</span> tc</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.autograd <span class="im">import</span> Variable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-10" class="cell" data-executioninfo="{&quot;elapsed&quot;:51164,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321866519,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="913c89ab-4617-4569-bf19-297cbdbb6da7" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>deg <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> vanderComborecon(corrupted_r,m,theta, deg)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(f.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(160000, 25)</code></pre>
+</div>
+</div>
+<div id="cell-11" class="cell" data-execution_count="0">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update():</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    y_hat <span class="op">=</span> A<span class="op">@</span>x</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> mse(y, y_hat)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> t <span class="op">%</span> <span class="dv">20000</span> <span class="op">==</span> <span class="dv">0</span>: <span class="bu">print</span>(loss)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    loss.backward()</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> torch.no_grad():</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        x.sub_(lr <span class="op">*</span> x.grad)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        x.grad.zero_()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-12" class="cell" data-executioninfo="{&quot;elapsed&quot;:53928,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321869318,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="e30b30ee-0486-47e4-c0bd-c9c75991facd" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.randn(f.shape[<span class="dv">1</span>]).double().cuda()</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>A<span class="op">=</span>torch.tensor(f).double().cuda()</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>y_hat <span class="op">=</span> A<span class="op">@</span>x</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span>torch.tensor(ideal.ravel()).cuda()</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mse(y_hat,y))</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> nn.Parameter(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tensor(925376.6465, device='cuda:0', dtype=torch.float64)</code></pre>
+</div>
+</div>
+<div id="cell-13" class="cell" data-executioninfo="{&quot;elapsed&quot;:140878,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321956286,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="3e3479ae-ad47-41ed-c05f-8b2181090b5d" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> <span class="fl">1e-6</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">200000</span>): update()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tensor(925376.6465, device='cuda:0', dtype=torch.float64,
+       grad_fn=&lt;MeanBackward0&gt;)
+tensor(1.5719, device='cuda:0', dtype=torch.float64, grad_fn=&lt;MeanBackward0&gt;)
+tensor(0.3442, device='cuda:0', dtype=torch.float64, grad_fn=&lt;MeanBackward0&gt;)
+tensor(0.2675, device='cuda:0', dtype=torch.float64, grad_fn=&lt;MeanBackward0&gt;)
+tensor(0.2281, device='cuda:0', dtype=torch.float64, grad_fn=&lt;MeanBackward0&gt;)
+tensor(0.1976, device='cuda:0', dtype=torch.float64, grad_fn=&lt;MeanBackward0&gt;)
+tensor(0.1736, device='cuda:0', dtype=torch.float64, grad_fn=&lt;MeanBackward0&gt;)
+tensor(0.1546, device='cuda:0', dtype=torch.float64, grad_fn=&lt;MeanBackward0&gt;)
+tensor(0.1395, device='cuda:0', dtype=torch.float64, grad_fn=&lt;MeanBackward0&gt;)
+tensor(0.1276, device='cuda:0', dtype=torch.float64, grad_fn=&lt;MeanBackward0&gt;)</code></pre>
+</div>
+</div>
+<p>Similar to our direct SVD solution before, due to the poor conditioning of the problem our coefficients are unique and seem vary noisey.</p>
+<div id="cell-15" class="cell" data-executioninfo="{&quot;elapsed&quot;:142934,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321958359,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="19c6db09-b7e1-4b98-eaa7-f4fdaa5c7f4e" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compare_results():</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  coef<span class="op">=</span>x.cpu().detach().numpy()</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  plt.plot(coef)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  plt.show()</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  coeffs <span class="op">=</span> visualizeCoefficients(coef)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  p <span class="op">=</span> performCorrection2D(corrupted_r,m,coef)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  corrected <span class="op">=</span> iradon(p, theta<span class="op">=</span>theta, circle<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  fig, (ax1, ax2, ax3) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">12</span>))</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  ax1.set_title(<span class="st">"Original"</span>)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  ax1.imshow(ideal, cmap<span class="op">=</span>plt.cm.Greys_r)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>  ax2.set_title(<span class="st">"Simulated Beam Hardening </span><span class="ch">\n</span><span class="st"> MSE = "</span> <span class="op">+</span> <span class="bu">str</span>(mse(uncorrected,ideal)))</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  ax2.imshow(uncorrected, cmap<span class="op">=</span>plt.cm.Greys_r)</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>  ax3.set_title(<span class="st">"Linearized </span><span class="ch">\n</span><span class="st"> MSE = "</span> <span class="op">+</span> <span class="bu">str</span>(mse(corrected,ideal)))</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>  ax3.imshow(corrected, cmap<span class="op">=</span>plt.cm.Greys_r)</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>  fig.tight_layout()</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>  plt.show()</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> coeffs</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>coeff_dict[<span class="st">"Gradient Descent"</span>]<span class="op">=</span> compare_results()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-30-Iterative Methods for Solving Least Squares_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-30-Iterative Methods for Solving Least Squares_files/figure-html/cell-11-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-30-Iterative Methods for Solving Least Squares_files/figure-html/cell-11-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>First order gradient descent takes a LONG time to converge to a reasonable answer comparable to linear algebra direct methods, but let’s next look at a second order method, Newton’s method</p>
+</section>
+<section id="adam-optimizer" class="level2">
+<h2 class="anchored" data-anchor-id="adam-optimizer">ADAM optimizer</h2>
+<p>This will enable faster convergence</p>
+<p>Let’s start with no regularization</p>
+<div id="cell-18" class="cell" data-executioninfo="{&quot;elapsed&quot;:142913,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321958359,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="c34807d7-9d5d-4855-ca99-cf9ff3e9c17d" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn.functional <span class="im">as</span> F</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Net(nn.Module):</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(Net, <span class="va">self</span>).<span class="fu">__init__</span>()</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.fc1 <span class="op">=</span> nn.Linear(f.shape[<span class="dv">1</span>], <span class="dv">1</span>)  <span class="co"># 6*6 from image dimension</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x):</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> <span class="va">self</span>.fc1(x)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> x</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> num_flat_features(<span class="va">self</span>, x):</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>        size <span class="op">=</span> x.size()[<span class="dv">1</span>:]  <span class="co"># all dimensions except the batch dimension</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>        num_features <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> s <span class="kw">in</span> size:</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>            num_features <span class="op">*=</span> s</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> num_features</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>net <span class="op">=</span> Net()</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(net)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Net(
+  (fc1): Linear(in_features=25, out_features=1, bias=True)
+)</code></pre>
+</div>
+</div>
+<div id="cell-19" class="cell" data-executioninfo="{&quot;elapsed&quot;:142894,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321958359,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="81cb51b8-e5b3-450d-b870-3b677cca3507" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.randn(f.shape[<span class="dv">1</span>]).double().cuda()</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>A<span class="op">=</span>torch.tensor(f).double().cuda()</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>y_hat <span class="op">=</span> A<span class="op">@</span>x</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span>torch.tensor(ideal.ravel()).cuda()</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mse(y_hat,y))</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> nn.Parameter(x)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x.norm())</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.optim <span class="im">as</span> optim</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co"># create your optimizer</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>optimizer <span class="op">=</span> optim.Adam([x], lr<span class="op">=</span><span class="fl">0.005</span>)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>criterion <span class="op">=</span> nn.MSELoss()</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>reg_strength <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update2():</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    optimizer.zero_grad() <span class="co">#zero gradient buffers</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    y_hat <span class="op">=</span> A<span class="op">@</span>x</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> criterion(y_hat, y) <span class="op">+</span> reg_strength<span class="op">*</span>x.norm() <span class="co">#regularization for small coefficients</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>    loss.backward()</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>    optimizer.step()    <span class="co"># Does the update</span></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> t <span class="op">%</span> <span class="dv">10000</span> <span class="op">==</span> <span class="dv">0</span>: <span class="bu">print</span>(loss)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tensor(53179.1077, device='cuda:0', dtype=torch.float64)
+tensor(5.6957, device='cuda:0', dtype=torch.float64, grad_fn=&lt;NormBackward0&gt;)</code></pre>
+</div>
+</div>
+<div id="cell-20" class="cell" data-executioninfo="{&quot;elapsed&quot;:169339,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321984826,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="77a40db4-3ce5-4f9f-c8aa-7c7ed57632b5" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">40000</span>): update2()</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>coeff_dict[<span class="st">"ADAM Gradient Descent"</span>]<span class="op">=</span> compare_results()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tensor(53179.1077, device='cuda:0', dtype=torch.float64,
+       grad_fn=&lt;AddBackward0&gt;)
+tensor(0.0986, device='cuda:0', dtype=torch.float64, grad_fn=&lt;AddBackward0&gt;)
+tensor(0.0091, device='cuda:0', dtype=torch.float64, grad_fn=&lt;AddBackward0&gt;)
+tensor(0.0082, device='cuda:0', dtype=torch.float64, grad_fn=&lt;AddBackward0&gt;)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-30-Iterative Methods for Solving Least Squares_files/figure-html/cell-14-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-30-Iterative Methods for Solving Least Squares_files/figure-html/cell-14-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-30-Iterative Methods for Solving Least Squares_files/figure-html/cell-14-output-4.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-21" class="cell" data-executioninfo="{&quot;elapsed&quot;:169307,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587321984827,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="b4c5471b-5b69-4ee8-d407-a4acf9ca3d08" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>x.norm()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>tensor(10.4279, device='cuda:0', dtype=torch.float64, grad_fn=&lt;NormBackward0&gt;)</code></pre>
+</div>
+</div>
+</section>
+<section id="l2-regularization" class="level2">
+<h2 class="anchored" data-anchor-id="l2-regularization">L2 Regularization</h2>
+<div id="cell-23" class="cell" data-executioninfo="{&quot;elapsed&quot;:413,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587322695985,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="115034b2-0de7-4a4c-f444-951d9dc6512c" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.randn(f.shape[<span class="dv">1</span>]).double().cuda()</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>A<span class="op">=</span>torch.tensor(f).double().cuda()</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>y_hat <span class="op">=</span> A<span class="op">@</span>x</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span>torch.tensor(ideal.ravel()).cuda()</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mse(y_hat,y))</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> nn.Parameter(x)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x.norm())</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.optim <span class="im">as</span> optim</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="co"># create your optimizer</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>optimizer <span class="op">=</span> optim.Adam([x], lr<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>criterion <span class="op">=</span> nn.MSELoss()</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>reg_strength <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> updateL2():</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>    optimizer.zero_grad() <span class="co">#zero gradient buffers</span></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>    y_hat <span class="op">=</span> A<span class="op">@</span>x</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> criterion(y_hat, y) <span class="op">+</span> reg_strength<span class="op">*</span>x.norm() <span class="co">#regularization for small coefficients</span></span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>    loss.backward()</span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>    optimizer.step()    <span class="co"># Does the update</span></span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> t <span class="op">%</span> <span class="dv">10000</span> <span class="op">==</span> <span class="dv">0</span>: <span class="bu">print</span>(loss)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tensor(25220.8031, device='cuda:0', dtype=torch.float64)
+tensor(4.2264, device='cuda:0', dtype=torch.float64, grad_fn=&lt;NormBackward0&gt;)</code></pre>
+</div>
+</div>
+<div id="cell-24" class="cell" data-executioninfo="{&quot;elapsed&quot;:29611,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587322725189,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="37f6c90e-030a-461b-8d60-16cff3faa7b9" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">40000</span>): updateL2()</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>coeff_dict[<span class="st">"ADAM L2 Gradient Descent"</span>]<span class="op">=</span> compare_results()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tensor(25221.2257, device='cuda:0', dtype=torch.float64,
+       grad_fn=&lt;AddBackward0&gt;)
+tensor(0.2456, device='cuda:0', dtype=torch.float64, grad_fn=&lt;AddBackward0&gt;)
+tensor(0.1736, device='cuda:0', dtype=torch.float64, grad_fn=&lt;AddBackward0&gt;)
+tensor(0.1588, device='cuda:0', dtype=torch.float64, grad_fn=&lt;AddBackward0&gt;)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-30-Iterative Methods for Solving Least Squares_files/figure-html/cell-17-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-30-Iterative Methods for Solving Least Squares_files/figure-html/cell-17-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-30-Iterative Methods for Solving Least Squares_files/figure-html/cell-17-output-4.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="l1-regularization" class="level2">
+<h2 class="anchored" data-anchor-id="l1-regularization">L1 Regularization</h2>
+<div id="cell-26" class="cell" data-executioninfo="{&quot;elapsed&quot;:235,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587323006581,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="59c044c9-2d87-47ab-a079-497c4b30614f" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.randn(f.shape[<span class="dv">1</span>]).double().cuda()</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>A<span class="op">=</span>torch.tensor(f).double().cuda()</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>y_hat <span class="op">=</span> A<span class="op">@</span>x</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span>torch.tensor(ideal.ravel()).cuda()</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mse(y_hat,y))</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> nn.Parameter(x)</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x.norm())</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.optim <span class="im">as</span> optim</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="co"># create your optimizer</span></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>optimizer <span class="op">=</span> optim.Adam([x], lr<span class="op">=</span><span class="fl">0.01</span>)</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>criterion <span class="op">=</span> nn.MSELoss()</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>reg_strength <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> updateL1():</span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>    optimizer.zero_grad() <span class="co">#zero gradient buffers</span></span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>    y_hat <span class="op">=</span> A<span class="op">@</span>x</span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> criterion(y_hat, y) <span class="op">+</span> reg_strength<span class="op">*</span><span class="bu">sum</span>(<span class="bu">abs</span>(x)) <span class="co">#regularization for small coefficients</span></span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>    loss.backward()</span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>    optimizer.step()    <span class="co"># Does the update</span></span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> t <span class="op">%</span> <span class="dv">10000</span> <span class="op">==</span> <span class="dv">0</span>: <span class="bu">print</span>(loss)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tensor(15613.7639, device='cuda:0', dtype=torch.float64)
+tensor(4.9389, device='cuda:0', dtype=torch.float64, grad_fn=&lt;NormBackward0&gt;)</code></pre>
+</div>
+</div>
+<div id="cell-27" class="cell" data-executioninfo="{&quot;elapsed&quot;:78532,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587323085369,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="18e52cfa-d541-4b7f-df64-d9086d0295b0" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">40000</span>): updateL1()</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>coeff_dict[<span class="st">"ADAM L1 Gradient Descent"</span>]<span class="op">=</span> compare_results()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tensor(15615.8393, device='cuda:0', dtype=torch.float64,
+       grad_fn=&lt;AddBackward0&gt;)
+tensor(0.5459, device='cuda:0', dtype=torch.float64, grad_fn=&lt;AddBackward0&gt;)
+tensor(0.3264, device='cuda:0', dtype=torch.float64, grad_fn=&lt;AddBackward0&gt;)
+tensor(0.3478, device='cuda:0', dtype=torch.float64, grad_fn=&lt;AddBackward0&gt;)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-30-Iterative Methods for Solving Least Squares_files/figure-html/cell-19-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-30-Iterative Methods for Solving Least Squares_files/figure-html/cell-19-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-30-Iterative Methods for Solving Least Squares_files/figure-html/cell-19-output-4.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Compare the visualized coefficients between different types of regularizations L1, L2, nuclear, L_inf, what do you notice?</p>
+<div id="cell-29" class="cell" data-executioninfo="{&quot;elapsed&quot;:269985,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1587322085595,&quot;user&quot;:{&quot;displayName&quot;:&quot;Brandon Nelson&quot;,&quot;photoUrl&quot;:&quot;https://lh3.googleusercontent.com/a-/AOh14Gh0OsY9d56qBaHUW076dNXToW8SM7NOud4VYbJB5Q=s64&quot;,&quot;userId&quot;:&quot;08680769847131478922&quot;},&quot;user_tz&quot;:300}" data-outputid="b7e8f242-9023-4b83-daf4-45de9547c7b3" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>[<span class="dv">15</span>,<span class="dv">8</span>])</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, d <span class="kw">in</span> <span class="bu">enumerate</span>(coeff_dict):</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  plt.subplot(<span class="dv">1</span>,<span class="bu">len</span>(coeff_dict), i<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  plt.imshow(coeff_dict[d])</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  plt.title(d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-01-30-Iterative Methods for Solving Least Squares_files/figure-html/cell-20-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,16 @@
+[
+  {
+    "listing": "/index.html",
+    "items": [
+      "/posts/test-markdown-post.html",
+      "/posts/four_ways_to_solve_least_squares.html",
+      "/posts/post-with-code/index.html",
+      "/posts/welcome/index.html",
+      "/posts/2021-01-31-Empirical Beam Hardening Correction for X-Ray Grating Interferometry.html",
+      "/posts/2021-01-29-vandermonde matrices in beam hardening corrections.html",
+      "/posts/2021-01-28-lu solving.html",
+      "/posts/2021-01-27-vandermonde interpolation.html",
+      "/posts/2020-09-08-juliacon2020.html"
+    ]
+  }
+]
