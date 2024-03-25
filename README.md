@@ -22,7 +22,7 @@ Currently GitHub Pages defaults to resetting the url, so under Settings --> Page
 
 ## TODO
 
-- [ ] update publications (add links and summary pic)
+- [ ] update publications (add links (done) and summary pic)
 - [ ] update presentations (both^ reflecting the public work on my internal sight)
-- [ ] update CV
+- [X] update CV 
 - [ ] add 'new pages'

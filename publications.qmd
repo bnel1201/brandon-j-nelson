@@ -1,49 +1,27 @@
 ---
 title: "Publications"
-image: profile.jpg
-about:
-  template: jolla
-  links:
-    - icon: twitter
-      text: Twitter
-      href: https://twitter.com/brandon_jnelson
-    - icon: linkedin
-      text: LinkedIn
-      href: https://www.linkedin.com/in/brandonj-nelson
-    - icon: github
-      text: Github
-      href: https://github.com/bnel1201
-
 ---
 
 ## Peer Reviewed Publications
 
-- **Nelson BJ**, Kc P, Badal A, Jiang L, Masters SC, Zeng R. Pediatric evaluations for deep learning CT denoising. Medical Physics. 2024;51(2):978-990. [doi:10.1002/mp.16901](https://aapm.onlinelibrary.wiley.com/doi/abs/10.1002/mp.16901)
+- **Nelson BJ**, Kc P, Badal A, Jiang L, Masters SC, Zeng R. Pediatric evaluations for deep learning CT denoising. Medical Physics. 2024;51(2):978-990. [doi:10.1002/mp.16901](https://aapm.onlinelibrary.wiley.com/doi/abs/10.1002/mp.16901) [[pdf](posts/assets/Nelson et al. - 2024 - Pediatric evaluations for deep learning CT denoisi.pdf)]
 
-- **Nelson BJ**, Gomez-Cardona DG, Thorne JE, et al. Multiple Kernel Synthesis of Head CT Using a Task-Based Loss Function. J Digit Imaging Inform med. Published online January 12, 2024. [doi:10.1007/s10278-023-00959-x](https://link.springer.com/article/10.1007/s10278-023-00959-x)
+- **Nelson BJ**, Gomez-Cardona DG, Thorne JE, et al. Multiple Kernel Synthesis of Head CT Using a Task-Based Loss Function. J Digit Imaging Inform med. Published online January 12, 2024. [doi:10.1007/s10278-023-00959-x](https://link.springer.com/article/10.1007/s10278-023-00959-x) [[pdf](posts/assets/Nelson et al. - 2024 - Multiple Kernel Synthesis of Head CT Using a Task-.pdf)]
 
-- **Nelson BJ**, Zeng R, Sammer M, Frush DP, Delfino JG. An FDA Guide on Indications for Use and Device Reporting of Artificial Intelligence-Enabled Devices: Significance for Pediatric Use. Journal of the American College of Radiology. Published online July 1, 2023. [doi:10.1016/j.jacr.2023.06.004](https://www.sciencedirect.com/science/article/abs/pii/S1546144023004234)
+- **Nelson BJ**, Zeng R, Sammer M, Frush DP, Delfino JG. An FDA Guide on Indications for Use and Device Reporting of Artificial Intelligence-Enabled Devices: Significance for Pediatric Use. Journal of the American College of Radiology. Published online July 1, 2023. [doi:10.1016/j.jacr.2023.06.004](https://www.sciencedirect.com/science/article/abs/pii/S1546144023004234) [[pdf](posts/assets/Nelson et al. - 2023 - An FDA Guide on Indications for Use and Device Rep.pdf)]
 
-- **Nelson, B.J.**, Leng, S., Shanblatt, E.R., McCollough, C.H. and Koenig, T. (2021), Empirical beam hardening and ring artifact correction for x‐ray grating interferometry (EBHC‐GI). Med Phys. [doi:10.1002/mp.14672](https://aapm.onlinelibrary.wiley.com/doi/10.1002/mp.14672)
+- **Nelson, B.J.**, Leng, S., Shanblatt, E.R., McCollough, C.H. and Koenig, T. (2021), Empirical beam hardening and ring artifact correction for x‐ray grating interferometry (EBHC‐GI). Med Phys. [doi:10.1002/mp.14672](https://aapm.onlinelibrary.wiley.com/doi/10.1002/mp.14672) [[pdf](posts/assets/Nelson et al. - 2021 - Empirical beam hardening and ring artifact correct.pdf)]
 
-- Sung, Y., **Nelson, B.**, Shanblatt, E.R., Gupta, R., McCollough, C.H. and Graves, W.S. (2020), Wave optics simulation of grating‐based X‐ray phase‐contrast imaging using 4D Mouse Whole Body (MOBY) phantom. Med. Phys, 47: 5761-5771. [doi:10.1002/mp.14479](https://aapm.onlinelibrary.wiley.com/doi/abs/10.1002/mp.14479)
+- Sung, Y., **Nelson, B.**, Shanblatt, E.R., Gupta, R., McCollough, C.H. and Graves, W.S. (2020), Wave optics simulation of grating‐based X‐ray phase‐contrast imaging using 4D Mouse Whole Body (MOBY) phantom. Med. Phys, 47: 5761-5771. [doi:10.1002/mp.14479](https://aapm.onlinelibrary.wiley.com/doi/abs/10.1002/mp.14479) [[pdf](posts/assets/Sung et al. - 2020 - Wave optics simulation of grating-based X-ray phas.pdf)]
 
-- Elisabeth R. Shanblatt, Yongjin Sung, Rajiv Gupta, **Brandon J. Nelson**, Shuai Leng, William S. Graves, and Cynthia H. McCollough, "Forward model for propagation-based x-ray phase contrast imaging in parallel- and cone-beam geometry," Opt. Express 27, 4504-4521 (2019). [doi:10.1364/OE.27.004504](https://doi.org/10.1364/OE.27.004504)
+- Elisabeth R. Shanblatt, Yongjin Sung, Rajiv Gupta, **Brandon J. Nelson**, Shuai Leng, William S. Graves, and Cynthia H. McCollough, "Forward model for propagation-based x-ray phase contrast imaging in parallel- and cone-beam geometry," Opt. Express 27, 4504-4521 (2019). [doi:10.1364/OE.27.004504](https://doi.org/10.1364/OE.27.004504) [[pdf](posts/assets/Shanblatt et al. - 2019 - Forward model for propagation-based x-ray phase co.pdf)]
 
-- Sung Y, Gupta R, **Nelson B**, Leng S, McCollough CH, Graves WS. Phase-contrast imaging with a compact x-ray light source: system design. J Med Imaging (Bellingham). 2017;4(4):043503. [doi:10.1117/1.JMI.4.4.043503](https://doi.org/10.1117/1.JMI.4.4.043503)
+- Sung Y, Gupta R, **Nelson B**, Leng S, McCollough CH, Graves WS. Phase-contrast imaging with a compact x-ray light source: system design. J Med Imaging (Bellingham). 2017;4(4):043503. [doi:10.1117/1.JMI.4.4.043503](https://doi.org/10.1117/1.JMI.4.4.043503) [[pdf](posts/assets/Sung et al. - 2017 - Phase-contrast imaging with a compact x-ray light .pdf)]
 
 ## Conference Proceedings
- 
-### [Complementary use of x-ray dark-field and attenuation computed tomography in quantifying pulmonary fibrosis in a mouse model](https://www.spiedigitallibrary.org/conference-proceedings-of-spie/12036/2612877/Complementary-use-of-x-ray-dark-field-and-attenuation-computed/10.1117/12.2612877.full)
 
-- **Nelson BJ**, Leng S, Koenig T, McCollough CH. Complementary use of x-ray dark-field and attenuation computed tomography in quantifying pulmonary fibrosis in a mouse model. In: Medical Imaging 2022: Biomedical Applications in Molecular, Structural, and Functional Imaging. Vol 12036. SPIE; 2022:253-263. doi:10.1117/12.2612877
+- **Nelson BJ**, Leng S, Koenig T, McCollough CH. Complementary use of x-ray dark-field and attenuation computed tomography in quantifying pulmonary fibrosis in a mouse model. In: Medical Imaging 2022: Biomedical Applications in Molecular, Structural, and Functional Imaging. Vol 12036. SPIE; 2022:253-263. [doi:10.1117/12.2612877](https://www.spiedigitallibrary.org/conference-proceedings-of-spie/12036/2612877/Complementary-use-of-x-ray-dark-field-and-attenuation-computed/10.1117/12.2612877.full) [[pdf](posts/assets/Nelson et al. - 2022 - Complementary use of x-ray dark-field and attenuat.pdf)]
 
-### [Demonstration of Phase-Assisted Material Decomposition with a Talbot-Lau Interferometer using a Single X-Ray Tube Potential](https://www.spiedigitallibrary.org/conference-proceedings-of-spie/10948/109482W/Demonstration-of-phase-assisted-material-decomposition-with-a-Talbot-Lau/10.1117/12.2511806.short?SSO=1)
+- Elisabeth R. Shanblatt, **Brandon J. Nelson**, Shengzhen Tao, Shuai Leng, Cynthia H. McCollough. "Demonstration of Phase-Assisted Material Decomposition with a Talbot-Lau Interferometer using a Single X-Ray Tube Potential". SPIE Medical Imaging 2019, San Diego, CA [doi:10.1117/12.2511806](https://www.spiedigitallibrary.org/conference-proceedings-of-spie/10948/109482W/Demonstration-of-phase-assisted-material-decomposition-with-a-Talbot-Lau/10.1117/12.2511806.short?SSO=1)
 
-- Elisabeth R. Shanblatt, **Brandon J. Nelson**, Shengzhen Tao, Shuai Leng, Cynthia H. McCollough
-- [SPIE Medical Imaging 2019, San Diego, CA](https://spie.org/conferences-and-exhibitions/past-conferences-and-exhibitions/medical-imaging-2019?SSO=1)
-
-### [Visibility Guided Phase Contrast Denoising](https://www.spiedigitallibrary.org/conference-proceedings-of-spie/10948/109484V/Visibility-guided-phase-contrast-denoising/10.1117/12.2511212.short)
-
-- **Brandon J. Nelson**, Thomas Koenig, Elisabeth R. Shanblatt, Shuai Leng, Cynthia H. McCollough
-- [SPIE Medical Imaging 2019, San Diego, CA](https://spie.org/conferences-and-exhibitions/past-conferences-and-exhibitions/medical-imaging-2019?SSO=1)
+- **Brandon J. Nelson**, Thomas Koenig, Elisabeth R. Shanblatt, Shuai Leng, Cynthia H. McCollough. "Visibility Guided Phase Contrast Denoising" SPIE Medical Imaging 2019, San Diego, CA [doi:10.1117/12.2511212](https://www.spiedigitallibrary.org/conference-proceedings-of-spie/10948/109484V/Visibility-guided-phase-contrast-denoising/10.1117/12.2511212.short)
