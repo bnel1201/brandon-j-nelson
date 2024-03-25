@@ -4,7 +4,7 @@
 
 For sharing information related to work, publications, research, and recruiting.
 
-Now using [Quarto](https://quarto.org)
+Now using [Quarto](https://quarto.org), [previous site](https://github.com/bnel1201/brandon-j-nelson_old) built with [fastpages](https://github.com/fastai/fastpages)
 
 ## Updating, Adding Pages and Publishing
 
