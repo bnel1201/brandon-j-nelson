@@ -13,6 +13,8 @@ A key understanding gap in regulatory science is how to best assess artificial i
 
 ![](images/aiml_submission_trends.png)
 
+A nice discussion from [MedicalAlley](https://youtu.be/HqxdSxXAYF4?si=XZfx8Nc1X4zqlmSK) especialy around 7:45
+
 ## Why do research at the FDA?
 
 More specifically, as a scientist, might you want to consider working at the FDA?
