@@ -1,6 +1,8 @@
 ---
 title: "Migrating to Quarto"
+categories: blog
+date: '2024-03-23'
 ---
 
-This site has moved to [Quarto](https://quarto.org/) from NBDev
+This site has moved to [Quarto](https://quarto.org/) from [fastpages](https://github.com/fastai/fastpages), originally recommended for blogging by [fast.ai](https://www.fast.ai/), here's a [discussion on why](https://forums.fast.ai/t/fastpages-deprecating-fastpages-in-favor-of-quarto/99095)
 
