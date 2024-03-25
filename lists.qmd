@@ -1,0 +1,16 @@
+---
+title: Lists
+---
+
+## Learning about Radiology
+
+- [How Radiology Works](https://youtube.com/@HowRadiologyWorks?si=pHnQtXnARjNc-kKu)
+
+- [Radiopaedia](https://radiopaedia.org/)
+
+## Imaging Science and Image Processing
+
+- [ITK notebooks](http://insightsoftwareconsortium.github.io/SimpleITK-Notebooks/)
+
+- [Tom Roelandts Blog](https://tomroelandts.com/)
+
