@@ -1,38 +1,73 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "publications.html",
+    "href": "publications.html",
+    "title": "Publications",
     "section": "",
-    "text": "Staff Fellow - FDA/CDRH/OSEL/DIDSR\nRegulatory Scientist in FDA’s Division of Imaging, Diagnostics, and Software Reliability (DIDSR)\nI conduct regulatory science research, the science of evaluating medical devices, specifically in improving the evaluation of the fast moving field of radiology devices.\nPreviously completed a PhD at Mayo Clinic’s CT Clinical Innovation Center: Thesis on preclinical applications of X-ray phase contrast CT\nDisclaimer: The views expressed on this site are my own and do not reflect the views of my employer\nORCID: 0000-0001-9213-3131\nGoogle Scholar\nResearchGate\nCV"
+    "text": "Nelson BJ, Kc P, Badal A, Jiang L, Masters SC, Zeng R. Pediatric evaluations for deep learning CT denoising. Medical Physics. 2024;51(2):978-990. doi:10.1002/mp.16901\nNelson BJ, Gomez-Cardona DG, Thorne JE, et al. Multiple Kernel Synthesis of Head CT Using a Task-Based Loss Function. J Digit Imaging Inform med. Published online January 12, 2024. doi:10.1007/s10278-023-00959-x\nNelson BJ, Zeng R, Sammer M, Frush DP, Delfino JG. An FDA Guide on Indications for Use and Device Reporting of Artificial Intelligence-Enabled Devices: Significance for Pediatric Use. Journal of the American College of Radiology. Published online July 1, 2023. doi:10.1016/j.jacr.2023.06.004\nNelson, B.J., Leng, S., Shanblatt, E.R., McCollough, C.H. and Koenig, T. (2021), Empirical beam hardening and ring artifact correction for x‐ray grating interferometry (EBHC‐GI). Med Phys. doi:10.1002/mp.14672\nSung, Y., Nelson, B., Shanblatt, E.R., Gupta, R., McCollough, C.H. and Graves, W.S. (2020), Wave optics simulation of grating‐based X‐ray phase‐contrast imaging using 4D Mouse Whole Body (MOBY) phantom. Med. Phys, 47: 5761-5771. doi:10.1002/mp.14479\nElisabeth R. Shanblatt, Yongjin Sung, Rajiv Gupta, Brandon J. Nelson, Shuai Leng, William S. Graves, and Cynthia H. McCollough, “Forward model for propagation-based x-ray phase contrast imaging in parallel- and cone-beam geometry,” Opt. Express 27, 4504-4521 (2019). doi:10.1364/OE.27.004504\nSung Y, Gupta R, Nelson B, Leng S, McCollough CH, Graves WS. Phase-contrast imaging with a compact x-ray light source: system design. J Med Imaging (Bellingham). 2017;4(4):043503. doi:10.1117/1.JMI.4.4.043503"
   },
   {
-    "objectID": "index.html#staff-fellow-regulatory-scientist-fdacdrhoseldidsr",
-    "href": "index.html#staff-fellow-regulatory-scientist-fdacdrhoseldidsr",
-    "title": "Brandon J. Nelson",
-    "section": "Staff Fellow | Regulatory Scientist @ FDA/CDRH/OSEL/DIDSR",
-    "text": "Staff Fellow | Regulatory Scientist @ FDA/CDRH/OSEL/DIDSR"
+    "objectID": "publications.html#peer-reviewed-publications",
+    "href": "publications.html#peer-reviewed-publications",
+    "title": "Publications",
+    "section": "",
+    "text": "Nelson BJ, Kc P, Badal A, Jiang L, Masters SC, Zeng R. Pediatric evaluations for deep learning CT denoising. Medical Physics. 2024;51(2):978-990. doi:10.1002/mp.16901\nNelson BJ, Gomez-Cardona DG, Thorne JE, et al. Multiple Kernel Synthesis of Head CT Using a Task-Based Loss Function. J Digit Imaging Inform med. Published online January 12, 2024. doi:10.1007/s10278-023-00959-x\nNelson BJ, Zeng R, Sammer M, Frush DP, Delfino JG. An FDA Guide on Indications for Use and Device Reporting of Artificial Intelligence-Enabled Devices: Significance for Pediatric Use. Journal of the American College of Radiology. Published online July 1, 2023. doi:10.1016/j.jacr.2023.06.004\nNelson, B.J., Leng, S., Shanblatt, E.R., McCollough, C.H. and Koenig, T. (2021), Empirical beam hardening and ring artifact correction for x‐ray grating interferometry (EBHC‐GI). Med Phys. doi:10.1002/mp.14672\nSung, Y., Nelson, B., Shanblatt, E.R., Gupta, R., McCollough, C.H. and Graves, W.S. (2020), Wave optics simulation of grating‐based X‐ray phase‐contrast imaging using 4D Mouse Whole Body (MOBY) phantom. Med. Phys, 47: 5761-5771. doi:10.1002/mp.14479\nElisabeth R. Shanblatt, Yongjin Sung, Rajiv Gupta, Brandon J. Nelson, Shuai Leng, William S. Graves, and Cynthia H. McCollough, “Forward model for propagation-based x-ray phase contrast imaging in parallel- and cone-beam geometry,” Opt. Express 27, 4504-4521 (2019). doi:10.1364/OE.27.004504\nSung Y, Gupta R, Nelson B, Leng S, McCollough CH, Graves WS. Phase-contrast imaging with a compact x-ray light source: system design. J Med Imaging (Bellingham). 2017;4(4):043503. doi:10.1117/1.JMI.4.4.043503"
   },
   {
-    "objectID": "index.html#about-me",
-    "href": "index.html#about-me",
-    "title": "Brandon J. Nelson",
-    "section": "About Me",
-    "text": "About Me\nI joined FDA’s Division of Imaging, Diagnostics and Software Reliability (DIDSR) in July, 2022 as an ORISE Fellow investigating generalizability of deep learning image reconstruction for Computed Tomography (CT), and have been a Staff Fellow since Jan, 2023. My research interests lay at the intersection of artificial intelligence and machine learning (AI/ML) and pediatric radiology. It goes without saying that pediatric patients are not just small adults, their anatomy and disease presentation varies dramatically from birth to adulthood. Pediatric patients have the most to gain from advancements in radiology given their longer life time horizons, yet they are a vulnerable population and are often inadequately represented in medical device development and evaluation. The goal of my research projects are to improve device evaluation of pediatric patients by better incorporating the unique aspects of pediatric anatomy, disease, and imaging protocols. These projects rely upon a range of technologies ranging from digital human phantoms, imaging device simulations, and deep learning."
+    "objectID": "publications.html#conference-proceedings",
+    "href": "publications.html#conference-proceedings",
+    "title": "Publications",
+    "section": "Conference Proceedings",
+    "text": "Conference Proceedings\n\nComplementary use of x-ray dark-field and attenuation computed tomography in quantifying pulmonary fibrosis in a mouse model\n\nNelson BJ, Leng S, Koenig T, McCollough CH. Complementary use of x-ray dark-field and attenuation computed tomography in quantifying pulmonary fibrosis in a mouse model. In: Medical Imaging 2022: Biomedical Applications in Molecular, Structural, and Functional Imaging. Vol 12036. SPIE; 2022:253-263. doi:10.1117/12.2612877\n\n\n\nDemonstration of Phase-Assisted Material Decomposition with a Talbot-Lau Interferometer using a Single X-Ray Tube Potential\n\nElisabeth R. Shanblatt, Brandon J. Nelson, Shengzhen Tao, Shuai Leng, Cynthia H. McCollough\nSPIE Medical Imaging 2019, San Diego, CA\n\n\n\nVisibility Guided Phase Contrast Denoising\n\nBrandon J. Nelson, Thomas Koenig, Elisabeth R. Shanblatt, Shuai Leng, Cynthia H. McCollough\nSPIE Medical Imaging 2019, San Diego, CA"
   },
   {
-    "objectID": "index.html#opportunities",
-    "href": "index.html#opportunities",
-    "title": "Brandon J. Nelson",
-    "section": "Opportunities",
-    "text": "Opportunities\nI am currently looking for a talented and motivated postdoctoral fellow (or similar trainee with relevant experience) to partner with me on an upcoming project investigating and developing tools to improve the evaluation of intracranial hemorrhage computer aided triage devices (CADt) in pediatric and other underrepresented patient groups.\n\nTo learn more, please reach out to me with your CV and availability at brandon.nelson at fda.hhs.gov"
+    "objectID": "posts/quarto.html",
+    "href": "posts/quarto.html",
+    "title": "Migrating to Quarto",
+    "section": "",
+    "text": "This site has moved to Quarto from fastpages, originally recommended for blogging by fast.ai, here’s a discussion on why\nBelow is some example Quarto from their tutorial to show off some functionality"
   },
   {
-    "objectID": "index.html#posts",
-    "href": "index.html#posts",
-    "title": "Brandon J. Nelson",
-    "section": "Posts",
-    "text": "Posts"
+    "objectID": "posts/quarto.html#markdown",
+    "href": "posts/quarto.html#markdown",
+    "title": "Migrating to Quarto",
+    "section": "Markdown",
+    "text": "Markdown\nMarkdown is an easy to read and write text format:\n\nIt’s plain text so works well with version control\nIt can be rendered into HTML, PDF, and more\nLearn more at: https://quarto.org/docs/authoring/"
+  },
+  {
+    "objectID": "posts/quarto.html#code-cell",
+    "href": "posts/quarto.html#code-cell",
+    "title": "Migrating to Quarto",
+    "section": "Code Cell",
+    "text": "Code Cell\nHere is a Python code cell:\n\nimport os\nos.cpu_count()\n\n4"
+  },
+  {
+    "objectID": "posts/quarto.html#equation",
+    "href": "posts/quarto.html#equation",
+    "title": "Migrating to Quarto",
+    "section": "Equation",
+    "text": "Equation\nUse LaTeX to write equations:\n\\[\n\\chi' = \\sum_{i=1}^n k_i s_i^2\n\\]"
+  },
+  {
+    "objectID": "posts/2021-01-31-Empirical Beam Hardening Correction for X-Ray Grating Interferometry.html",
+    "href": "posts/2021-01-31-Empirical Beam Hardening Correction for X-Ray Grating Interferometry.html",
+    "title": "Empirical Beam Hardening Correction for X-Ray Grating Interferometry (EBHC-GI)",
+    "section": "",
+    "text": "Recently, my first first-author manuscript related to my thesis work on x-ray phase contrast was published. The paper summarizes artifacts experienced while using a tabletop x-ray phase contrast micro-CT system. While the focus of the paper is limited to grating-based x-ray phase contrast systems, the empirical methods used to solve the beam hardening problem are quite generalizable. I first learned about these interpolation-based empirical corrections from researching previous x-ray corrections that are referenced in the paper, but along the way I enjoyed digging more into the math of solving least squares problems and how they are implemented. The following tutorials document some of my explorations and provide background to the paper."
+  },
+  {
+    "objectID": "posts/2021-01-31-Empirical Beam Hardening Correction for X-Ray Grating Interferometry.html#manuscript-citation-and-links",
+    "href": "posts/2021-01-31-Empirical Beam Hardening Correction for X-Ray Grating Interferometry.html#manuscript-citation-and-links",
+    "title": "Empirical Beam Hardening Correction for X-Ray Grating Interferometry (EBHC-GI)",
+    "section": "Manuscript Citation and Links",
+    "text": "Manuscript Citation and Links\n\nNelson, B.J., Leng, S., Shanblatt, E.R., McCollough, C.H. and Koenig, T. (2021), Empirical beam hardening and ring artifact correction for x‐ray grating interferometry (EBHC‐GI). Med Phys. https://doi.org/10.1002/mp.14672\n\npre-peer reviewed version"
+  },
+  {
+    "objectID": "posts/2021-01-31-Empirical Beam Hardening Correction for X-Ray Grating Interferometry.html#related-tutorials",
+    "href": "posts/2021-01-31-Empirical Beam Hardening Correction for X-Ray Grating Interferometry.html#related-tutorials",
+    "title": "Empirical Beam Hardening Correction for X-Ray Grating Interferometry (EBHC-GI)",
+    "section": "Related Tutorials",
+    "text": "Related Tutorials\n\nsolving interpolation problems with Vandermonde Matrices\nperforming matrix inversion via LU decomposition\nusing interpolation to fix image artifacts in CT\n\nthis tutorial is built upon the previous two but is most related to the paper"
   },
   {
     "objectID": "posts/2021-01-29-vandermonde matrices in beam hardening corrections.html",
@@ -77,20 +112,6 @@
     "text": "Try this again when there is no spatial component to the beam hardening, how does this affect the M dependency?\n\nnoSpatialm, noSpatial_corrupted_r = corruptProjection(r, bh_strength=0.1, spatialDependence_strength = 0)\nplotAndVisualizeDegreeDependence(noSpatial_corrupted_r, noSpatialm, theta)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFinally repeat once more with Beam hardening strength set to zero and spatiall varying strength on max, how does this affect the coefficient activation map?\n\nnoBHm, noBH_corrupted_r = corruptProjection(r, bh_strength=0, spatialDependence_strength = 1)\nplotAndVisualizeDegreeDependence(noBH_corrupted_r, noBHm, theta)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nObserve how the MSE decreases then increases at higher degrees. This demonstrates a weakness of Vandermonde polynomial interpolation that as the Vandermonde matrix becomes larger its condition number grows dramatically and the result becomes unstable.\nMove on to the last notebook on iterative methods for solving the Vandermonde interpolation least squares problem: https://colab.research.google.com/drive/1kErNKAbJlJUpq2jsb0roMJA7kTNB9vY0"
   },
   {
-    "objectID": "posts/fda_reasearch.html",
-    "href": "posts/fda_reasearch.html",
-    "title": "Research at the FDA",
-    "section": "",
-    "text": "When I talk to colleagues at different science, healthcare, or research institutions I realize there remain many misconceptions about what the FDA does, that we do research, and that researching at FDA you can still publish, go to conferences, apply for grants and have many of the benefits of academia while being involved in important regulatory work and influencing the development of new safe and effective medical devices. It also offers unique insights into the medical device world by sitting at the intersection of industry, academia, and the clinic.\nThe goal of this post is to share my experiences so far and why I chose to join and have stayed.\nAt the time of this posting, my research division is nestled in the following hierarchy.\n\nDivision of Imaging, Diagnostics, and Software Reliability (DIDSR)\nOffice of Science and Engineering Labs (OSEL)\nCenter for Devices and Radiological Health (CDRH)\nUS Food and Drug Administration (FDA)"
-  },
-  {
-    "objectID": "posts/fda_reasearch.html#why-research-at-the-fda",
-    "href": "posts/fda_reasearch.html#why-research-at-the-fda",
-    "title": "Research at the FDA",
-    "section": "",
-    "text": "When I talk to colleagues at different science, healthcare, or research institutions I realize there remain many misconceptions about what the FDA does, that we do research, and that researching at FDA you can still publish, go to conferences, apply for grants and have many of the benefits of academia while being involved in important regulatory work and influencing the development of new safe and effective medical devices. It also offers unique insights into the medical device world by sitting at the intersection of industry, academia, and the clinic.\nThe goal of this post is to share my experiences so far and why I chose to join and have stayed.\nAt the time of this posting, my research division is nestled in the following hierarchy.\n\nDivision of Imaging, Diagnostics, and Software Reliability (DIDSR)\nOffice of Science and Engineering Labs (OSEL)\nCenter for Devices and Radiological Health (CDRH)\nUS Food and Drug Administration (FDA)"
-  },
-  {
     "objectID": "posts/2021-01-27-vandermonde interpolation.html",
     "href": "posts/2021-01-27-vandermonde interpolation.html",
     "title": "Vandermonde Interpolation Tutorial",
@@ -133,60 +154,39 @@
     "text": "Vandermonde interpolation can be used for more than approximating an unknown function by a polynomial, it can also be used to linearize nonlinear data. This is useful in CT reconstruction which assumes a linear relationship between -log(Transmission) data and path length. The reason that this is not the case in practice is primarily because x-rays from standard tube sources are polychromatic with lower energy rays being attenuated at a greater rate than higher energy ones.\nTo correct for this we can use vandermonde interpolation to remap our measured polychromatic attenuation values (-log(Transmission)) to what we would expect had they come from monochromatic x-rays with the desired linear relationship.\nWe can demonstrate this below with a 1D example:\n\nn_samples = 10 #number of distances along x to measure attenuation through our homogenous sample of material mu\nd = np.linspace(0,1,n_samples) #vector of sampled distances\nmu = 0.2059 #attenuation coefficient of water at 60keV for this example units [cm^-2]\nlin_atten = mu*d #the desired linear attenuation of 60 keV x-rays as a function of distance d\nfig = plt.figure()\nplt.scatter(d,lin_atten,c='orange')\n#as a result of beam hardening, the relationship is no longer linear (arbitrary choice of coefficient and exponent)\nmeasured_atten = 0.4*lin_atten**0.8\n#measured_atten = np.sin(lin_atten**0.8) #uncomment to experiment with even more nonlinear functions\nline, = plt.plot(d,measured_atten,'r')\nplt.xlabel(\"distance [cm]\")\nplt.ylabel(\"Attenuation -log(Transmission)\")\ntitle=plt.title(\"-log attenuation vs distance\")\nplt.legend((\"monochromatic attenuation\",\"polychromatic attenuation\"))\nplt.show()\n\n\n\n\n\n\n\n\nWe can use the same tools developed in Vandermonde polynomial interpolation to linearize our measured polychromatic attenuation values to match what we would expect from a monochromatic beam\n\nfrom matplotlib import animation, rc\nimport time\nrc('animation', html='jshtml')\n\ndef animate(i):\n  if i == 0:\n    line.set_ydata(measured_atten)\n    title.set_text(\"original\")\n  else:\n    A = np.vander(measured_atten,i)\n    x=np.linalg.lstsq(A,lin_atten,rcond=None)[0]\n    line.set_ydata(A@x)\n    title.set_text(\"Degree \" + str(i) + \" polynomial fit\")\n  return line,\n\nanimation.FuncAnimation(fig, animate, np.arange(0, 10), interval=500)\n\n\n\n\n\n\n\n\n  \n  \n    \n    \n      \n      \n          \n      \n          \n      \n          \n      \n          \n      \n          \n      \n          \n      \n          \n      \n    \n    \n      \n      Once\n      \n      Loop\n      \n      Reflect\n    \n  \n\n\n\n\n\n\n\ndeg=5\nA = np.vander(measured_atten,deg)\nx=np.linalg.lstsq(A,lin_atten,rcond=None)[0]\ncorrected_measured=A@x\n\nplt.plot(lin_atten,measured_atten,lin_atten,corrected_measured)\nplt.xlabel(\"desired monochromatic response\")\nplt.ylabel(\"measured polychromatic respose\")\nplt.legend((\"uncorrected\",\"corrected\"))\nplt.show()\n\n\n\n\n\n\n\n\nNow go back and experiment with measured_atten giving it different nonlinear functions of d and see what order polynomial is required for the fit\nMove on to the next notebook on LU decomposition: https://colab.research.google.com/drive/1SJtGSP_1XcjLh0pyF_RwmakUMdDuNcxt"
   },
   {
-    "objectID": "presentations.html",
-    "href": "presentations.html",
-    "title": "Presentations",
+    "objectID": "index.html#staff-fellow-regulatory-scientist-fdacdrhoseldidsr",
+    "href": "index.html#staff-fellow-regulatory-scientist-fdacdrhoseldidsr",
+    "title": "Brandon J. Nelson",
+    "section": "Staff Fellow | Regulatory Scientist @ FDA/CDRH/OSEL/DIDSR",
+    "text": "Staff Fellow | Regulatory Scientist @ FDA/CDRH/OSEL/DIDSR"
+  },
+  {
+    "objectID": "index.html#about-me",
+    "href": "index.html#about-me",
+    "title": "Brandon J. Nelson",
+    "section": "About Me",
+    "text": "About Me\nI joined FDA’s Division of Imaging, Diagnostics and Software Reliability (DIDSR) in July, 2022 as an ORISE Fellow investigating generalizability of deep learning image reconstruction for Computed Tomography (CT), and have been a Staff Fellow since Jan, 2023. My research interests lay at the intersection of artificial intelligence and machine learning (AI/ML) and pediatric radiology. It goes without saying that pediatric patients are not just small adults, their anatomy and disease presentation varies dramatically from birth to adulthood. Pediatric patients have the most to gain from advancements in radiology given their longer life time horizons, yet they are a vulnerable population and are often inadequately represented in medical device development and evaluation. The goal of my research projects are to improve device evaluation of pediatric patients by better incorporating the unique aspects of pediatric anatomy, disease, and imaging protocols. These projects rely upon a range of technologies ranging from digital human phantoms, imaging device simulations, and deep learning."
+  },
+  {
+    "objectID": "index.html#opportunities",
+    "href": "index.html#opportunities",
+    "title": "Brandon J. Nelson",
+    "section": "Opportunities",
+    "text": "Opportunities\nI am currently looking for a talented and motivated postdoctoral fellow (or similar trainee with relevant experience) to partner with me on an upcoming project investigating and developing tools to improve the evaluation of intracranial hemorrhage computer aided triage devices (CADt) in pediatric and other underrepresented patient groups.\n\nTo learn more, please reach out to me with your CV and availability at brandon.nelson at fda.hhs.gov"
+  },
+  {
+    "objectID": "index.html#posts",
+    "href": "index.html#posts",
+    "title": "Brandon J. Nelson",
+    "section": "Posts",
+    "text": "Posts"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
     "section": "",
-    "text": "SPIE Medical Imaging 2019\n\n\nConference Proceedings Paper pre-print# 2019 ## Visibility Guided Phase Contrast Denoising\nSPIE Medical Imaging 2019\n\n\nConference Proceedings Paper pre-print"
-  },
-  {
-    "objectID": "presentations.html#visibility-guided-phase-contrast-denoising",
-    "href": "presentations.html#visibility-guided-phase-contrast-denoising",
-    "title": "Presentations",
-    "section": "",
-    "text": "SPIE Medical Imaging 2019\n\n\nConference Proceedings Paper pre-print# 2019 ## Visibility Guided Phase Contrast Denoising\nSPIE Medical Imaging 2019\n\n\nConference Proceedings Paper pre-print"
-  },
-  {
-    "objectID": "posts/quarto.html",
-    "href": "posts/quarto.html",
-    "title": "Migrating to Quarto",
-    "section": "",
-    "text": "This site has moved to Quarto from fastpages, originally recommended for blogging by fast.ai, here’s a discussion on why"
-  },
-  {
-    "objectID": "posts/2021-01-31-Empirical Beam Hardening Correction for X-Ray Grating Interferometry.html",
-    "href": "posts/2021-01-31-Empirical Beam Hardening Correction for X-Ray Grating Interferometry.html",
-    "title": "Empirical Beam Hardening Correction for X-Ray Grating Interferometry (EBHC-GI)",
-    "section": "",
-    "text": "Recently, my first first-author manuscript related to my thesis work on x-ray phase contrast was published. The paper summarizes artifacts experienced while using a tabletop x-ray phase contrast micro-CT system. While the focus of the paper is limited to grating-based x-ray phase contrast systems, the empirical methods used to solve the beam hardening problem are quite generalizable. I first learned about these interpolation-based empirical corrections from researching previous x-ray corrections that are referenced in the paper, but along the way I enjoyed digging more into the math of solving least squares problems and how they are implemented. The following tutorials document some of my explorations and provide background to the paper."
-  },
-  {
-    "objectID": "posts/2021-01-31-Empirical Beam Hardening Correction for X-Ray Grating Interferometry.html#manuscript-citation-and-links",
-    "href": "posts/2021-01-31-Empirical Beam Hardening Correction for X-Ray Grating Interferometry.html#manuscript-citation-and-links",
-    "title": "Empirical Beam Hardening Correction for X-Ray Grating Interferometry (EBHC-GI)",
-    "section": "Manuscript Citation and Links",
-    "text": "Manuscript Citation and Links\n\nNelson, B.J., Leng, S., Shanblatt, E.R., McCollough, C.H. and Koenig, T. (2021), Empirical beam hardening and ring artifact correction for x‐ray grating interferometry (EBHC‐GI). Med Phys. https://doi.org/10.1002/mp.14672\n\npre-peer reviewed version"
-  },
-  {
-    "objectID": "posts/2021-01-31-Empirical Beam Hardening Correction for X-Ray Grating Interferometry.html#related-tutorials",
-    "href": "posts/2021-01-31-Empirical Beam Hardening Correction for X-Ray Grating Interferometry.html#related-tutorials",
-    "title": "Empirical Beam Hardening Correction for X-Ray Grating Interferometry (EBHC-GI)",
-    "section": "Related Tutorials",
-    "text": "Related Tutorials\n\nsolving interpolation problems with Vandermonde Matrices\nperforming matrix inversion via LU decomposition\nusing interpolation to fix image artifacts in CT\n\nthis tutorial is built upon the previous two but is most related to the paper"
-  },
-  {
-    "objectID": "posts/2021-01-28-lu solving.html",
-    "href": "posts/2021-01-28-lu solving.html",
-    "title": "Direct Inversion via LU Decomposition",
-    "section": "",
-    "text": "this tutorial is also available as a colab notebook\n\nContinuing with the Vandermonde interpolation example this tutorial goes step by step on how computers typically implement matrix inversions for the purpose of solving least squares problems.\nThis typically takes the form of a matrix factorization of the matrix to be inverted followed by forward and back substitution. The matrix factorization demoed here is LU decomposition. We compare our hand-coded solvers with Numpy library solvers to compare results.\n\ncd 'drive/My Drive/Colab Notebooks/Solving Least Squares Problems'\n\n[Errno 2] No such file or directory: 'drive/My Drive/Colab Notebooks/Solving Least Squares Problems'\n/content"
-  },
-  {
-    "objectID": "posts/2021-01-28-lu solving.html#introduction-to-lu-decomposition",
-    "href": "posts/2021-01-28-lu solving.html#introduction-to-lu-decomposition",
-    "title": "Direct Inversion via LU Decomposition",
-    "section": "Introduction to LU decomposition",
-    "text": "Introduction to LU decomposition\nOur goal is to explore how to solve systems of linear equations following Trefethan and fastai’s numerical linear algebrea course: https://www.youtube.com/watch?v=O2x5KPJr5ag&list=PLtmWHNX-gukIc92m1K0P6bIOnZb-mg0hY&index=5."
+    "text": "Staff Fellow - FDA/CDRH/OSEL/DIDSR\nRegulatory Scientist in FDA’s Division of Imaging, Diagnostics, and Software Reliability (DIDSR)\nI conduct regulatory science research, the science of evaluating medical devices, specifically in improving the evaluation of the fast moving field of radiology devices.\nPreviously completed a PhD at Mayo Clinic’s CT Clinical Innovation Center: Thesis on preclinical applications of X-ray phase contrast CT\nDisclaimer: The views expressed on this site are my own and do not reflect the views of my employer\nORCID: 0000-0001-9213-3131\nGoogle Scholar\nResearchGate\nCV"
   },
   {
     "objectID": "posts/2020-09-08-juliacon2020.html",
@@ -238,24 +238,52 @@
     "text": "Footnotes\n\n\nFun fact: Jupyter stands for Julia, Python, and R, even though many language kernels are supported.↩︎"
   },
   {
-    "objectID": "publications.html",
-    "href": "publications.html",
-    "title": "Publications",
+    "objectID": "posts/2021-01-28-lu solving.html",
+    "href": "posts/2021-01-28-lu solving.html",
+    "title": "Direct Inversion via LU Decomposition",
     "section": "",
-    "text": "Nelson BJ, Kc P, Badal A, Jiang L, Masters SC, Zeng R. Pediatric evaluations for deep learning CT denoising. Medical Physics. 2024;51(2):978-990. doi:10.1002/mp.16901\nNelson BJ, Gomez-Cardona DG, Thorne JE, et al. Multiple Kernel Synthesis of Head CT Using a Task-Based Loss Function. J Digit Imaging Inform med. Published online January 12, 2024. doi:10.1007/s10278-023-00959-x\nNelson BJ, Zeng R, Sammer M, Frush DP, Delfino JG. An FDA Guide on Indications for Use and Device Reporting of Artificial Intelligence-Enabled Devices: Significance for Pediatric Use. Journal of the American College of Radiology. Published online July 1, 2023. doi:10.1016/j.jacr.2023.06.004\nNelson, B.J., Leng, S., Shanblatt, E.R., McCollough, C.H. and Koenig, T. (2021), Empirical beam hardening and ring artifact correction for x‐ray grating interferometry (EBHC‐GI). Med Phys. https://doi.org/10.1002/mp.14672\n\npre-peer reviewed version\n\nSung, Y., Nelson, B., Shanblatt, E.R., Gupta, R., McCollough, C.H. and Graves, W.S. (2020), Wave optics simulation of grating‐based X‐ray phase‐contrast imaging using 4D Mouse Whole Body (MOBY) phantom. Med. Phys, 47: 5761-5771. https://doi.org/10.1002/mp.14479\n\n\n\nElisabeth R. Shanblatt, Yongjin Sung, Rajiv Gupta, Brandon J. Nelson, Shuai Leng, William S. Graves, and Cynthia H. McCollough, “Forward model for propagation-based x-ray phase contrast imaging in parallel- and cone-beam geometry,” Opt. Express 27, 4504-4521 (2019). doi:10.1364/OE.27.004504\nSung Y, Gupta R, Nelson B, Leng S, McCollough CH, Graves WS. Phase-contrast imaging with a compact x-ray light source: system design. J Med Imaging (Bellingham). 2017;4(4):043503. doi:10.1117/1.JMI.4.4.043503\nSung Y, Nelson B, Shanblatt ER, Gupta R, McCollough CH, Graves WS. Wave optics simulation of grating-based X-ray phase-contrast imaging using 4D Mouse Whole Body (MOBY) phantom. Medical Physics. 2020;47(11):5761-5771. doi:https://doi.org/10.1002/mp.14479"
+    "text": "this tutorial is also available as a colab notebook\n\nContinuing with the Vandermonde interpolation example this tutorial goes step by step on how computers typically implement matrix inversions for the purpose of solving least squares problems.\nThis typically takes the form of a matrix factorization of the matrix to be inverted followed by forward and back substitution. The matrix factorization demoed here is LU decomposition. We compare our hand-coded solvers with Numpy library solvers to compare results.\n\ncd 'drive/My Drive/Colab Notebooks/Solving Least Squares Problems'\n\n[Errno 2] No such file or directory: 'drive/My Drive/Colab Notebooks/Solving Least Squares Problems'\n/content"
   },
   {
-    "objectID": "publications.html#peer-reviewed-publications",
-    "href": "publications.html#peer-reviewed-publications",
-    "title": "Publications",
-    "section": "",
-    "text": "Nelson BJ, Kc P, Badal A, Jiang L, Masters SC, Zeng R. Pediatric evaluations for deep learning CT denoising. Medical Physics. 2024;51(2):978-990. doi:10.1002/mp.16901\nNelson BJ, Gomez-Cardona DG, Thorne JE, et al. Multiple Kernel Synthesis of Head CT Using a Task-Based Loss Function. J Digit Imaging Inform med. Published online January 12, 2024. doi:10.1007/s10278-023-00959-x\nNelson BJ, Zeng R, Sammer M, Frush DP, Delfino JG. An FDA Guide on Indications for Use and Device Reporting of Artificial Intelligence-Enabled Devices: Significance for Pediatric Use. Journal of the American College of Radiology. Published online July 1, 2023. doi:10.1016/j.jacr.2023.06.004\nNelson, B.J., Leng, S., Shanblatt, E.R., McCollough, C.H. and Koenig, T. (2021), Empirical beam hardening and ring artifact correction for x‐ray grating interferometry (EBHC‐GI). Med Phys. https://doi.org/10.1002/mp.14672\n\npre-peer reviewed version\n\nSung, Y., Nelson, B., Shanblatt, E.R., Gupta, R., McCollough, C.H. and Graves, W.S. (2020), Wave optics simulation of grating‐based X‐ray phase‐contrast imaging using 4D Mouse Whole Body (MOBY) phantom. Med. Phys, 47: 5761-5771. https://doi.org/10.1002/mp.14479\n\n\n\nElisabeth R. Shanblatt, Yongjin Sung, Rajiv Gupta, Brandon J. Nelson, Shuai Leng, William S. Graves, and Cynthia H. McCollough, “Forward model for propagation-based x-ray phase contrast imaging in parallel- and cone-beam geometry,” Opt. Express 27, 4504-4521 (2019). doi:10.1364/OE.27.004504\nSung Y, Gupta R, Nelson B, Leng S, McCollough CH, Graves WS. Phase-contrast imaging with a compact x-ray light source: system design. J Med Imaging (Bellingham). 2017;4(4):043503. doi:10.1117/1.JMI.4.4.043503\nSung Y, Nelson B, Shanblatt ER, Gupta R, McCollough CH, Graves WS. Wave optics simulation of grating-based X-ray phase-contrast imaging using 4D Mouse Whole Body (MOBY) phantom. Medical Physics. 2020;47(11):5761-5771. doi:https://doi.org/10.1002/mp.14479"
+    "objectID": "posts/2021-01-28-lu solving.html#introduction-to-lu-decomposition",
+    "href": "posts/2021-01-28-lu solving.html#introduction-to-lu-decomposition",
+    "title": "Direct Inversion via LU Decomposition",
+    "section": "Introduction to LU decomposition",
+    "text": "Introduction to LU decomposition\nOur goal is to explore how to solve systems of linear equations following Trefethan and fastai’s numerical linear algebrea course: https://www.youtube.com/watch?v=O2x5KPJr5ag&list=PLtmWHNX-gukIc92m1K0P6bIOnZb-mg0hY&index=5."
   },
   {
-    "objectID": "publications.html#conference-proceedings",
-    "href": "publications.html#conference-proceedings",
-    "title": "Publications",
-    "section": "Conference Proceedings",
-    "text": "Conference Proceedings\n\nComplementary use of x-ray dark-field and attenuation computed tomography in quantifying pulmonary fibrosis in a mouse model\n\nNelson BJ, Leng S, Koenig T, McCollough CH. Complementary use of x-ray dark-field and attenuation computed tomography in quantifying pulmonary fibrosis in a mouse model. In: Medical Imaging 2022: Biomedical Applications in Molecular, Structural, and Functional Imaging. Vol 12036. SPIE; 2022:253-263. doi:10.1117/12.2612877\n\n\n\nDemonstration of Phase-Assisted Material Decomposition with a Talbot-Lau Interferometer using a Single X-Ray Tube Potential\n\nElisabeth R. Shanblatt, Brandon J. Nelson, Shengzhen Tao, Shuai Leng, Cynthia H. McCollough\nSPIE Medical Imaging 2019, San Diego, CA\n\n\n\nVisibility Guided Phase Contrast Denoising\n\nBrandon J. Nelson, Thomas Koenig, Elisabeth R. Shanblatt, Shuai Leng, Cynthia H. McCollough\nSPIE Medical Imaging 2019, San Diego, CA"
+    "objectID": "posts/fda_reasearch.html",
+    "href": "posts/fda_reasearch.html",
+    "title": "Research at the FDA",
+    "section": "",
+    "text": "Every year the FDA receives thousands of submissions from companies wanting to sell their newly developed medical devices. Many of these new, innovative products incorporate novel technologies, where the safety and efficacy in the real world is not fully known yet. Regulatory scientists at the FDA conduct regulatory science, the science of evaluating the performance of medical devices, to better understand and thus have better confidence in the future safety and efficacy of medical devices up for regulatory decisions using the limited premarket data provided by companies.\nA key understanding gap in regulatory science is how to best assess artificial intelligence and machine learning (AI/ML) devices, the number of FDA submisions of which have been growing at an exponential rate!"
+  },
+  {
+    "objectID": "posts/fda_reasearch.html#why-does-the-fda-do-research",
+    "href": "posts/fda_reasearch.html#why-does-the-fda-do-research",
+    "title": "Research at the FDA",
+    "section": "",
+    "text": "Every year the FDA receives thousands of submissions from companies wanting to sell their newly developed medical devices. Many of these new, innovative products incorporate novel technologies, where the safety and efficacy in the real world is not fully known yet. Regulatory scientists at the FDA conduct regulatory science, the science of evaluating the performance of medical devices, to better understand and thus have better confidence in the future safety and efficacy of medical devices up for regulatory decisions using the limited premarket data provided by companies.\nA key understanding gap in regulatory science is how to best assess artificial intelligence and machine learning (AI/ML) devices, the number of FDA submisions of which have been growing at an exponential rate!"
+  },
+  {
+    "objectID": "posts/fda_reasearch.html#why-do-research-at-the-fda",
+    "href": "posts/fda_reasearch.html#why-do-research-at-the-fda",
+    "title": "Research at the FDA",
+    "section": "Why do research at the FDA?",
+    "text": "Why do research at the FDA?\nMore specifically, as a scientist, might you want to consider working at the FDA?\nWhen I talk to friends, former classmates, and anyone curious enough to ask why I work at the FDA I realize there remain misconceptions about what the FDA does, that we do research, and that researching at FDA you can still publish, go to conferences, apply for grants and have many of the benefits of academia while being involved in important regulatory work and influencing the development of new safe and effective medical devices. It also offers unique insights into the medical device world by sitting at the intersection of industry, academia, and the clinic.\nThe goal of this post is to share my experiences so far and why I chose to join and have stayed.\nAt the time of this posting, my research division is nestled in the following hierarchy.\n\nDivision of Imaging, Diagnostics, and Software Reliability (DIDSR)\nOffice of Science and Engineering Labs (OSEL)\nCenter for Devices and Radiological Health (CDRH)\nUS Food and Drug Administration (FDA)"
+  },
+  {
+    "objectID": "presentations.html",
+    "href": "presentations.html",
+    "title": "Presentations",
+    "section": "",
+    "text": "SPIE Medical Imaging 2019\n\n\nConference Proceedings Paper pre-print# 2019 ## Visibility Guided Phase Contrast Denoising\nSPIE Medical Imaging 2019\n\n\nConference Proceedings Paper pre-print"
+  },
+  {
+    "objectID": "presentations.html#visibility-guided-phase-contrast-denoising",
+    "href": "presentations.html#visibility-guided-phase-contrast-denoising",
+    "title": "Presentations",
+    "section": "",
+    "text": "SPIE Medical Imaging 2019\n\n\nConference Proceedings Paper pre-print# 2019 ## Visibility Guided Phase Contrast Denoising\nSPIE Medical Imaging 2019\n\n\nConference Proceedings Paper pre-print"
   }
 ]
