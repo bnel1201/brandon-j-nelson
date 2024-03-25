@@ -1,10 +1,16 @@
 # Personal Site
 
-https://brandon-j-nelson.com
+<https://brandon-j-nelson.com>
 
 For sharing information related to work, publications, research, and recruiting.
 
 Now using [Quarto](https://quarto.org)
+
+## Updating, Adding Pages and Publishing
+
+Currently locally compiling using `quarto render`, followed by a git commit and push to update the site as described as [Option 1 in the getting started guide for GitHub Pages](https://quarto.org/docs/publishing/github-pages.html#render-to-docs)
+
+Currently GitHub Pages defaults to resetting the url, so under Settings --> Pages --> Custom Url I need to reset it to my custom domain: brandon-j-nelson.com
 
 ## New Pages
 
@@ -15,8 +21,7 @@ Now using [Quarto](https://quarto.org)
 
 ## TODO
 
-- [ ] update publications (add links and summmary pic)
-- [ ] update presentations (both^ reflecting the public work on my internal sight
-- [ ] update CV and make sure it can be easily downloaded
+- [ ] update publications (add links and summary pic)
+- [ ] update presentations (both^ reflecting the public work on my internal sight)
+- [ ] update CV
 - [ ] add 'new pages'
-- [X] change hiring to opportunities
