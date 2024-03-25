@@ -18,6 +18,7 @@ Currently GitHub Pages defaults to resetting the url, so under Settings --> Page
 2. on what is regulatory science and why work for the FDA
     - there remain many misconceptions about what FDA does, that we do research, and that researching at FDA you can still oublish, go to conferences, appy for grants and have many of the benefits of academia while being involed in important regulatory work and influencing the development of new safe and effective medical devices. It also offers unique insights into the medical device world by sitting at the intersection of industry, academia, and the clinic
     - give short blurb and summary if why FDA/what is reg sci on linkedin/x job posting
+3. brief summary blogs and pdfs of recent papers a) ped eval b) IFU paper c) mks paper d) ebhc-gi (just need to add pdf, blog already exists)
 
 ## TODO
 
