@@ -31,4 +31,4 @@ Previously completed a PhD at [Mayo Clinic's CT Clinical Innovation Center](http
 
 [ResearchGate](https://www.researchgate.net/profile/Brandon_Nelson5)
 
-[CV](./assets/curriculum_vitae.pdf)
+[CV](posts/assets/curriculum_vitae.pdf)
