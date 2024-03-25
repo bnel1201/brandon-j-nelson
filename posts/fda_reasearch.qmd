@@ -5,9 +5,19 @@ layout: post
 hide: true
 ---
 
-## Why Research at the FDA?
+## Why does the FDA do research?
 
-When I talk to colleagues at different science, healthcare, or research institutions I realize there remain many misconceptions about what the FDA does, that we do research, and that researching at FDA you can still publish, go to conferences, apply for grants and have many of the benefits of academia while being involved in important regulatory work and influencing the development of new safe and effective medical devices. It also offers unique insights into the medical device world by sitting at the intersection of industry, academia, and the clinic.
+Every year the FDA receives **thousands** of submissions from companies wanting to sell their newly developed medical devices. Many of these new, innovative products incorporate novel technologies, where the safety and efficacy in the real world is not fully known yet. Regulatory scientists at the FDA conduct regulatory science, the science of evaluating the performance of medical devices, to better understand and thus have better confidence in the future safety and efficacy of medical devices up for regulatory decisions using the limited premarket data provided by companies.
+
+A key understanding gap in regulatory science is how to best assess artificial intelligence and machine learning (AI/ML) devices, the number of FDA submisions of which have been growing at an exponential rate!
+
+![](images/aiml_submission_trends.png)
+
+## Why do research at the FDA?
+
+More specifically, as a scientist, might you want to consider working at the FDA?
+
+When I talk to friends, former classmates, and anyone curious enough to ask why I work at the FDA I realize there remain misconceptions about what the FDA does, that we do research, and that researching at FDA you can still publish, go to conferences, apply for grants and have many of the benefits of academia while being involved in important regulatory work and influencing the development of new safe and effective medical devices. It also offers unique insights into the medical device world by sitting at the intersection of industry, academia, and the clinic.
 
 The goal of this post is to share my experiences so far and why I chose to join and have stayed.
 
