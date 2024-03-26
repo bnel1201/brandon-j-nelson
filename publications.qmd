@@ -8,7 +8,7 @@ title: "Publications"
 
 - **Nelson BJ**, Gomez-Cardona DG, Thorne JE, et al. Multiple Kernel Synthesis of Head CT Using a Task-Based Loss Function. J Digit Imaging Inform med. Published online January 12, 2024. [doi:10.1007/s10278-023-00959-x](https://link.springer.com/article/10.1007/s10278-023-00959-x) [[pdf](posts/assets/Nelson et al. - 2024 - Multiple Kernel Synthesis of Head CT Using a Task-.pdf)]
 
-- **Nelson BJ**, Zeng R, Sammer M, Frush DP, Delfino JG. An FDA Guide on Indications for Use and Device Reporting of Artificial Intelligence-Enabled Devices: Significance for Pediatric Use. Journal of the American College of Radiology. Published online July 1, 2023. [doi:10.1016/j.jacr.2023.06.004](https://www.sciencedirect.com/science/article/abs/pii/S1546144023004234) [[pdf](posts/assets/Nelson et al. - 2023 - An FDA Guide on Indications for Use and Device Rep.pdf)]
+- **Nelson BJ**, Zeng R, Sammer M, Frush DP, Delfino JG. An FDA Guide on Indications for Use and Device Reporting of Artificial Intelligence-Enabled Devices: Significance for Pediatric Use. Journal of the American College of Radiology. Published online July 1, 2023. [doi:10.1016/j.jacr.2023.06.004](https://www.sciencedirect.com/science/article/abs/pii/S1546144023004234) [[pdf](posts/assets/Nelson et al. - 2023 - An FDA Guide on Indications for Use and Device Rep.pdf)] | [[post](posts/2023-09-08-IFU_paper.qmd)]
 
 - **Nelson, B.J.**, Leng, S., Shanblatt, E.R., McCollough, C.H. and Koenig, T. (2021), Empirical beam hardening and ring artifact correction for x‐ray grating interferometry (EBHC‐GI). Med Phys. [doi:10.1002/mp.14672](https://aapm.onlinelibrary.wiley.com/doi/10.1002/mp.14672) [[pdf](posts/assets/Nelson et al. - 2021 - Empirical beam hardening and ring artifact correct.pdf)]
 
