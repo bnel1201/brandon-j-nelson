@@ -1,4 +1,4 @@
----
+on---
 title: Research at the FDA
 categories: career
 layout: post
@@ -17,9 +17,16 @@ A nice discussion from [MedicalAlley](https://youtu.be/HqxdSxXAYF4?si=XZfx8Nc1X4
 
 ## Why do research at the FDA?
 
-More specifically, as a scientist, might you want to consider working at the FDA?
+More specifically, as a scientist, why might you want to consider working at the FDA?
 
-When I talk to friends, former classmates, and anyone curious enough to ask why I work at the FDA I realize there remain misconceptions about what the FDA does, that we do research, and that researching at FDA you can still publish, go to conferences, apply for grants and have many of the benefits of academia while being involved in important regulatory work and influencing the development of new safe and effective medical devices. It also offers unique insights into the medical device world by sitting at the intersection of industry, academia, and the clinic.
+When I talk to friends, former classmates, and anyone curious enough to ask why I work at the FDA I realize there remain misconceptions about what the FDA does, that we do research, and that researching at FDA you can still publish, go to conferences, apply for grants and have many of the benefits of academia while being involved in important regulatory work and influencing the development of new safe and effective medical devices. 
+
+As an FDA scientist I have the opportunity to contribute both to academic medical physics expanding the frontier of knowledge on how physics, imaging science, and data science can improve patient care with better diagnoses. I also have the unique opportunity to contribute to the regulatory mission and these contributions take many forms. 
+1. consulting on specific devices submissions 
+2. contributing to guidance documents and standards
+3. educating and communicating with regulatory colleagues teaching them about new technologies and developments connthe horizon 
+
+It also offers unique insights into the medical device world by sitting at the intersection of industry, academia, and the clinic.
 
 The goal of this post is to share my experiences so far and why I chose to join and have stayed.
 
